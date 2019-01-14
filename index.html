@@ -400,7 +400,13 @@ shift + g    移动到页尾
     !    感叹号强制执行
 /    查找，/被查找词，n是查找下一个，shift + n是往上查找
 ?    查找，？被查找词，n是查找上一个，shift + n是查找下一个
-</code></pre>
+</code></pre><h5 id="时间日期类"><a href="#时间日期类" class="headerlink" title="时间日期类"></a>时间日期类</h5><ol>
+<li>date 显示当前时间<br> date<br> date +%Y-%m-%d<br> date “+%Y-%m-%d %H:%M:%S”</li>
+<li>date 显示非当前时间<br> date -d ‘next day’<br> date -d “yesterday”<br> date -d “next week”<br> date -d “next monday”<br> date -d “1 days ago” – 显示前一天日期<br> date -d yesterday +%Y%m%d 显示前一天日期<br> date -d next day +%Y%m-%d 显示明天日期</li>
+<li>date 设置系统时间<br> date -s “2019-01-14 22:07:25”</li>
+<li>cal 查看日历<br> cal<br> cal 2019 2019年日历<br> cal -3 最近3个月</li>
+</ol>
+
           
         
       
