@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>随笔</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2019-01-17T14:10:58.144Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Ken Adams</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Linux进阶（二）</title>
+    <link href="http://yoursite.com/2019/01/17/Linux%E8%BF%9B%E9%98%B6%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <id>http://yoursite.com/2019/01/17/Linux进阶（二）/</id>
+    <published>2019-01-17T13:59:07.000Z</published>
+    <updated>2019-01-17T14:10:58.144Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>        <div id="aplayer-lpXNRgMY" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-lpXNRgMY"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "Staring At You",              author: "Diane Birch",              url: "https://m10.music.126.net/20190117222747/f0da5174d366efbf6a14217c7b7c9184/ymusic/bb41/2a86/d5cf/41ec0c033de62d81158b5319966bb57d.mp3",              pic: "http://p2.music.126.net/iiH7lL1eL37cvIPfEyRzwg==/5732853627334127.jpg?param=130y130",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+      <category term="Linux" scheme="http://yoursite.com/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux基础</title>
+    <link href="http://yoursite.com/2019/01/09/linux%E5%9F%BA%E7%A1%80/"/>
+    <id>http://yoursite.com/2019/01/09/linux基础/</id>
+    <published>2019-01-09T12:19:45.000Z</published>
+    <updated>2019-01-17T13:48:27.700Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul><li>帮助命令： man 获得帮助信息 用法：man [命令或配置文件]</li><li>help 获得shell内置命令的帮助信息</li></ul><h5 id="基础命令："><a href="#基础命令：" class="headerlink" title="基础命令："></a>基础命令：</h5><ol><li>pwd 查看绝对路径</li><li>mkidr 创建一个新的目录</li><li>rmdir 删除一个空的目录</li><li>touch 创建空文件</li><li><p>cd 切换目录 用法：（cd 绝对路径/相对路径）</p><pre><code>cd 绝对路径cd 相对路径cd ~ 或 cd 回到自己的家目录cd - 回到上一次所在目录cd.. 回到当前目录的上一级目录</code></pre></li></ol><ol start="6"><li><p>cp 复制文件或目录</p><pre><code>cp source dest    复制source文件到destcp -r sourceFloder targetFolder        递归复制整个文件到</code></pre></li><li>ls 列出目录内容 （-a/-l）</li><li>ll</li><li><p>rm 移除文件或目录</p><pre><code>rm 删除文件rm -rf 递归删除，可以删除包含文件的文件夹</code></pre></li><li><p>mv 移动文件与目录或重命名</p><pre><code>mv oldNameFile newNameFile    重命名mv /temp/movefile/targetFolder 移动文件</code></pre></li><li><p>cat 查看文件内容</p><pre><code>查看文件内容，从第一行开始显示。cat -n 显示行号，连同空白行也会有cat -A 累出一些特殊字符，而不是空白而已cat -b 列出行号，但针对非空白行做行号显示，空白行不标行号!cat -E 将结尾的断行字符$显示出来；cat -T 将【Tab】键以 ^|显示出来；cat -v 列出一些看不出来的特殊字符；</code></pre></li><li><p>tac 查看文件内容</p><pre><code>查看文件内容，从最后一行开始显示，可以看出tac 是 cat 的倒着写的；</code></pre></li><li><p>more 查看文件内容</p><pre><code>more 要查看的文件空白键[space]    代表向下翻一页Enter    代表向下翻一行q        代表离开more ，不在显示该文件内容;Ctrl + F    向下滚动一屏Ctrl + B    返回上一屏=输出当前行的行号:f    输出文件名和当前行的行号;</code></pre></li><li><p>less 查看文件内容</p><pre><code>less的作用与more十分相似，都可以用来浏览文字档案的内容，不同的是less允许使用[pageup][pagedown]往回滚动；空白键    向下翻动一页[pagedown]    向下翻动一页[pageup]    向上翻动一页/字符串        向下搜寻[字符串]的功能;n:向下查找；N:向上查找?字符串        向上搜寻[字符串]的功能;n:向上查找;    N:向下查找q        离开less</code></pre></li><li><p>head 查看文件内容</p><pre><code>查看文件内容，只看头几行</code></pre></li><li><p>tail 查看文件内容</p><pre><code>查看文件内容，只看尾巴几行tail -n 10 文件    tail -f 文件        实时追踪该文档的所有更新</code></pre></li><li><p>重定向命令</p><pre><code>ls -l &gt;文件        列表的内容写入文件a.txt中(覆盖写)ls -al &gt;&gt;文件    列表的内容追加到文件aa.txt的末尾</code></pre></li><li><p>echo        </p><pre><code>echo 要显示的内容&gt;&gt;存储内容的文件    将要显示的内容，存储到文件中echo 变量    显示变量的值</code></pre></li><li><p>ln软链接</p><pre><code>ln -s[原文件][目标问价]    给原文件创建一个软链接，软链接存放在目标文件目录</code></pre></li><li>history 查看所敲命令历史</li></ol><hr><h3 id="vi编辑器的使用"><a href="#vi编辑器的使用" class="headerlink" title="vi编辑器的使用"></a>vi编辑器的使用</h3><h5 id="一般模式"><a href="#一般模式" class="headerlink" title="一般模式"></a>一般模式</h5><pre><code>yy    复制光标当前一行y数字y    复制一段(从第几行到第几行)p    箭头移动到目的行进行粘贴u    撤销上一步dd    删除光标当前行d数字d    删除光标(含)后多少行x    删除一个字母，相当于delX    删除一个字母，相当于Backspaceyw    复制一个词dw    删除一个词shift + ^    移动到行头shift + $    移动到行尾 1 + shift + g    移动到页头，数字shift + g    移动到页尾数字N + shift + g    移动到目标行</code></pre><h5 id="编辑模式"><a href="#编辑模式" class="headerlink" title="编辑模式"></a>编辑模式</h5><pre><code>进入编辑模式    1.    i    当前光标前    2.    a    当前光标后    3.    o    当前光标下一行退出编辑模式    ESC</code></pre><h5 id="指令模式"><a href="#指令模式" class="headerlink" title="指令模式"></a>指令模式</h5><pre><code>    w    保存        q    退出    !    感叹号强制执行/    查找，/被查找词，n是查找下一个，shift + n是往上查找?    查找，？被查找词，n是查找上一个，shift + n是查找下一个</code></pre><h5 id="时间日期类"><a href="#时间日期类" class="headerlink" title="时间日期类"></a>时间日期类</h5><ol><li><p>date 显示当前时间</p><pre><code>datedate +%Y-%m-%ddate &quot;+%Y-%m-%d %H:%M:%S&quot;</code></pre></li><li><p>date 显示非当前时间</p><pre><code>date -d &apos;next day&apos;date -d &quot;yesterday&quot;date -d &quot;next week&quot;date -d &quot;next monday&quot;date -d &quot;1 days ago&quot; -- 显示前一天日期date -d yesterday +%Y%m%d 显示前一天日期date -d next day +%Y%m-%d 显示明天日期</code></pre></li><li><p>date 设置系统时间</p><pre><code>date -s &quot;2019-01-14 22:07:25&quot;</code></pre></li><li><p>cal 查看日历</p><pre><code>calcal 2019 2019年日历cal -3 最近3个月</code></pre></li></ol><hr><h5 id="用户组管理命令"><a href="#用户组管理命令" class="headerlink" title="用户组管理命令"></a>用户组管理命令</h5><ol><li><p>groupadd 新增组</p><pre><code>groupadd 组名</code></pre></li><li><p>groupdel 删除组</p><pre><code>groupdel 组名</code></pre></li><li><p>groupmod 修改组</p><pre><code>groupmod -n 新组名 老祖名</code></pre></li><li><p>cat/etc/group 查看创建了哪些分组</p></li><li><p>usermod 修改用户组</p><pre><code>usermod -g 用户名 用户组        </code></pre></li></ol><hr><h5 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h5><blockquote><p>-rw-r–r–. 1 root root    0 1月  16 21:05 duanyu.txt</p><p>drwxr-xr-x. 2 root root 4096 1月  16 21:05 gaibang</p></blockquote><pre><code>第一位： - 表示文件        d 文件夹第2-4位：        用户主的权限        r 读        w 写        x 执行        - 表示没权限第5-7位：        用户组的权限        r 读        w 写        x 执行        - 表示没权限第8-10位：        其他权限        r 读        w 写        x 执行        - 表示没权限第11位：        链接数第12位：        文件拥有者第13位：        用户组第14位：        创建时间第15位：        文件名称</code></pre><hr>        <div id="aplayer-ZhexpNHI" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">            <pre class="aplayer-lrc-content"></pre>        </div>        <script>          var ap = new APlayer({            element: document.getElementById("aplayer-ZhexpNHI"),            narrow: false,            autoplay: true,            showlrc: false,            music: {              title: "绝对是个梦",              author: "汤宝如",              url: "https://m10.music.126.net/20190117220544/24570c8d9a84cd0c3a470518fdc03b5b/ymusic/d52e/a4ad/4c07/8214ad8b055099de80a876fd07c82acc.mp3",              pic: "http://p1.music.126.net/ZltFcvUm0B7CYjAYUUSVHw==/61572651167679.jpg?param=130y130",              lrc: ""            }          });          window.aplayers || (window.aplayers = []);          window.aplayers.push(ap);        </script><hr>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot; cla
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+  </entry>
+  
+</feed>
