@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Python,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="随笔" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="转义字符 ​    pyhton 为了简化，允许使用  r ‘’表示 ‘’ 内部的字符默认不转义  如果 字符串内有很多换行，用 \n 写在一行里不好阅读，为了简化，Python 允许用 ‘’’…’’’ 表示多行内容 Python的字符串 在最新的python 3 中,字符串十一Unicode编码的   单个字符的函数  ord()     # 获取字符的整数表示 chr()    # 将编码转换">
+<meta name="keywords" content="Python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="廖雪峰 python">
+<meta property="og:url" content="http://yoursite.com/2019/05/04/廖雪峰python/index.html">
+<meta property="og:site_name" content="随笔">
+<meta property="og:description" content="转义字符 ​    pyhton 为了简化，允许使用  r ‘’表示 ‘’ 内部的字符默认不转义  如果 字符串内有很多换行，用 \n 写在一行里不好阅读，为了简化，Python 允许用 ‘’’…’’’ 表示多行内容 Python的字符串 在最新的python 3 中,字符串十一Unicode编码的   单个字符的函数  ord()     # 获取字符的整数表示 chr()    # 将编码转换">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-04T07:46:04.788Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="廖雪峰 python">
+<meta name="twitter:description" content="转义字符 ​    pyhton 为了简化，允许使用  r ‘’表示 ‘’ 内部的字符默认不转义  如果 字符串内有很多换行，用 \n 写在一行里不好阅读，为了简化，Python 允许用 ‘’’…’’’ 表示多行内容 Python的字符串 在最新的python 3 中,字符串十一Unicode编码的   单个字符的函数  ord()     # 获取字符的整数表示 chr()    # 将编码转换">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/04/廖雪峰python/">
+
+
+
+
+
+  <title>廖雪峰 python | 随笔</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">随笔</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/廖雪峰python/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ken Adams">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随笔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">廖雪峰 python</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-04T15:19:45+08:00">
+                2019-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h5 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h5><blockquote>
+<p>​    pyhton 为了简化，允许使用  r ‘’表示 ‘’ 内部的字符默认不转义</p>
+</blockquote>
+<p>如果 字符串内有很多换行，用 \n 写在一行里不好阅读，为了简化，Python 允许用 ‘’’…’’’ 表示多行内容</p>
+<h4 id="Python的字符串"><a href="#Python的字符串" class="headerlink" title="Python的字符串"></a>Python的字符串</h4><blockquote>
+<p>在最新的python 3 中,字符串十一Unicode编码的</p>
+</blockquote>
+<ul>
+<li><p>单个字符的函数</p>
+<blockquote>
+<p>ord()     # 获取字符的整数表示</p>
+<p>chr()    # 将编码转换为对应的字符</p>
+</blockquote>
+</li>
+<li><p>如果知道了字符的整数编码，可以用十六进制这么写</p>
+<blockquote>
+<p>‘\u4e2d\u6587’</p>
+<p>‘中文’</p>
+<p>这两种写法是等价的;</p>
+</blockquote>
+</li>
+<li><p>以Unicode 表示的 str 通过 encode() 方法可以编码为 指定的 bytes</p>
+</li>
+<li><p>要把 bytes 转化为 str ，就需要用 decode()方法;</p>
+</li>
+<li><p>如果 byes 中只有一小部分无效的字节，可以传入 errors=’ignore’忽略错误的字节</p>
+</li>
+<li><p>计算 str 包含 多少个字符，可以用 len()函数</p>
+</li>
+<li><p>len() 是计算 str 的字符数，如果换成 bytes,len()函数就计算字节数</p>
+</li>
+<li><p>% 就是用来格式化字符串的</p>
+<p>| #### 占位符 | 替换内容     |<br>| ———– | ———— |<br>| %d          | 整数         |<br>| %f          | 浮点数       |<br>| %s          | 字符串       |<br>| %X          | 十六进制整数 |</p>
+</li>
+<li><p>其中，格式化整数和浮点数还可以指定是否补0和整数与小数的位数<br>`</p>
+<pre><code> print(&apos;%2d-%02d&apos; % (3,1))
+ 3-01
+print(&apos;%.2f&apos; % 3.1415926)
+3.14
+</code></pre><p>`</p>
+</li>
+<li><p>另一种格式化字符串的方法是使用字符串的 format() 方法，他会用传入的参数依次替换字符串内的占位符{0}、{1}……</p>
+</li>
+</ul>
+<h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><ol>
+<li><p>python 内置的一种数据类型是列表：list</p>
+</li>
+<li><p>list 是一种有序的集合，可以随时添加和删除其中的元素</p>
+</li>
+<li><p>len() 可以获取 list 元素的个数</p>
+</li>
+<li><p>用索引来访问 list 么一个位置的元素，记得索引是从0 开始的</p>
+</li>
+<li><p>list 是一个可变的有序表，可以往list中追加元素到末尾<br><code>classmates.append(&#39;Adam&#39;)</code></p>
+</li>
+<li><p>把元素插入到指定的位置，比如索引号为1的位置：<br><code>calssmates.insert(1,&#39;Jack&#39;)</code></p>
+</li>
+<li><p>要删除list末尾的元素，用 <code>pop()</code> 方法<br><code>classmates.pop()</code></p>
+</li>
+<li><p>要删除指定位置的元素，用 <code>pop(i)</code> 方法，其中 i 是索引位置<br><code>classmates.pop(1)</code></p>
+</li>
+<li><p>要把某个元素替换成别的元素，可以直接赋值给对应的索引位置：<br><code>classmates[1] = &#39;Sarah&#39;</code></p>
+</li>
+<li><p>list 元素里面的元素数据类型也可以不相同<br><code>L = [&#39;apple&#39;,10,True]</code></p>
+</li>
+<li><p>list 元素也可以是另一个list<br><code>s - [&#39;python&#39;,&#39;java&#39;,[&#39;asp&#39;,&#39;php&#39;],&#39;schema&#39;]</code><br><code>len(s)</code><br><code>4</code><br><code>s[2][1]</code></p>
+</li>
+</ol>
+<h3 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h3><ol>
+<li>另一种有序列表叫元祖：tuple</li>
+<li>tuple 与 list 非常相似，但是 tuple 一旦初始化就不能修改</li>
+<li>tuple 的陷阱：当你定义一个 tuple 时，在定义的时候， tuple 的元素就必须被确定下来<br><code>t= (1,2)</code><br><code>t</code><br><code>(1,2)</code></li>
+<li>如果要定义一个空的tuple,可以写成 ()<br><code>t = 0</code><br><code>t</code><br><code>0</code></li>
+<li><p>但是，要定义一个只有 1 个元素的 tuple ，如果这么定义:<br><code>t = (1)</code><br><code>t</code><br><code>1</code><br>定义的不是tuple，是 1 这个数！这是因为 () 即可以表示 tuple ，又可以表示数学公式中的小括号，这就产生了歧义，因此，Python规定这种情况下，按照小括号计算，计算结果自然是1；<br>所以，只有 1 个元素 的 tuple 定义的时候必须加一个逗号，，来消除歧义<br>t = (1,)<br>t<br>(1,)</p>
+</li>
+<li><p>“可变的”tuple</p>
+<p><code>t = (&#39;a&#39;,&#39;b&#39;,[&#39;A&#39;,&#39;B&#39;])</code></p>
+<p><code>t[2][0] = &#39;X&#39;</code></p>
+<p><code>t[2][1] = &#39;Y&#39;</code></p>
+<p><code>t</code></p>
+<p><code>(&#39;a&#39;,&#39;b&#39;,[&#39;X&#39;,&#39;Y&#39;])</code></p>
+<ul>
+<li>注意：tuple 的元素确实变了，但其实变得不是tuple的元素，而是list的元素</li>
+<li>tuple 所谓的 “不变” 是说，tuple 的每个元素，只想永远不变。</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"># Python</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/17/Linux进阶（二）/" rel="next" title="Linux进阶（二）">
+                <i class="fa fa-chevron-left"></i> Linux进阶（二）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/04/Hadoop/" rel="prev" title="Hadoop">
+                Hadoop <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Ken Adams</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#转义字符"><span class="nav-number">1.</span> <span class="nav-text">转义字符</span></a></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#Python的字符串"><span class="nav-number"></span> <span class="nav-text">Python的字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#list"><span class="nav-number"></span> <span class="nav-text">list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tuple"><span class="nav-number"></span> <span class="nav-text">tuple</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ken Adams</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

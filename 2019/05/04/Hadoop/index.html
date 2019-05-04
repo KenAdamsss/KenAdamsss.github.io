@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hadoop,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="随笔" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="一、从Hadoop框架讨论大数据生态1.1 Hadoop是什么 Hadoop 是一个 Apache 基金会所开发的分布式系统基础架构 主要解决，海量数据的存储（HDFS） 和 海量数据的分析计算 （MapReduce）问题 广义上说，Hadoop 通常是指一个更广泛的概念 - Hadoop 生态圈  1.2 Hadoop 发展历史1.3 Hadoop 三大发行版本Apache、Cloudera、H">
+<meta name="keywords" content="Hadoop">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hadoop">
+<meta property="og:url" content="http://yoursite.com/2019/05/04/Hadoop/index.html">
+<meta property="og:site_name" content="随笔">
+<meta property="og:description" content="一、从Hadoop框架讨论大数据生态1.1 Hadoop是什么 Hadoop 是一个 Apache 基金会所开发的分布式系统基础架构 主要解决，海量数据的存储（HDFS） 和 海量数据的分析计算 （MapReduce）问题 广义上说，Hadoop 通常是指一个更广泛的概念 - Hadoop 生态圈  1.2 Hadoop 发展历史1.3 Hadoop 三大发行版本Apache、Cloudera、H">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-04T07:42:23.940Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hadoop">
+<meta name="twitter:description" content="一、从Hadoop框架讨论大数据生态1.1 Hadoop是什么 Hadoop 是一个 Apache 基金会所开发的分布式系统基础架构 主要解决，海量数据的存储（HDFS） 和 海量数据的分析计算 （MapReduce）问题 广义上说，Hadoop 通常是指一个更广泛的概念 - Hadoop 生态圈  1.2 Hadoop 发展历史1.3 Hadoop 三大发行版本Apache、Cloudera、H">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/04/Hadoop/">
+
+
+
+
+
+  <title>Hadoop | 随笔</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">随笔</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/Hadoop/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ken Adams">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随笔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Hadoop</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-04T15:19:45+08:00">
+                2019-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="一、从Hadoop框架讨论大数据生态"><a href="#一、从Hadoop框架讨论大数据生态" class="headerlink" title="一、从Hadoop框架讨论大数据生态"></a>一、从Hadoop框架讨论大数据生态</h3><h4 id="1-1-Hadoop是什么"><a href="#1-1-Hadoop是什么" class="headerlink" title="1.1 Hadoop是什么"></a>1.1 Hadoop是什么</h4><ol>
+<li>Hadoop 是一个 Apache 基金会所开发的分布式系统基础架构</li>
+<li>主要解决，海量数据的存储（HDFS） 和 海量数据的分析计算 （MapReduce）问题</li>
+<li>广义上说，Hadoop 通常是指一个更广泛的概念 - Hadoop 生态圈</li>
+</ol>
+<h4 id="1-2-Hadoop-发展历史"><a href="#1-2-Hadoop-发展历史" class="headerlink" title="1.2 Hadoop 发展历史"></a>1.2 Hadoop 发展历史</h4><h4 id="1-3-Hadoop-三大发行版本"><a href="#1-3-Hadoop-三大发行版本" class="headerlink" title="1.3 Hadoop 三大发行版本"></a>1.3 Hadoop 三大发行版本</h4><p>Apache、Cloudera、Hortonworks</p>
+<h4 id="1-4-Hadoop-的优势"><a href="#1-4-Hadoop-的优势" class="headerlink" title="1.4 Hadoop 的优势"></a>1.4 Hadoop 的优势</h4><ol>
+<li><strong>高可靠性</strong><br>因为Hadoop假设计算元素和存储会出现故障，因为它维护多个工作数据副本，在出现故障时可以对失败的节点重新分布处理</li>
+<li><strong>高扩展性</strong><br>在集群分配任务数据，可方便的扩展数以千计的节点</li>
+<li><strong>高效性</strong><br>在 MapReduce 的思想下，Hadoop 是并行工作的，以加快任务处理速度</li>
+<li><strong>高容错性</strong><br>自动保存多份副本数据，并且能够自动将失败的任务重新分配</li>
+</ol>
+<h4 id="1-5-Hadoop-组成"><a href="#1-5-Hadoop-组成" class="headerlink" title="1.5 Hadoop 组成"></a>1.5 Hadoop 组成</h4><p><strong>概述</strong></p>
+<ol>
+<li><strong>Hadoop HDFS</strong> : 一个高可靠、高吞吐量的<strong>分布式文件系统</strong></li>
+<li><strong>Hadoop MapReduce</strong> : 一个分布式的<strong>离线并行计算</strong>框架</li>
+<li><strong>Hadoop YARN</strong> : 作业调度与集群资源管理的框架</li>
+<li><strong>Hadoop Common</strong> : 支持其他模块的工具模块</li>
+</ol>
+<h5 id="1-5-1-HDFS-架构概述"><a href="#1-5-1-HDFS-架构概述" class="headerlink" title="1.5.1  HDFS 架构概述"></a>1.5.1  HDFS 架构概述</h5><ol>
+<li><code>NameNode (nn)</code> : 存储文件的元数据，如文件名，文件目录结构，文件属性（生成时间、副本数、文件权限），以及每个文件的块列表和块所在的 DataNode 等</li>
+<li><code>DataNode （dn）</code> : 在本地文件系统存储文件块数据，以及块数据的校验和</li>
+<li><code>SecondaryNameNode (2nn)</code> : 用来监控 HDFS 状态的辅助后台程序，每隔一段时间获取 HDFS 元数据的快照。</li>
+</ol>
+<h5 id="1-5-2-YARN-架构概述"><a href="#1-5-2-YARN-架构概述" class="headerlink" title="1.5.2 YARN 架构概述"></a>1.5.2 YARN 架构概述</h5><h5 id="1-5-3-MapReduce-架构概述"><a href="#1-5-3-MapReduce-架构概述" class="headerlink" title="1.5.3 MapReduce 架构概述"></a>1.5.3 MapReduce 架构概述</h5><h3 id="二、Hadoop运行环境搭建"><a href="#二、Hadoop运行环境搭建" class="headerlink" title="二、Hadoop运行环境搭建"></a>二、Hadoop运行环境搭建</h3><h3 id="三、Hadoop运行模式"><a href="#三、Hadoop运行模式" class="headerlink" title="三、Hadoop运行模式"></a>三、Hadoop运行模式</h3><h3 id="四、Hadoop编译源码"><a href="#四、Hadoop编译源码" class="headerlink" title="四、Hadoop编译源码"></a>四、Hadoop编译源码</h3>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hadoop/" rel="tag"># Hadoop</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/04/廖雪峰python/" rel="next" title="廖雪峰 python">
+                <i class="fa fa-chevron-left"></i> 廖雪峰 python
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Ken Adams</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、从Hadoop框架讨论大数据生态"><span class="nav-number">1.</span> <span class="nav-text">一、从Hadoop框架讨论大数据生态</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-Hadoop是什么"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 Hadoop是什么</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-Hadoop-发展历史"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 Hadoop 发展历史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-Hadoop-三大发行版本"><span class="nav-number">1.3.</span> <span class="nav-text">1.3 Hadoop 三大发行版本</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-Hadoop-的优势"><span class="nav-number">1.4.</span> <span class="nav-text">1.4 Hadoop 的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-5-Hadoop-组成"><span class="nav-number">1.5.</span> <span class="nav-text">1.5 Hadoop 组成</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5-1-HDFS-架构概述"><span class="nav-number">1.5.1.</span> <span class="nav-text">1.5.1  HDFS 架构概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5-2-YARN-架构概述"><span class="nav-number">1.5.2.</span> <span class="nav-text">1.5.2 YARN 架构概述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-5-3-MapReduce-架构概述"><span class="nav-number">1.5.3.</span> <span class="nav-text">1.5.3 MapReduce 架构概述</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、Hadoop运行环境搭建"><span class="nav-number">2.</span> <span class="nav-text">二、Hadoop运行环境搭建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、Hadoop运行模式"><span class="nav-number">3.</span> <span class="nav-text">三、Hadoop运行模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、Hadoop编译源码"><span class="nav-number">4.</span> <span class="nav-text">四、Hadoop编译源码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ken Adams</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

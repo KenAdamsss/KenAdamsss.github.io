@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="随笔">
 <meta property="og:description" content="帮助命令： man 获得帮助信息 用法：man [命令或配置文件] help 获得shell内置命令的帮助信息  基础命令： pwd 查看绝对路径 mkidr 创建一个新的目录 rmdir 删除一个空的目录 touch 创建空文件 cd 切换目录 用法：（cd 绝对路径/相对路径） cd 绝对路径 cd 相对路径 cd ~ 或 cd 回到自己的家目录 cd - 回到上一次所在目录 cd.. 回到">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-17T13:48:27.700Z">
+<meta property="og:updated_time" content="2019-03-19T12:00:28.963Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux基础">
 <meta name="twitter:description" content="帮助命令： man 获得帮助信息 用法：man [命令或配置文件] help 获得shell内置命令的帮助信息  基础命令： pwd 查看绝对路径 mkidr 创建一个新的目录 rmdir 删除一个空的目录 touch 创建空文件 cd 切换目录 用法：（cd 绝对路径/相对路径） cd 绝对路径 cd 相对路径 cd ~ 或 cd 回到自己的家目录 cd - 回到上一次所在目录 cd.. 回到">
@@ -482,7 +482,7 @@ cal -3 最近3个月
         x 执行
         - 表示没权限
 第11位：
-        链接数
+        链接数(未知)
 第12位：
         文件拥有者
 第13位：
@@ -491,14 +491,37 @@ cal -3 最近3个月
         创建时间
 第15位：
         文件名称
-</code></pre><hr>
+</code></pre><h5 id="chomod-改变权限"><a href="#chomod-改变权限" class="headerlink" title="chomod 改变权限"></a>chomod 改变权限</h5><pre><code>chmod u+x demo.txt    //用户
+chmod g-w demo.txt    //用户组
+chmod o+w demo.txt    //其它
+chmod a+w demo.txt    //所有
 
-        <div id="aplayer-ZhexpNHI" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+1：具有权限 0：没有权限
+r w x
+1 1 1 = 7
+0 0 0 = 0
+1 0 0 = 4
+0 1 0 = 2
+0 0 1 = 1
+
+chmod 777 demo.txt (用户、用户组、其它都具有可读可写可执行的权限)
+</code></pre><h5 id="chown-改变所有者"><a href="#chown-改变所有者" class="headerlink" title="chown 改变所有者"></a>chown 改变所有者</h5><pre><code>chown [最终用户][文件或目录]
+chown root jiumozhi.txt
+</code></pre><h5 id="chgrp-改变所属组"><a href="#chgrp-改变所属组" class="headerlink" title="chgrp 改变所属组"></a>chgrp 改变所属组</h5><pre><code>chgrp root yijinjing.txt
+
+同时改变拥有者 和 拥有者 的组：
+
+chown atguigu:atguigu yijinjing.txt
+</code></pre><h3 id="磁盘分区类"><a href="#磁盘分区类" class="headerlink" title="磁盘分区类"></a>磁盘分区类</h3><h5 id="fdisk-查看分区"><a href="#fdisk-查看分区" class="headerlink" title="fdisk 查看分区"></a>fdisk 查看分区</h5><pre><code>fdisk -l   功能：查看磁盘分区详情(只有root用户)
+</code></pre><h5 id="df-查看硬盘"><a href="#df-查看硬盘" class="headerlink" title="df 查看硬盘"></a>df 查看硬盘</h5><pre><code>df -h
+</code></pre><h5 id="mon"><a href="#mon" class="headerlink" title="mon"></a>mon</h5><hr>
+
+        <div id="aplayer-yOdNwbLZ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-ZhexpNHI"),
+            element: document.getElementById("aplayer-yOdNwbLZ"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -514,7 +537,13 @@ cal -3 最近3个月
           window.aplayers.push(ap);
         </script>
 <hr>
-
+<h5 id="磁盘分区"><a href="#磁盘分区" class="headerlink" title="磁盘分区"></a>磁盘分区</h5><pre><code>fdisk 查看分区
+    fdisk -l 查看磁盘分区详情
+    注意：root用户
+df    查看硬盘
+    df -h
+mount/umount 挂载/卸载
+</code></pre>
       
     </div>
     
@@ -550,8 +579,8 @@ cal -3 最近3个月
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/17/Linux进阶（二）/" rel="prev" title="Linux进阶（二）">
-                Linux进阶（二） <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/17/ubuntu问题/" rel="prev" title="ubuntu 问题">
+                ubuntu 问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -629,7 +658,7 @@ cal -3 最近3个月
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -642,7 +671,7 @@ cal -3 最近3个月
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -682,7 +711,7 @@ cal -3 最近3个月
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#基础命令："><span class="nav-number">1.</span> <span class="nav-text">基础命令：</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#vi编辑器的使用"><span class="nav-number"></span> <span class="nav-text">vi编辑器的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一般模式"><span class="nav-number">1.</span> <span class="nav-text">一般模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#编辑模式"><span class="nav-number">2.</span> <span class="nav-text">编辑模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#指令模式"><span class="nav-number">3.</span> <span class="nav-text">指令模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#时间日期类"><span class="nav-number">4.</span> <span class="nav-text">时间日期类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用户组管理命令"><span class="nav-number">5.</span> <span class="nav-text">用户组管理命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件权限"><span class="nav-number">6.</span> <span class="nav-text">文件权限</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#基础命令："><span class="nav-number">1.</span> <span class="nav-text">基础命令：</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#vi编辑器的使用"><span class="nav-number"></span> <span class="nav-text">vi编辑器的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#一般模式"><span class="nav-number">1.</span> <span class="nav-text">一般模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#编辑模式"><span class="nav-number">2.</span> <span class="nav-text">编辑模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#指令模式"><span class="nav-number">3.</span> <span class="nav-text">指令模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#时间日期类"><span class="nav-number">4.</span> <span class="nav-text">时间日期类</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用户组管理命令"><span class="nav-number">5.</span> <span class="nav-text">用户组管理命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文件权限"><span class="nav-number">6.</span> <span class="nav-text">文件权限</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#chomod-改变权限"><span class="nav-number">7.</span> <span class="nav-text">chomod 改变权限</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#chown-改变所有者"><span class="nav-number">8.</span> <span class="nav-text">chown 改变所有者</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#chgrp-改变所属组"><span class="nav-number">9.</span> <span class="nav-text">chgrp 改变所属组</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘分区类"><span class="nav-number"></span> <span class="nav-text">磁盘分区类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#fdisk-查看分区"><span class="nav-number">1.</span> <span class="nav-text">fdisk 查看分区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#df-查看硬盘"><span class="nav-number">2.</span> <span class="nav-text">df 查看硬盘</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mon"><span class="nav-number">3.</span> <span class="nav-text">mon</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#磁盘分区"><span class="nav-number">4.</span> <span class="nav-text">磁盘分区</span></a></li></ol></li></div>
             
 
           </div>
