@@ -73,8 +73,10 @@
 
 
 
+  
 
-  <link rel="alternate" href="/atom.xml" title="随笔" type="application/atom+xml">
+
+  <link rel="alternate" href="/atom.xml" title="zero's blog" type="application/atom+xml">
 
 
 
@@ -86,7 +88,7 @@
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hadoop">
 <meta property="og:url" content="http://yoursite.com/2019/05/04/Hadoop/index.html">
-<meta property="og:site_name" content="随笔">
+<meta property="og:site_name" content="zero&#39;s blog">
 <meta property="og:description" content="一、从Hadoop框架讨论大数据生态1.1 Hadoop是什么 Hadoop 是一个 Apache 基金会所开发的分布式系统基础架构 主要解决，海量数据的存储（HDFS） 和 海量数据的分析计算 （MapReduce）问题 广义上说，Hadoop 通常是指一个更广泛的概念 - Hadoop 生态圈  1.2 Hadoop 发展历史1.3 Hadoop 三大发行版本Apache、Cloudera、H">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-05-12T09:51:46.863Z">
@@ -128,7 +130,7 @@
 
 
 
-  <title>Hadoop | 随笔</title>
+  <title>Hadoop | zero's blog</title>
   
 
 
@@ -158,7 +160,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">随笔</span>
+        <span class="site-title">zero's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -204,9 +206,41 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -238,13 +272,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/Hadoop/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ken Adams">
+      <meta itemprop="name" content="zero">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="随笔">
+      <meta itemprop="name" content="zero's blog">
     </span>
 
     
@@ -338,10 +372,12 @@
 <li>Reduce 阶段对 Map 结果进行汇总</li>
 </ol>
 <h4 id="1-6-大数据技术生态体系"><a href="#1-6-大数据技术生态体系" class="headerlink" title="1.6 大数据技术生态体系"></a>1.6 大数据技术生态体系</h4><h4 id="1-7-推荐系统框架图"><a href="#1-7-推荐系统框架图" class="headerlink" title="1.7 推荐系统框架图"></a>1.7 推荐系统框架图</h4><h3 id="二、Hadoop运行环境搭建"><a href="#二、Hadoop运行环境搭建" class="headerlink" title="二、Hadoop运行环境搭建"></a>二、Hadoop运行环境搭建</h3><h4 id="2-1-虚拟机网络模式设置为-NAT"><a href="#2-1-虚拟机网络模式设置为-NAT" class="headerlink" title="2.1 虚拟机网络模式设置为 NAT"></a>2.1 虚拟机网络模式设置为 NAT</h4><h4 id="2-1-克隆虚拟机"><a href="#2-1-克隆虚拟机" class="headerlink" title="2.1 克隆虚拟机"></a>2.1 克隆虚拟机</h4><h4 id="2-3-修改为静态-IP"><a href="#2-3-修改为静态-IP" class="headerlink" title="2.3 修改为静态 IP"></a>2.3 修改为静态 IP</h4><h4 id="2-4-修改主机名"><a href="#2-4-修改主机名" class="headerlink" title="2.4 修改主机名"></a>2.4 修改主机名</h4><h4 id="2-5-关闭防火墙"><a href="#2-5-关闭防火墙" class="headerlink" title="2.5 关闭防火墙"></a>2.5 关闭防火墙</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 修改 克隆来的机器的 eth0</span><br><span class="line">vi /etc/udev/rules.d/70-persistent-net.rules </span><br><span class="line">	删除eth0 升级eht1为eth0 </span><br><span class="line">	复制物理ip地址</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 修改 </span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0 </span><br><span class="line">	粘贴复制的物理ip地址</span><br><span class="line">	修改 IPADDR</span><br><span class="line">	</span><br><span class="line"><span class="meta">#</span> 查看主机名</span><br><span class="line">hostname</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 修改主机名</span><br><span class="line">vi /etc/sysconfig/network</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 配置 hosts 文件</span><br><span class="line">vi /etc/hosts</span><br><span class="line">	192.168.188.100 hadoop100</span><br><span class="line">	192.168.188.101 hadoop101</span><br><span class="line">	192.168.188.102 hadoop102</span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">------------------------------------------</span><br><span class="line">sync </span><br><span class="line">reboot</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 关闭防火墙</span><br><span class="line"><span class="meta">#</span> 查看防火墙</span><br><span class="line">chkconfig iptables --list</span><br></pre></td></tr></table></figure>
+
 <h4 id="2-6-在-opt-目录下创建文件"><a href="#2-6-在-opt-目录下创建文件" class="headerlink" title="2.6 在 opt 目录下创建文件"></a>2.6 在 opt 目录下创建文件</h4><p>使用 <code>atguigu</code> 用户在 /opt 目录下创建 module  software 目录</p>
 <p>module ： 安装目录</p>
 <p>software  ：接收从window 传输过来的安装包</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 修改 atguigu 用户权限</span><br><span class="line">vi /etc/sudoers</span><br><span class="line"><span class="meta">#</span> atguigu 使用 sudo 创建 目录</span><br><span class="line">sudo mkdir module</span><br><span class="line"></span><br><span class="line">sudo mkdir module</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 修改用户所有者 和 用户组</span><br><span class="line">sudo chown atguigu:atguigu module/ software/</span><br></pre></td></tr></table></figure>
+
 <h4 id="2-7-安装-jdk"><a href="#2-7-安装-jdk" class="headerlink" title="2.7 安装 jdk"></a>2.7 安装 jdk</h4><ol>
 <li><p>卸载现有的 jdk</p>
 </li>
@@ -351,16 +387,25 @@
 </li>
 <li><p>解压 jdk 到 /opt/module 目录下</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-7u79-linux-x64.gz -C /opt/module/</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="5">
 <li><p>配置 jdk 环境变量</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line">Shift + G</span><br><span class="line">o</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>JAVA_HOME</span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.7.0_79</span><br><span class="line">exprot PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="6">
 <li><p>测试 jdk 安装成功</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java</span><br><span class="line">或</span><br><span class="line">rpm -qa |grep java</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <h4 id="2-8-安装-Hadoop"><a href="#2-8-安装-Hadoop" class="headerlink" title="2.8 安装 Hadoop"></a>2.8 安装 Hadoop</h4><ol>
@@ -368,6 +413,9 @@
 </li>
 <li><p>解压安装文件到 /opt/moudle 下面</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf hadoop-2.7.2.tar.gz -C /opt/module</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="3">
@@ -379,6 +427,9 @@
 </li>
 <li><p>修改 hadoop-env.sh 文件中 JAVA_HOME 路径</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/module/hadoop-2.7.2/etc/hadoop</span><br><span class="line"></span><br><span class="line">sudo vi hadoop-env.sh</span><br><span class="line"></span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.7.0_79</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 </li>
@@ -396,6 +447,9 @@
 </li>
 <li><p>重启 （如果Hadoop命令不能用再重启）</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>#HADOOP_HOME</span><br><span class="line">export HADOOP_HOME=/opt/module/hadoop-2.7.2</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/bin</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/sbin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 </li>
@@ -415,6 +469,9 @@
 </li>
 <li><p>将 hadoop 的 xml 配置文件复制到input</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp etc/hadoop/*.xml input/</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="3">
@@ -427,16 +484,25 @@
 <h5 id="3-1-2-官方-wordcount-案例"><a href="#3-1-2-官方-wordcount-案例" class="headerlink" title="3.1.2 官方 wordcount 案例"></a>3.1.2 官方 wordcount 案例</h5><ol>
 <li><p>创建在 hadoop-2.7.2 文件下面创建一个wcinput 文件夹</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir wcinput</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="2">
 <li><p>在 wcinput 文件下创建一个 wc.input 文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 随便一个文本</span><br><span class="line">touch wc.input</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="3">
 <li><p>编辑 wc.input 文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi wc.input</span><br><span class="line"><span class="meta">#</span> 随便写点东西</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="4">
@@ -444,6 +510,9 @@
 </li>
 <li><p>执行程序</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount wcinput wcoutput</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="6">
@@ -464,6 +533,7 @@
 <li><h6 id="执行步骤"><a href="#执行步骤" class="headerlink" title="执行步骤"></a>执行步骤</h6><ol>
 <li><p>配置集群<br>a. 配置 ： hadoop-env.sh</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Linux 系统获取 jdk 的安装路径</span><br><span class="line">      </span><br><span class="line">修改 JAVA_HOME 路径</span><br></pre></td></tr></table></figure>
+
 <p>​    </p>
 <p>b. 配置 ： core-site.xml</p>
 </li>
@@ -474,37 +544,50 @@
 
 c. 配置 :     hdfs-site.xml
 
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定 HDFS 副本的数量 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</code></pre><ol start="2">
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定 HDFS 副本的数量 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure></code></pre><ol start="2">
 <li><p>启动集群</p>
 <p>a. 格式化 namenode (第一次启动时格式化，以后就不要总格式化)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs namenode -format</span><br></pre></td></tr></table></figure>
+
 <p>b. 启动 namenode</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop-daemon.sh start namenode</span><br></pre></td></tr></table></figure>
+
 <p>c. 启动 datanode</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hadoop-deamon.sh start datanode</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看java进程</span></span><br><span class="line">jps</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看集群<br>a. 查看是否启动成功</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jps</span><br></pre></td></tr></table></figure>
+
 <p>b. 查看产生的 log 日志</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> logs 文件夹下</span></span><br><span class="line">.log 文件</span><br></pre></td></tr></table></figure>
+
 <p>c. web端查看 HDFS 文件系统</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.188.101:50070</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="4">
 <li><p>操作集群<br>a. 在 hdfs 文件夹系统上创建一个 input 文件夹</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">`hadoop fs` (等价) `bin/hdfs dfs`</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 创建 input 目录</span></span><br><span class="line">hadoop fs -mkdir -p /user/atguigu/input</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 递归列出目录</span></span><br><span class="line">[atguigu@hadoop101 logs]$ hadoop fs -ls -R /</span><br><span class="line">drwxr-xr-x   - atguigu supergroup          0 2019-05-12 13:19 /user</span><br><span class="line">drwxr-xr-x   - atguigu supergroup          0 2019-05-12 13:19 /user/atguigu</span><br><span class="line">drwxr-xr-x   - atguigu supergroup          0 2019-05-12 13:19 /user/atguigu/input</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令同上,递归列出目录</span></span><br><span class="line">hadoop fs -lsr</span><br></pre></td></tr></table></figure>
+
 <p>b. 将测试文件内容上传到 文件系统上</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -put wcinput/wc.input /user/atguigu/input</span><br></pre></td></tr></table></figure>
+
 <p>c. 查看上传的文件是否正确</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -lsr</span><br></pre></td></tr></table></figure>
+
 <p>d. 在 hdfs 上运行 mapreduce  程序</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /user/atguigu/input/ /user/atguigu/output</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看</span></span><br><span class="line">hadoop fs -cat /user/atguigu/output/p*</span><br></pre></td></tr></table></figure>
+
 <p>e. 查看输出结果</p>
 <p>f. 将测试文件内容下载到本地</p>
 <p>g. 删除输出结果</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -rmr /user/atguigu/output</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <h5 id="3-2-2-YARN-上运行-MapReduce-程序"><a href="#3-2-2-YARN-上运行-MapReduce-程序" class="headerlink" title="3.2.2 YARN 上运行 MapReduce 程序"></a>3.2.2 YARN 上运行 MapReduce 程序</h5><h5 id="3-2-3-修改本地临时文件存储目录"><a href="#3-2-3-修改本地临时文件存储目录" class="headerlink" title="3.2.3 修改本地临时文件存储目录"></a>3.2.3 修改本地临时文件存储目录</h5><h5 id="3-2-4-Hadoop配置文件说明"><a href="#3-2-4-Hadoop配置文件说明" class="headerlink" title="3.2.4 Hadoop配置文件说明"></a>3.2.4 Hadoop配置文件说明</h5><h4 id="3-3-完全分布式部署-Hadoop"><a href="#3-3-完全分布式部署-Hadoop" class="headerlink" title="3.3 完全分布式部署 Hadoop"></a>3.3 完全分布式部署 Hadoop</h4><h3 id="四、Hadoop编译源码"><a href="#四、Hadoop编译源码" class="headerlink" title="四、Hadoop编译源码"></a>四、Hadoop编译源码</h3>
@@ -546,6 +629,10 @@ c. 配置 :     hdfs-site.xml
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/01/Servlet/" rel="prev" title="Servlet">
+                Servlet <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -611,8 +698,8 @@ c. 配置 :     hdfs-site.xml
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">Ken Adams</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-author-name" itemprop="name">zero</p>
+              <p class="site-description motion-element" itemprop="description">记录成长</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -622,12 +709,21 @@ c. 配置 :     hdfs-site.xml
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
             
 
             
@@ -635,7 +731,7 @@ c. 配置 :     hdfs-site.xml
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -699,7 +795,7 @@ c. 配置 :     hdfs-site.xml
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Ken Adams</span>
+  <span class="author" itemprop="copyrightHolder">zero</span>
 
   
 </div>
@@ -860,6 +956,323 @@ c. 配置 :     hdfs-site.xml
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

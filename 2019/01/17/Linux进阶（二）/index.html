@@ -73,28 +73,26 @@
 
 
 
-  
 
-
-  <link rel="alternate" href="/atom.xml" title="随笔" type="application/atom+xml">
+  <link rel="alternate" href="/atom.xml" title="zero's blog" type="application/atom+xml">
 
 
 
 
 
 
-<meta name="description" content="var ap = new APlayer({             element: document.getElementById(&quot;aplayer-YSKGrsLA&quot;),             narrow: false,             autoplay: true,">
+<meta name="description" content="var ap = new APlayer({             element: document.getElementById(&quot;aplayer-eLIWCOJd&quot;),             narrow: false,             autoplay: true,">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux进阶（二）">
 <meta property="og:url" content="http://yoursite.com/2019/01/17/Linux进阶（二）/index.html">
-<meta property="og:site_name" content="随笔">
-<meta property="og:description" content="var ap = new APlayer({             element: document.getElementById(&quot;aplayer-YSKGrsLA&quot;),             narrow: false,             autoplay: true,">
+<meta property="og:site_name" content="zero&#39;s blog">
+<meta property="og:description" content="var ap = new APlayer({             element: document.getElementById(&quot;aplayer-eLIWCOJd&quot;),             narrow: false,             autoplay: true,">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-04T06:38:10.876Z">
+<meta property="og:updated_time" content="2019-05-08T14:35:00.012Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux进阶（二）">
-<meta name="twitter:description" content="var ap = new APlayer({             element: document.getElementById(&quot;aplayer-YSKGrsLA&quot;),             narrow: false,             autoplay: true,">
+<meta name="twitter:description" content="var ap = new APlayer({             element: document.getElementById(&quot;aplayer-eLIWCOJd&quot;),             narrow: false,             autoplay: true,">
 
 
 
@@ -130,7 +128,7 @@
 
 
 
-  <title>Linux进阶（二） | 随笔</title>
+  <title>Linux进阶（二） | zero's blog</title>
   
 
 
@@ -162,7 +160,7 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">随笔</span>
+        <span class="site-title">zero's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
@@ -208,9 +206,41 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -242,13 +272,13 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/17/Linux进阶（二）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Ken Adams">
+      <meta itemprop="name" content="zero">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="随笔">
+      <meta itemprop="name" content="zero's blog">
     </span>
 
     
@@ -307,12 +337,12 @@
 
       
         
-        <div id="aplayer-YSKGrsLA" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-eLIWCOJd" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-YSKGrsLA"),
+            element: document.getElementById("aplayer-eLIWCOJd"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -327,32 +357,51 @@
           window.aplayers || (window.aplayers = []);
           window.aplayers.push(ap);
         </script>
+
+
+
 <h4 id="7-7-磁盘分区类"><a href="#7-7-磁盘分区类" class="headerlink" title="7.7 磁盘分区类"></a>7.7 磁盘分区类</h4><h5 id="7-7-1-fdisk查看分区"><a href="#7-7-1-fdisk查看分区" class="headerlink" title="7.7.1 fdisk查看分区"></a>7.7.1 <code>fdisk</code>查看分区</h5><p>​    基本语法：<code>fdisk -l</code></p>
 <h5 id="7-7-2-查看硬盘"><a href="#7-7-2-查看硬盘" class="headerlink" title="7.7.2 查看硬盘"></a>7.7.2 查看硬盘</h5><p>​    <code>df -h</code></p>
 <h5 id="7-7-3-mount-umount-挂载-卸载"><a href="#7-7-3-mount-umount-挂载-卸载" class="headerlink" title="7.7.3 mount / umount 挂载 /卸载"></a>7.7.3 <code>mount / umount</code> 挂载 /卸载</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">挂载：mount -t  iso9660 -o rw /dev/cdrom /mnt/cdrom/</span><br><span class="line">卸载：umnout /mnt/cdrom</span><br></pre></td></tr></table></figure>
+
 <h4 id="7-8-搜索查找类"><a href="#7-8-搜索查找类" class="headerlink" title="7.8 搜索查找类"></a>7.8 搜索查找类</h4><h5 id="7-8-1-find-查找文件或目录"><a href="#7-8-1-find-查找文件或目录" class="headerlink" title="7.8.1 find 查找文件或目录"></a>7.8.1 find 查找文件或目录</h5><p>​    基本语法： <code>find [搜索范围] [匹配条件]</code></p>
 <p>​    案例：</p>
 <p>​        (1) 按文件名，根据名称查找 /目录下 的 <code>filename.txt</code>文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /home/atguigu/ -name "*.txt"</span><br></pre></td></tr></table></figure>
+
 <p>​        (2) 按拥有者，查找 /opt 目录下，用户名为 -user 的文件</p>
 <p>​    </p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv -t bb shaolinsi # 移动 shaolinsi 到 bb 目录内</span><br></pre></td></tr></table></figure>
+
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find tlbu/ -user atguigu</span><br></pre></td></tr></table></figure>
+
 <p>​    </p>
 <p>​    (3) 按文件大小，在 /home 目录下查找大于200m 的文件 (+n 大于 ，-n 小于， n 等于)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查找小于10 m 的文件</span><br><span class="line">find tlbu/ -size -10</span><br></pre></td></tr></table></figure>
-<h5 id="7-8-2-grep-在文件内搜索字符串匹配的行并输出"><a href="#7-8-2-grep-在文件内搜索字符串匹配的行并输出" class="headerlink" title="7.8.2 grep 在文件内搜索字符串匹配的行并输出"></a>7.8.2 grep 在文件内搜索字符串匹配的行并输出</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查找 ll.txt</span><br><span class="line">ls -l |grep ll.txt</span><br></pre></td></tr></table></figure>
-<h5 id="7-8-3-which-文件搜索命令"><a href="#7-8-3-which-文件搜索命令" class="headerlink" title="7.8.3 which 文件搜索命令"></a>7.8.3 <code>which</code> 文件搜索命令</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查找 ls 可执行文件存放在哪里</span><br><span class="line">which ls</span><br></pre></td></tr></table></figure>
-<h4 id="7-9-进程线程类"><a href="#7-9-进程线程类" class="headerlink" title="7.9 进程线程类"></a>7.9 进程线程类</h4><h5 id="7-9-1-ps查看系统中所有进程"><a href="#7-9-1-ps查看系统中所有进程" class="headerlink" title="7.9.1 ps查看系统中所有进程"></a>7.9.1 <code>ps</code>查看系统中所有进程</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查看所有进程</span><br><span class="line">ps -aux</span><br><span class="line">grep -aux |grep 3121</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查找小于10 m 的文件</span></span><br><span class="line">find tlbu/ -size -10</span><br></pre></td></tr></table></figure>
+
+<h5 id="7-8-2-grep-在文件内搜索字符串匹配的行并输出"><a href="#7-8-2-grep-在文件内搜索字符串匹配的行并输出" class="headerlink" title="7.8.2 grep 在文件内搜索字符串匹配的行并输出"></a>7.8.2 grep 在文件内搜索字符串匹配的行并输出</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查找 ll.txt</span></span><br><span class="line">ls -l |grep ll.txt</span><br></pre></td></tr></table></figure>
+
+<h5 id="7-8-3-which-文件搜索命令"><a href="#7-8-3-which-文件搜索命令" class="headerlink" title="7.8.3 which 文件搜索命令"></a>7.8.3 <code>which</code> 文件搜索命令</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查找 ls 可执行文件存放在哪里</span></span><br><span class="line">which ls</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-9-进程线程类"><a href="#7-9-进程线程类" class="headerlink" title="7.9 进程线程类"></a>7.9 进程线程类</h4><h5 id="7-9-1-ps查看系统中所有进程"><a href="#7-9-1-ps查看系统中所有进程" class="headerlink" title="7.9.1 ps查看系统中所有进程"></a>7.9.1 <code>ps</code>查看系统中所有进程</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看所有进程</span></span><br><span class="line">ps -aux</span><br><span class="line">grep -aux |grep 3121</span><br></pre></td></tr></table></figure>
+
 <h5 id="7-9-2-top查看系统健康状态"><a href="#7-9-2-top查看系统健康状态" class="headerlink" title="7.9.2 top查看系统健康状态"></a>7.9.2 <code>top</code>查看系统健康状态</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">top</span><br><span class="line">top -d 1 # 1秒刷新一次</span><br><span class="line">top -l 使top 不显示未激活的进程</span><br><span class="line">按 P 使用CPU 排序</span><br><span class="line">按 M 内存使用排序</span><br><span class="line">N pid排序</span><br></pre></td></tr></table></figure>
+
 <h5 id="7-9-3-pstree-查看进程树"><a href="#7-9-3-pstree-查看进程树" class="headerlink" title="7.9.3 pstree 查看进程树"></a>7.9.3 <code>pstree</code> 查看进程树</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pstree</span><br><span class="line">pstree -u # 显示进程属于哪一个用户</span><br><span class="line">pstree -p # 显示pid</span><br></pre></td></tr></table></figure>
+
 <h5 id="7-9-4-kill终止进程"><a href="#7-9-4-kill终止进程" class="headerlink" title="7.9.4 kill终止进程"></a>7.9.4 <code>kill</code>终止进程</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kill -9 3863 # 关闭pid 为 3868进程 -9（强迫关闭）</span><br></pre></td></tr></table></figure>
+
 <h5 id="7-9-5-netstat显示网络统计信息"><a href="#7-9-5-netstat显示网络统计信息" class="headerlink" title="7.9.5 netstat显示网络统计信息"></a>7.9.5 <code>netstat</code>显示网络统计信息</h5><p>​    <code>netstat -anp</code>用来显示整个系统目前的网络情况，例如目前的连接、数据包传递数据、或是路由表内容</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp</span><br><span class="line">netstat -anp |grep 3897 # 显示pid 为3897 的网络情况</span><br></pre></td></tr></table></figure>
+
 <h4 id="7-10-压缩和解压缩"><a href="#7-10-压缩和解压缩" class="headerlink" title="7.10 压缩和解压缩"></a>7.10 压缩和解压缩</h4><h5 id="7-10-1-gzip-gunzip压缩"><a href="#7-10-1-gzip-gunzip压缩" class="headerlink" title="7.10.1 gzip/gunzip压缩"></a>7.10.1 <code>gzip/gunzip</code>压缩</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gzip + 文件</span><br><span class="line">	功能描述：压缩文件，只能将文件压缩为 `*.gz` 文件</span><br><span class="line">	1. 只能压缩文件不能压缩目录，只能单个压缩</span><br><span class="line">	2. 不保留原来的文件</span><br><span class="line">gunzip + 文件 </span><br><span class="line">	功能：解压缩</span><br></pre></td></tr></table></figure>
-<h5 id="7-10-2-zip-unzip压缩"><a href="#7-10-2-zip-unzip压缩" class="headerlink" title="7.10.2 zip/unzip压缩"></a>7.10.2 <code>zip/unzip</code>压缩</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 使用 `zip` 同时压缩多个文件</span><br><span class="line">zip yijinjing ll.txt ss.txt</span><br><span class="line"><span class="meta">#</span> 使用 `unzip` 解压缩</span><br><span class="line">unzip yijinjing.zip</span><br></pre></td></tr></table></figure>
+
+<h5 id="7-10-2-zip-unzip压缩"><a href="#7-10-2-zip-unzip压缩" class="headerlink" title="7.10.2 zip/unzip压缩"></a>7.10.2 <code>zip/unzip</code>压缩</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 使用 `zip` 同时压缩多个文件</span></span><br><span class="line">zip yijinjing ll.txt ss.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用 `unzip` 解压缩</span></span><br><span class="line">unzip yijinjing.zip</span><br></pre></td></tr></table></figure>
+
 <h5 id="7-10-3-tar打包"><a href="#7-10-3-tar打包" class="headerlink" title="7.10.3 tar打包"></a>7.10.3 <code>tar</code>打包</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">tar 参数 + XXX.tar.gz + 将要打包的内容</span><br><span class="line">	参数：</span><br><span class="line">		-c 产生 .tar 打包文件</span><br><span class="line">		-v 显示详细信息</span><br><span class="line">		-f 指定压缩后的文件名</span><br><span class="line">		-z 打包同时压缩</span><br><span class="line">		-x 解包 .tar 文件</span><br><span class="line"></span><br><span class="line">压缩：tar -zcvf XXX.tar.gz n1.txt n2.txt</span><br><span class="line">解压：tar -zxvf XXX.tar.gz </span><br><span class="line">    # 通过 `-C` 指定解压目录</span><br><span class="line">    tar -zxvf khbd.tar.gz -C ./wlmiji/</span><br></pre></td></tr></table></figure>
+
 <h4 id="7-11-后台服务管理类"><a href="#7-11-后台服务管理类" class="headerlink" title="7.11 后台服务管理类"></a>7.11 后台服务管理类</h4><h5 id="7-11-1-service-后台服务管理"><a href="#7-11-1-service-后台服务管理" class="headerlink" title="7.11.1 service 后台服务管理"></a>7.11.1 <code>service</code> 后台服务管理</h5><h5 id="7-11-2-chkconfig设置后台服务的自启配置"><a href="#7-11-2-chkconfig设置后台服务的自启配置" class="headerlink" title="7.11.2 chkconfig设置后台服务的自启配置"></a>7.11.2 <code>chkconfig</code>设置后台服务的自启配置</h5><h4 id="7-12-crond系统定时任务"><a href="#7-12-crond系统定时任务" class="headerlink" title="7.12 crond系统定时任务"></a>7.12 <code>crond</code>系统定时任务</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">crontab [选项]</span><br><span class="line">选项：</span><br><span class="line">	-e : 编辑 crontab 定时任务</span><br><span class="line">	-l : 查询 crontab 任务</span><br><span class="line">	-r : 删除当前用户所有的 crontab 任务</span><br></pre></td></tr></table></figure>
+
 <p><code>crontab -e</code></p>
 <table>
 <thead>
@@ -362,8 +411,7 @@
 <th>范围</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>第一个 “*”</td>
 <td>一小时当中的第几分钟</td>
 <td>0-59</td>
@@ -388,9 +436,9 @@
 <td>一周单中的星期几</td>
 <td>0-7（0和7都代表星期日）</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">crontab -e</span><br><span class="line">进入 crontab 编辑界面，会打开 vim 编辑你的工作。</span><br><span class="line">1 16 1 5 * 执行的任务(echo "hello world"&gt;&gt;/home/atguigu/t.txt)</span><br></pre></td></tr></table></figure>
+
 <p>特殊字符：</p>
 <table>
 <thead>
@@ -399,8 +447,7 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>*</td>
 <td>代表任何时间。<br>比如第一个”*”就代表一小时中每分钟都执行一次</td>
 </tr>
@@ -410,14 +457,13 @@
 </tr>
 <tr>
 <td>-</td>
-<td>代表连续的时间范围<br>比如”0 5 <em> </em> 1-6”,代表在周一到周六的凌晨5点0分执行命令</td>
+<td>代表连续的时间范围<br>比如”0 5 * * 1-6”,代表在周一到周六的凌晨5点0分执行命令</td>
 </tr>
 <tr>
 <td>*/n</td>
-<td>代表每隔多久执行一次<br>比如”<em>/10 </em> <em> </em> *”命令，代表每个10分钟就执行一遍命令</td>
+<td>代表每隔多久执行一次<br>比如”*/10 * * * *”命令，代表每个10分钟就执行一遍命令</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <p>特定时间执行命令</p>
 <table>
 <thead>
@@ -426,26 +472,30 @@
 <th>含义</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-<td>45 22 <em> </em> * 命令</td>
+<tbody><tr>
+<td>45 22 * * * 命令</td>
 <td>在22点45分执行命令</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h3 id="八、rpm"><a href="#八、rpm" class="headerlink" title="八、rpm"></a>八、<code>rpm</code></h3><p>​    RPM (RedHat Package Manager)，Rethat 软件包管理工具，是LINUX这一系列操作系统里面的打包安装工具，它虽然是RatHat的标志，但理念是通用的</p>
 <h4 id="8-2-1-查询"><a href="#8-2-1-查询" class="headerlink" title="8.2.1 查询"></a>8.2.1 查询</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa # 功能：查询安装的所有软件</span><br><span class="line">rpm -qa |grep fire</span><br></pre></td></tr></table></figure>
+
 <h4 id="8-2-2-卸载"><a href="#8-2-2-卸载" class="headerlink" title="8.2.2 卸载"></a>8.2.2 卸载</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -e firefox-52.8.0-1.el6.centos.x86_64</span><br></pre></td></tr></table></figure>
+
 <h4 id="8-2-3-安装"><a href="#8-2-3-安装" class="headerlink" title="8.2.3 安装"></a>8.2.3 安装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh RPM包全名</span><br><span class="line">	-i=install ，安装</span><br><span class="line">	-v=verbose , 显示详细信息</span><br><span class="line">	-h=hash , 进度条</span><br><span class="line">	-nodeps , 不检测依赖进度</span><br></pre></td></tr></table></figure>
+
 <h3 id="九、shell编程"><a href="#九、shell编程" class="headerlink" title="九、shell编程"></a>九、<code>shell</code>编程</h3><h4 id="9-1-概述"><a href="#9-1-概述" class="headerlink" title="9.1 概述"></a>9.1 概述</h4><p><code>Shell</code>是一个命令行解释器，它为用户提供了一个向<code>Linux</code>内核发送请求以便运行程序的界面系统级程序，用户可以用<code>Shell</code>来启动、挂起、停止甚至是编写一些程序。</p>
 <h4 id="9-2-shell脚本的执行方式"><a href="#9-2-shell脚本的执行方式" class="headerlink" title="9.2 shell脚本的执行方式"></a>9.2 <code>shell</code>脚本的执行方式</h4><h5 id="1）echo输出内容到控制台"><a href="#1）echo输出内容到控制台" class="headerlink" title="1）echo输出内容到控制台"></a>1）<code>echo</code>输出内容到控制台</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> [选项内容] [输出内容]</span><br><span class="line"><span class="built_in">echo</span> -e 转义字符</span><br><span class="line">	</span><br><span class="line">	控制字符		作	用</span><br><span class="line">	\\			   输出 \ 本身</span><br><span class="line">	\a			   输出警告音</span><br><span class="line">	\b			   退格键，也就是向左删除键</span><br><span class="line">	\c			   取消输出行末的换行符。 和 <span class="string">"-n"</span> 选项一致</span><br><span class="line">	\e			   ESCAPE 键</span><br><span class="line">	\f			   换页符</span><br><span class="line">	\n             换行符</span><br><span class="line">	\r			   回车键</span><br><span class="line">	\t			   制表符，也就是 Tab 键</span><br><span class="line">	\v			   垂直制表符</span><br><span class="line">	\0nnn		   按照八进制ASCII码表输出字符。其中0是数字零，nnn是三位八进制数</span><br><span class="line">	\xhh		   按照十六进制ASCII码表输出字符，其中hh是两位十六进制数</span><br></pre></td></tr></table></figure>
+
 <h5 id="2）脚本格式"><a href="#2）脚本格式" class="headerlink" title="2）脚本格式"></a>2）脚本格式</h5><ul>
 <li>脚本是以 <code>#!/bin/bash</code>开头</li>
 </ul>
 <h5 id="3）第一个shell脚本"><a href="#3）第一个shell脚本" class="headerlink" title="3）第一个shell脚本"></a>3）第一个<code>shell</code>脚本</h5><p><strong>需求</strong>：输出<code>Hello world!</code></p>
 <p><strong>shell 脚本</strong> - <code>helloworld.sh</code></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"hello world"</span></span><br></pre></td></tr></table></figure>
+
 <h5 id="4）脚本的常用执行方式"><a href="#4）脚本的常用执行方式" class="headerlink" title="4）脚本的常用执行方式"></a>4）脚本的常用执行方式</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">./helloworld.sh</span><br><span class="line">/opt/shuihu/helloworld.sh</span><br><span class="line">sh ./helloworld.sh</span><br><span class="line">bash ./helloworld.sh</span><br><span class="line">sh /opt/shuihu/helloworld.sh</span><br><span class="line">bash /opt/shuihu/helloworld.sh</span><br></pre></td></tr></table></figure>
+
 <h4 id="9-3-shell中的变量"><a href="#9-3-shell中的变量" class="headerlink" title="9.3 shell中的变量"></a>9.3 <code>shell</code>中的变量</h4><p><strong>概述：</strong></p>
 <ol>
 <li><code>LinuxShell</code>中变量分为”系统变量”和”用户自定义变量”，可以通过<code>set</code>命令查看系统变量</li>
@@ -469,6 +519,7 @@
 <li>案例</li>
 </ol>
 <h5 id="9-3-2-将命令的返回值赋给变量"><a href="#9-3-2-将命令的返回值赋给变量" class="headerlink" title="9.3.2 将命令的返回值赋给变量"></a>9.3.2 将命令的返回值赋给变量</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 运行 `ls -al` 命令，并将结果返回给变量A,注意为反引号``</span></span><br><span class="line">A=`ls -al`</span><br><span class="line"><span class="comment"># 等价于</span></span><br><span class="line">A=$(ls-al)</span><br></pre></td></tr></table></figure>
+
 <h5 id="9-3-3-设置环境变量"><a href="#9-3-3-设置环境变量" class="headerlink" title="9.3.3 设置环境变量"></a>9.3.3 设置环境变量</h5><ol>
 <li>基本语法<ul>
 <li><code>export 变量名=变量值</code>    （功能描述：设置环境变量的值，提升为全局变量）</li>
@@ -481,8 +532,7 @@
 <pre><code>1. `$n` : 功能描述：n 为数字, $0 代表**命令本身**，`$1-$9` 代表第一到第九个参数，十个以上的参数，需要用大括号包含，如 `${10}`
 2. `$*` : 功能描述： 这个变量代表命令行中所有的参数，`$*`把所有的参数看成一个整体
 3. `$@`: 功能描述： 这个变量也代表命令行中所有的参数，不过 `$@`把每一个参数区别对待
-4. `$#` : 功能描述： 这个变量代表命令行中所有的参数的个数
-</code></pre><h5 id="9-3-5-预定义变量"><a href="#9-3-5-预定义变量" class="headerlink" title="9.3.5 预定义变量"></a>9.3.5 预定义变量</h5><p><strong>基本语法</strong>：</p>
+4. `$#` : 功能描述： 这个变量代表命令行中所有的参数的个数</code></pre><h5 id="9-3-5-预定义变量"><a href="#9-3-5-预定义变量" class="headerlink" title="9.3.5 预定义变量"></a>9.3.5 预定义变量</h5><p><strong>基本语法</strong>：</p>
 <ol>
 <li><code>$$</code> : 当前进程的进程号 (PID)</li>
 <li><code>$!</code> : 后台运行的最后一个进程的进程号</li>
@@ -494,70 +544,117 @@
 <li>“$((运算式))” 或 “$[运算式]”</li>
 <li>expr m + n      <em>注意：expr运算符之间要有空格</em></li>
 <li>expr m - n      <em>注意：expr 运算符之间要有空格</em></li>
-<li>/<em>,/,%          </em>乘，除，取余*</li>
+<li>/<em>,/,%          *乘，除，取余</em></li>
 </ul>
 </li>
 <li><p>案例</p>
 <p>计算 （2 + 3 ）* 4</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo $[(2+3)*4]</span><br><span class="line">expr `expr 2 + 3` \* 4</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <h4 id="9-5-条件判断"><a href="#9-5-条件判断" class="headerlink" title="9.5 条件判断"></a>9.5 条件判断</h4><h5 id="9-5-1-判断语句"><a href="#9-5-1-判断语句" class="headerlink" title="9.5.1 判断语句"></a>9.5.1 判断语句</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ condition ] # 注意：condition 前后要有空格</span><br></pre></td></tr></table></figure>
+
 <p><strong>案例</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[ atguigu ]	返回 true</span><br><span class="line"></span><br><span class="line">[]	返回 false</span><br><span class="line"></span><br><span class="line">[ condition ] &amp;&amp; echo OK || echo notok	条件满足，执行后面的语句</span><br></pre></td></tr></table></figure>
+
 <h5 id="9-5-2-常用条件判断"><a href="#9-5-2-常用条件判断" class="headerlink" title="9.5.2 常用条件判断"></a>9.5.2 常用条件判断</h5><ol>
 <li><p><strong>两个整数之间的比较</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">=	字符串比较</span><br><span class="line">-lt	小于</span><br><span class="line">-le	小于等于</span><br><span class="line">-eq	等于</span><br><span class="line">-gt	大于</span><br><span class="line">-ge	大于等于</span><br><span class="line">-ne	不等于</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="2">
 <li><p><strong>按照文件权限进行判断</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-r	有读的权限</span><br><span class="line">-w	有写的权限</span><br><span class="line">-x	有执行的权限</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="3">
 <li><p><strong>按照文件类型进行判断</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-f	文件存在并且是一个常规的文件</span><br><span class="line">-e	文件存在</span><br><span class="line">-d	文件存在并是一个目录</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="4">
 <li><p><strong>案例</strong></p>
-<p>| 23是否大于等于22                         | [ 23 -get 22]            |<br>| —————————————- | ———————— |<br>| <code>student.txt</code>是否具有写权限              | [ -w student.txt]        |<br>| <code>/root/install.log</code> 目录中的文件是否存在 | [ -e /root/install.log ] |</p>
+<table>
+<thead>
+<tr>
+<th>23是否大于等于22</th>
+<th>[ 23 -get 22]</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>student.txt</code>是否具有写权限</td>
+<td>[ -w student.txt]</td>
+</tr>
+<tr>
+<td><code>/root/install.log</code> 目录中的文件是否存在</td>
+<td>[ -e /root/install.log ]</td>
+</tr>
+</tbody></table>
 </li>
 </ol>
 <h4 id="9-6-流程控制"><a href="#9-6-流程控制" class="headerlink" title="9.6 流程控制"></a>9.6 流程控制</h4><h5 id="9-6-1-if-判断"><a href="#9-6-1-if-判断" class="headerlink" title="9.6.1 if 判断"></a>9.6.1 if 判断</h5><ol>
 <li><p>基本语法</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">方式一：</span><br><span class="line"></span><br><span class="line">if[ 条件判断式 ];then</span><br><span class="line">	程序</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">方式二：</span><br><span class="line">if[ 条件判断式 ]</span><br><span class="line">	then</span><br><span class="line">    	程序</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
 <p><strong>注意事项</strong>： 1、[ 条件判断式 ] ，中括号和条件判断式之间必须有空格</p>
 </li>
 <li><p>案例<br>判断输入的数是否等于123，是否等于456</p>
 <p><code>./if.sh 123</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">if [ $1 -eq "123" ]</span><br><span class="line">	then</span><br><span class="line">	echo "123"</span><br><span class="line">	</span><br><span class="line">elif [ $1 -eq "456" ]</span><br><span class="line">	then</span><br><span class="line">	echo "456"</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
 <p>输出结果：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">123</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <h5 id="9-6-2-case-语句"><a href="#9-6-2-case-语句" class="headerlink" title="9.6.2 case 语句"></a>9.6.2 case 语句</h5><ol>
 <li><p>基本语法</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">case $变量名 in</span><br><span class="line">	"值1")</span><br><span class="line">	如果变量的值等于值1，则执行程序1</span><br><span class="line">	;;</span><br><span class="line">	"值2"）</span><br><span class="line">	如果变量的值等于值2，则执行程序2</span><br><span class="line">	;;</span><br><span class="line">	...省略其他分支...</span><br><span class="line">	*)</span><br><span class="line">	如果变量的值都不是以上的值，则执行此程序</span><br><span class="line">	;;</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="2">
 <li><p>案例</p>
 <p>输入1，输出1；输入2，输出2 ； 输入其他，输出other;</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">case $1 in</span><br><span class="line">"1")</span><br><span class="line">	echo 1</span><br><span class="line">;;</span><br><span class="line"></span><br><span class="line">"2")</span><br><span class="line">	echo 2</span><br><span class="line">;;</span><br><span class="line"></span><br><span class="line">*)</span><br><span class="line">	echo "other"</span><br><span class="line"></span><br><span class="line">;;</span><br><span class="line"></span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <h5 id="9-6-3-for-循环"><a href="#9-6-3-for-循环" class="headerlink" title="9.6.3 for 循环"></a>9.6.3 for 循环</h5><ol>
 <li><p><strong>基本语法1</strong>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for 变量 in 值1 值2 值3...</span><br><span class="line">do</span><br><span class="line">	程序</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="2">
 <li><p>案例1<br>打印输入参数<br><code>for1.sh</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">for i in "$*"</span><br><span class="line">do</span><br><span class="line">	echo "$i"</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">for j in "$@"</span><br><span class="line">do</span><br><span class="line">	echo "$j"</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
 <p>输出结果：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> ./ for1.sh 1 2 3</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt;</span></span><br><span class="line">1 2 3</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="3">
@@ -567,26 +664,41 @@
 <li><p>案例2</p>
 <p>从1加到100</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">s=0</span><br><span class="line">for ((i=1;i &lt;= 100; i++))</span><br><span class="line">do</span><br><span class="line">	s=$[$s+$i]	</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">echo $s</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <h5 id="9-6-4-while-循环"><a href="#9-6-4-while-循环" class="headerlink" title="9.6.4 while 循环"></a>9.6.4 while 循环</h5><ol>
 <li><p>基本语法</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">while [ 条件判断式 ]</span><br><span class="line">do</span><br><span class="line">	程序</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="2">
 <li><p>案例<br>从1加到100</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line">s=0</span><br><span class="line">i=1</span><br><span class="line">while [ $i -le 100 ]</span><br><span class="line">do</span><br><span class="line">	s=$[$s + $i]</span><br><span class="line">	i=$[$i + 1]</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">echo "$s"</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <h4 id="9-7-read读取控制台输入"><a href="#9-7-read读取控制台输入" class="headerlink" title="9.7 read读取控制台输入"></a>9.7 <code>read</code>读取控制台输入</h4><ol>
 <li><p>基本语法</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">read (选项)(参数)</span><br><span class="line">	选项：</span><br><span class="line">		-p ：指定读取值时的提示符；</span><br><span class="line">		-t : 指定读取值时等待的时间(秒)</span><br><span class="line">	参数：</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="2">
 <li><p>案例<br>读取控制台输入的名称</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-- 将输入的内容赋值给 `NAME`</span><br><span class="line">read -p "input your name " NAME</span><br><span class="line">echo $NAME</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 将 5 秒 内输入的内容赋值给 `NAME`</span></span><br><span class="line">read -t 5 -p "input your name" NAME</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <h4 id="9-8-函数"><a href="#9-8-函数" class="headerlink" title="9.8 函数"></a>9.8 函数</h4><h5 id="9-8-1-系统函数"><a href="#9-8-1-系统函数" class="headerlink" title="9.8.1 系统函数"></a>9.8.1 系统函数</h5><ol>
@@ -594,6 +706,9 @@
 </li>
 <li><p>案例</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">basename /opt/shuihu/for1.sh </span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; for1.sh</span></span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <ol start="3">
@@ -601,11 +716,15 @@
 </li>
 <li><p>案例</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">basename /opt/shuihu/for1.sh </span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; /opt/shuihu</span></span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <h5 id="9-8-2-自定义函数"><a href="#9-8-2-自定义函数" class="headerlink" title="9.8.2 自定义函数"></a>9.8.2 自定义函数</h5><ol>
 <li><p>基本语法</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[ function ] funname [()]</span><br><span class="line">&#123;</span><br><span class="line">    Action;</span><br><span class="line">    [return int;]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">funname</span><br></pre></td></tr></table></figure>
+
 <p><strong>注意事项</strong></p>
 <ul>
 <li>必须在调用函数地方之前，先声明函数，shell 脚本是逐行运行。不会像其它语言一样先编译</li>
@@ -615,14 +734,20 @@
 <li><p>案例</p>
 <p>计算输入参数的和</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line">funciton sum()</span><br><span class="line">&#123;</span><br><span class="line">    s=0</span><br><span class="line">    s=$[$1 + $2]</span><br><span class="line">    echo "$s"</span><br><span class="line">&#125;</span><br><span class="line">read -p "Please input the number1:" n1;</span><br><span class="line">read -p "Please input the number2:" n2;</span><br><span class="line">sum $n1 $n2;</span><br></pre></td></tr></table></figure>
+
+
+
 </li>
 </ol>
 <h3 id="十、yum-仓库配置"><a href="#十、yum-仓库配置" class="headerlink" title="十、yum 仓库配置"></a>十、<code>yum</code> 仓库配置</h3><h4 id="10-1概述"><a href="#10-1概述" class="headerlink" title="10.1概述"></a>10.1概述</h4><p><code>YUM</code> （全称 为 <code>Yellow dog Updater,Modified</code>）是一个在 <code>Fedora</code>和 <code>RedHat</code>以及<code>CentOS</code>中的<code>Shell</code>前端软件包管理器。</p>
 <p>基于<code>RPM</code>包管理，能够从指定的服务器自动下载<code>RPM</code>包并且安装，可以自动处理依赖性关系，并且一次安装所有依赖的软件包，无需繁琐地一次次下载、安装。</p>
 <h4 id="10-2-yum-的常用命令"><a href="#10-2-yum-的常用命令" class="headerlink" title="10.2 yum 的常用命令"></a>10.2 yum 的常用命令</h4><h5 id="1-基本语法"><a href="#1-基本语法" class="headerlink" title="1. 基本语法"></a>1. 基本语法</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install -y httpd	(功能描述：安装 httpd 并确认安装)</span><br><span class="line">yum list				(功能描述：列出所有可用的 package 和 package 组)</span><br><span class="line">yum clean all			(功能描述：清除所有缓冲数据)</span><br><span class="line">yum deplist httpd		(功能描述：列出一个包所有依赖的包)</span><br><span class="line">yum remove httpd		(功能描述：删除 httpd)</span><br></pre></td></tr></table></figure>
+
 <h5 id="2-案例"><a href="#2-案例" class="headerlink" title="2. 案例"></a>2. 案例</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y tree</span><br></pre></td></tr></table></figure>
+
 <h4 id="10-3-关联网络-yum-源"><a href="#10-3-关联网络-yum-源" class="headerlink" title="10.3 关联网络 yum 源"></a>10.3 关联网络 yum 源</h4><p><strong>在线安装</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 首先下载网易 yum 配置文件，将该文件 移动到 /etc/yum.repos.d/ 文件夹内</span><br><span class="line">mv CentOS6-Base-163.repo /etc/yum.repos.d/</span><br><span class="line">cd /etc/yum.repos.d/</span><br><span class="line"># 将 CentOS-Base.repo 备份 为 CentOS-Base.repo.bak</span><br><span class="line">mv CentOS-Base.repo CentOS-Base.repo.bak</span><br><span class="line"># 将下载的网易 yum 配置文件 CentOS6-Base-163.repo 改名为 CentOS-Base.repo</span><br><span class="line">mv CentOS6-Base-163.repo CentOS-Base.repo</span><br><span class="line">cat CentOS-Base.repo</span><br><span class="line"># 清除缓存</span><br><span class="line">yum clean all</span><br><span class="line"># 安装</span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+
 <p><strong>制作本地yum源</strong></p>
 
       
@@ -732,8 +857,8 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">Ken Adams</p>
-              <p class="site-description motion-element" itemprop="description"></p>
+              <p class="site-author-name" itemprop="name">zero</p>
+              <p class="site-description motion-element" itemprop="description">记录成长</p>
           </div>
 
           <nav class="site-state motion-element">
@@ -743,12 +868,21 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
             
 
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
             
 
             
@@ -756,7 +890,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -820,7 +954,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Ken Adams</span>
+  <span class="author" itemprop="copyrightHolder">zero</span>
 
   
 </div>
@@ -981,6 +1115,323 @@
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

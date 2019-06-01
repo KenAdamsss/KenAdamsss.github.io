@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Python,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -81,18 +81,28 @@
 
 
 
-<meta name="description" content="转义字符 ​    pyhton 为了简化，允许使用  r ‘’表示 ‘’ 内部的字符默认不转义  如果 字符串内有很多换行，用 \n 写在一行里不好阅读，为了简化，Python 允许用 ‘’’…’’’ 表示多行内容 Python的字符串 在最新的python 3 中,字符串十一Unicode编码的   单个字符的函数  ord()     # 获取字符的整数表示 chr()    # 将编码转换">
-<meta name="keywords" content="Python">
+<meta name="description" content="Windows下Git多账号配置，同一电脑多个ssh-key的管理装载地址： https://www.cnblogs.com/popfisher/p/5731232.html 　　这一篇文章是对上一篇文章《Git-TortoiseGit完整配置流程》的拓展，所以需要对上一篇文章有所了解，当然直接往下看也可以，其中也有一些提到一些基础的操作。 　　本文以配置github.com账号和git.osch">
 <meta property="og:type" content="article">
-<meta property="og:title" content="廖雪峰 python">
-<meta property="og:url" content="http://yoursite.com/2019/05/04/廖雪峰python/index.html">
+<meta property="og:title" content="Windows下Git多账号配置">
+<meta property="og:url" content="http://yoursite.com/2019/01/13/Windows下Git多账号配置，同一电脑多个ssh-key的管理/index.html">
 <meta property="og:site_name" content="zero&#39;s blog">
-<meta property="og:description" content="转义字符 ​    pyhton 为了简化，允许使用  r ‘’表示 ‘’ 内部的字符默认不转义  如果 字符串内有很多换行，用 \n 写在一行里不好阅读，为了简化，Python 允许用 ‘’’…’’’ 表示多行内容 Python的字符串 在最新的python 3 中,字符串十一Unicode编码的   单个字符的函数  ord()     # 获取字符的整数表示 chr()    # 将编码转换">
+<meta property="og:description" content="Windows下Git多账号配置，同一电脑多个ssh-key的管理装载地址： https://www.cnblogs.com/popfisher/p/5731232.html 　　这一篇文章是对上一篇文章《Git-TortoiseGit完整配置流程》的拓展，所以需要对上一篇文章有所了解，当然直接往下看也可以，其中也有一些提到一些基础的操作。 　　本文以配置github.com账号和git.osch">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-04T07:46:04.788Z">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802225245231-1157480176.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802225724684-372123375.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802225856481-1245177255.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802230012465-514854770.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802230148512-53807233.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802231733606-1986856038.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802232941950-660367585.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802233223325-622699075.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802233428762-233230470.png">
+<meta property="og:image" content="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802233820512-1886158801.png">
+<meta property="og:updated_time" content="2019-06-01T08:05:08.697Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="廖雪峰 python">
-<meta name="twitter:description" content="转义字符 ​    pyhton 为了简化，允许使用  r ‘’表示 ‘’ 内部的字符默认不转义  如果 字符串内有很多换行，用 \n 写在一行里不好阅读，为了简化，Python 允许用 ‘’’…’’’ 表示多行内容 Python的字符串 在最新的python 3 中,字符串十一Unicode编码的   单个字符的函数  ord()     # 获取字符的整数表示 chr()    # 将编码转换">
+<meta name="twitter:title" content="Windows下Git多账号配置">
+<meta name="twitter:description" content="Windows下Git多账号配置，同一电脑多个ssh-key的管理装载地址： https://www.cnblogs.com/popfisher/p/5731232.html 　　这一篇文章是对上一篇文章《Git-TortoiseGit完整配置流程》的拓展，所以需要对上一篇文章有所了解，当然直接往下看也可以，其中也有一些提到一些基础的操作。 　　本文以配置github.com账号和git.osch">
+<meta name="twitter:image" content="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802225245231-1157480176.png">
 
 
 
@@ -122,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/05/04/廖雪峰python/">
+  <link rel="canonical" href="http://yoursite.com/2019/01/13/Windows下Git多账号配置，同一电脑多个ssh-key的管理/">
 
 
 
 
 
-  <title>廖雪峰 python | zero's blog</title>
+  <title>Windows下Git多账号配置 | zero's blog</title>
   
 
 
@@ -267,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/廖雪峰python/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/13/Windows下Git多账号配置，同一电脑多个ssh-key的管理/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zero">
@@ -284,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">廖雪峰 python</h1>
+          <h1 class="post-title" itemprop="name headline">Windows下Git多账号配置</h1>
         
 
         <div class="post-meta">
@@ -296,8 +306,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-04T15:19:45+08:00">
-                2019-05-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-13T20:46:25+08:00">
+                2019-01-13
               </time>
             
 
@@ -334,120 +344,39 @@
       
 
       
-        <h5 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h5><blockquote>
-<p>​    pyhton 为了简化，允许使用  r ‘’表示 ‘’ 内部的字符默认不转义</p>
-</blockquote>
-<p>如果 字符串内有很多换行，用 \n 写在一行里不好阅读，为了简化，Python 允许用 ‘’’…’’’ 表示多行内容</p>
-<h4 id="Python的字符串"><a href="#Python的字符串" class="headerlink" title="Python的字符串"></a>Python的字符串</h4><blockquote>
-<p>在最新的python 3 中,字符串十一Unicode编码的</p>
-</blockquote>
-<ul>
-<li><p>单个字符的函数</p>
-<blockquote>
-<p>ord()     # 获取字符的整数表示</p>
-<p>chr()    # 将编码转换为对应的字符</p>
-</blockquote>
-</li>
-<li><p>如果知道了字符的整数编码，可以用十六进制这么写</p>
-<blockquote>
-<p>‘\u4e2d\u6587’</p>
-<p>‘中文’</p>
-<p>这两种写法是等价的;</p>
-</blockquote>
-</li>
-<li><p>以Unicode 表示的 str 通过 encode() 方法可以编码为 指定的 bytes</p>
-</li>
-<li><p>要把 bytes 转化为 str ，就需要用 decode()方法;</p>
-</li>
-<li><p>如果 byes 中只有一小部分无效的字节，可以传入 errors=’ignore’忽略错误的字节</p>
-</li>
-<li><p>计算 str 包含 多少个字符，可以用 len()函数</p>
-</li>
-<li><p>len() 是计算 str 的字符数，如果换成 bytes,len()函数就计算字节数</p>
-</li>
-<li><p>% 就是用来格式化字符串的</p>
-<table>
-<thead>
-<tr>
-<th>#### 占位符</th>
-<th>替换内容</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>%d</td>
-<td>整数</td>
-</tr>
-<tr>
-<td>%f</td>
-<td>浮点数</td>
-</tr>
-<tr>
-<td>%s</td>
-<td>字符串</td>
-</tr>
-<tr>
-<td>%X</td>
-<td>十六进制整数</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>其中，格式化整数和浮点数还可以指定是否补0和整数与小数的位数<br>`</p>
-<pre><code> print(&apos;%2d-%02d&apos; % (3,1))
- 3-01
-print(&apos;%.2f&apos; % 3.1415926)
-3.14</code></pre><p>`</p>
-</li>
-<li><p>另一种格式化字符串的方法是使用字符串的 format() 方法，他会用传入的参数依次替换字符串内的占位符{0}、{1}……</p>
-</li>
-</ul>
-<h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><ol>
-<li><p>python 内置的一种数据类型是列表：list</p>
-</li>
-<li><p>list 是一种有序的集合，可以随时添加和删除其中的元素</p>
-</li>
-<li><p>len() 可以获取 list 元素的个数</p>
-</li>
-<li><p>用索引来访问 list 么一个位置的元素，记得索引是从0 开始的</p>
-</li>
-<li><p>list 是一个可变的有序表，可以往list中追加元素到末尾<br><code>classmates.append(&#39;Adam&#39;)</code></p>
-</li>
-<li><p>把元素插入到指定的位置，比如索引号为1的位置：<br><code>calssmates.insert(1,&#39;Jack&#39;)</code></p>
-</li>
-<li><p>要删除list末尾的元素，用 <code>pop()</code> 方法<br><code>classmates.pop()</code></p>
-</li>
-<li><p>要删除指定位置的元素，用 <code>pop(i)</code> 方法，其中 i 是索引位置<br><code>classmates.pop(1)</code></p>
-</li>
-<li><p>要把某个元素替换成别的元素，可以直接赋值给对应的索引位置：<br><code>classmates[1] = &#39;Sarah&#39;</code></p>
-</li>
-<li><p>list 元素里面的元素数据类型也可以不相同<br><code>L = [&#39;apple&#39;,10,True]</code></p>
-</li>
-<li><p>list 元素也可以是另一个list<br><code>s - [&#39;python&#39;,&#39;java&#39;,[&#39;asp&#39;,&#39;php&#39;],&#39;schema&#39;]</code><br><code>len(s)</code><br><code>4</code><br><code>s[2][1]</code></p>
-</li>
-</ol>
-<h3 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h3><ol>
-<li><p>另一种有序列表叫元祖：tuple</p>
-</li>
-<li><p>tuple 与 list 非常相似，但是 tuple 一旦初始化就不能修改</p>
-</li>
-<li><p>tuple 的陷阱：当你定义一个 tuple 时，在定义的时候， tuple 的元素就必须被确定下来<br><code>t= (1,2)</code><br><code>t</code><br><code>(1,2)</code></p>
-</li>
-<li><p>如果要定义一个空的tuple,可以写成 ()<br><code>t = 0</code><br><code>t</code><br><code>0</code></p>
-</li>
-<li><p>但是，要定义一个只有 1 个元素的 tuple ，如果这么定义:<br><code>t = (1)</code><br><code>t</code><br><code>1</code><br>定义的不是tuple，是 1 这个数！这是因为 () 即可以表示 tuple ，又可以表示数学公式中的小括号，这就产生了歧义，因此，Python规定这种情况下，按照小括号计算，计算结果自然是1；<br>所以，只有 1 个元素 的 tuple 定义的时候必须加一个逗号，，来消除歧义<br>t = (1,)<br>t
-(1,)</p>
-</li>
-<li><p>“可变的”tuple</p>
-<p><code>t = (&#39;a&#39;,&#39;b&#39;,[&#39;A&#39;,&#39;B&#39;])</code></p>
-<p><code>t[2][0] = &#39;X&#39;</code></p>
-<p><code>t[2][1] = &#39;Y&#39;</code></p>
-<p><code>t</code></p>
-<p><code>(&#39;a&#39;,&#39;b&#39;,[&#39;X&#39;,&#39;Y&#39;])</code></p>
-<ul>
-<li>注意：tuple 的元素确实变了，但其实变得不是tuple的元素，而是list的元素</li>
-<li>tuple 所谓的 “不变” 是说，tuple 的每个元素，只想永远不变。</li>
-</ul>
-</li>
-</ol>
+        <h1 id="Windows下Git多账号配置，同一电脑多个ssh-key的管理"><a href="#Windows下Git多账号配置，同一电脑多个ssh-key的管理" class="headerlink" title="Windows下Git多账号配置，同一电脑多个ssh-key的管理"></a><a href="https://www.cnblogs.com/popfisher/p/5731232.html" target="_blank" rel="noopener">Windows下Git多账号配置，同一电脑多个ssh-key的管理</a></h1><p><em>装载地址： <a href="https://www.cnblogs.com/popfisher/p/5731232.html" target="_blank" rel="noopener">https://www.cnblogs.com/popfisher/p/5731232.html</a></em></p>
+<p>　　这一篇文章是对上一篇文章<a href="http://www.cnblogs.com/popfisher/p/5466174.html" target="_blank" rel="noopener"><strong>《Git-TortoiseGit完整配置流程》</strong></a>的拓展，所以需要对上一篇文章有所了解，当然直接往下看也可以，其中也有一些提到一些基础的操作。</p>
+<p>　　本文以配置<strong>github.com</strong>账号和<strong>git.oschina.net</strong>账号来逐步演示在Windows环境下配置<strong>Git多账号支持</strong>即在同一个电脑上<strong>管理多个ssh-key</strong>，对git多一分了解。</p>
+<p>　　<strong>备注：</strong>这篇文章所有执行命令的地方都是在管理员模式下进行，即打开<strong>cmd，Git Bash</strong>客户端<strong>用管理员身份运行程序。</strong></p>
+<hr>
+<h1 id="生成github-com对应的私钥公钥（本文中文件地址C-Users-popfisher目录）"><a href="#生成github-com对应的私钥公钥（本文中文件地址C-Users-popfisher目录）" class="headerlink" title="生成github.com对应的私钥公钥（本文中文件地址C:\Users\popfisher目录）"></a>生成github.com对应的私钥公钥（本文中文件地址C:\Users\popfisher目录）</h1><p>执行命令 <strong>ssh-keygen -t rsa -C email</strong> 创建github对应的sshkey，命名为<strong>id_rsa_github</strong>，密码 <strong>123456</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C 774232122@qq.com</span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802225245231-1157480176.png" alt="img"></p>
+<h1 id="同样的方式生产git-oschina-net的私钥公钥（邮箱地址可以相同可以不同，本文相同）"><a href="#同样的方式生产git-oschina-net的私钥公钥（邮箱地址可以相同可以不同，本文相同）" class="headerlink" title="同样的方式生产git.oschina.net的私钥公钥（邮箱地址可以相同可以不同，本文相同）"></a>同样的方式生产git.oschina.net的私钥公钥（邮箱地址可以相同可以不同，本文相同）</h1><p>执行命令<strong>ssh-keygen -t rsa -C email</strong>创建github对应的sshkey，命名为<strong>id_rsa_oschina，密码</strong> <strong>123456</strong> </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C 774232122@qq.com</span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802225724684-372123375.png" alt="img"></p>
+<h1 id="把上面得到的文件拷贝到git默认访问的-ssh目录-win10在用户目录下，本文C-Users-popfisher-ssh"><a href="#把上面得到的文件拷贝到git默认访问的-ssh目录-win10在用户目录下，本文C-Users-popfisher-ssh" class="headerlink" title="把上面得到的文件拷贝到git默认访问的.ssh目录(win10在用户目录下，本文C:\Users\popfisher.ssh)"></a>把上面得到的文件拷贝到git默认访问的.ssh目录(win10在用户目录下，本文C:\Users\popfisher.ssh)</h1><p>除了秘钥文件之外，<strong>config</strong>文件是后面的步骤中手动生产的，<strong>known_hosts</strong>文件是后续自动生产的</p>
+<p> <img src="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802225856481-1245177255.png" alt="img"></p>
+<h1 id="把github对应的公钥和oschina对应的公钥上传到服务器"><a href="#把github对应的公钥和oschina对应的公钥上传到服务器" class="headerlink" title="把github对应的公钥和oschina对应的公钥上传到服务器"></a>把github对应的公钥和oschina对应的公钥上传到服务器</h1><h2 id="GitHub添加SSH-key的方式如下图所示："><a href="#GitHub添加SSH-key的方式如下图所示：" class="headerlink" title="GitHub添加SSH key的方式如下图所示："></a><strong>GitHub添加SSH key的方式如下图所示：</strong></h2><p> <img src="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802230012465-514854770.png" alt="img"></p>
+<h2 id="git-oschina-net添加SSH-key的方式如下图所示："><a href="#git-oschina-net添加SSH-key的方式如下图所示：" class="headerlink" title="git.oschina.net添加SSH key的方式如下图所示："></a><strong>git.oschina.net添加SSH key的方式如下图所示：</strong></h2><p> <img src="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802230148512-53807233.png" alt="img"></p>
+<h1 id="在-ssh目录创建config文本文件并完成相关配置-最核心的地方"><a href="#在-ssh目录创建config文本文件并完成相关配置-最核心的地方" class="headerlink" title="在.ssh目录创建config文本文件并完成相关配置(最核心的地方)"></a>在.ssh目录创建config文本文件并完成相关配置(最核心的地方)</h1><p>每个账号单独配置一个<strong>Host</strong>，每个<strong>Host</strong>要取一个别名，每个Host主要配置<strong>HostName</strong>和<strong>IdentityFile</strong>两个属性即可</p>
+<p><strong>Host</strong>的名字可以取为自己喜欢的名字，不过这个会影响git相关命令，例如：<br><strong>Host</strong> mygithub 这样定义的话，命令如下，即git@后面紧跟的名字改为<strong>mygithub</strong><br>git clone git@<strong>mygithub</strong>:PopFisher/AndroidRotateAnim.git</p>
+<p><strong>HostName</strong> 　　　　　　　   这个是真实的域名地址<br><strong>IdentityFile</strong> 　　　　　　　  这里是id_rsa的地址<br><strong>PreferredAuthentications</strong>   配置登录时用什么权限认证–可设为<code>publickey,password publickey,keyboard-interactive等</code><br><strong>User</strong> 　　　　　　　　　　　配置使用用户名</p>
+<h2 id="config文件配置如下："><a href="#config文件配置如下：" class="headerlink" title="config文件配置如下："></a><strong>config文件配置如下：</strong></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 配置github.com</span><br><span class="line">Host github.com                 </span><br><span class="line">    HostName github.com</span><br><span class="line">    IdentityFile C:\\Users\\popfisher\\.ssh\\id_rsa_github</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    User username1</span><br><span class="line"></span><br><span class="line"># 配置git.oschina.net </span><br><span class="line">Host git.oschina.net </span><br><span class="line">    HostName git.oschina.net</span><br><span class="line">    IdentityFile C:\\Users\\popfisher\\.ssh\\id_rsa_oschina</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    User username2</span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="打开Git-Bash客户端（管理员身份运行）执行测试命令测试是否配置成功（会自动在-ssh目录生成known-hosts文件把私钥配置进去）"><a href="#打开Git-Bash客户端（管理员身份运行）执行测试命令测试是否配置成功（会自动在-ssh目录生成known-hosts文件把私钥配置进去）" class="headerlink" title="打开Git Bash客户端（管理员身份运行）执行测试命令测试是否配置成功（会自动在.ssh目录生成known_hosts文件把私钥配置进去）"></a>打开Git Bash客户端（管理员身份运行）执行测试命令测试是否配置成功（会自动在.ssh目录生成known_hosts文件把私钥配置进去）</h1><p> <img src="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802231733606-1986856038.png" alt="img"></p>
+<h1 id="测试成功之后就可以在电脑上同时使用git多多账号同时操作，互不影响了"><a href="#测试成功之后就可以在电脑上同时使用git多多账号同时操作，互不影响了" class="headerlink" title="测试成功之后就可以在电脑上同时使用git多多账号同时操作，互不影响了"></a>测试成功之后就可以在电脑上同时使用git多多账号同时操作，互不影响了</h1><h2 id="clone-github上的项目AndroidRotateAnim"><a href="#clone-github上的项目AndroidRotateAnim" class="headerlink" title="clone github上的项目AndroidRotateAnim"></a><strong>clone github上的项目AndroidRotateAnim</strong></h2><p>　　打开github上<strong>AndroidRotateAnim</strong>项目，复制其对应的clone命令入下图所示</p>
+<p> <img src="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802232941950-660367585.png" alt="img"></p>
+<h2 id="执行clone命令如下："><a href="#执行clone命令如下：" class="headerlink" title="执行clone命令如下：**"></a>执行clone命令如下：**</h2><p> <img src="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802233223325-622699075.png" alt="img"></p>
+<h2 id="clone-oschina-net上的项目AndroidDevTools"><a href="#clone-oschina-net上的项目AndroidDevTools" class="headerlink" title="clone oschina.net上的项目AndroidDevTools"></a><strong>clone oschina.net上的项目AndroidDevTools</strong></h2><p>　　打开git.oschina.net上<strong>AndroidDevTools</strong>项目，复制其对应的clone命令入下图所示</p>
+<p> <img src="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802233428762-233230470.png" alt="img"></p>
+<h2 id="执行clone命令如下：-1"><a href="#执行clone命令如下：-1" class="headerlink" title="执行clone命令如下："></a><strong>执行clone命令如下：</strong></h2><p><img src="https://images2015.cnblogs.com/blog/823551/201608/823551-20160802233820512-1886158801.png" alt="img"></p>
+<h1 id="学习心得"><a href="#学习心得" class="headerlink" title="学习心得"></a><strong>学习心得</strong></h1><p>　　在使用git的过程中，一般都只关注单账号的情况吗，工作中的配置也是直接由自己的上级发一个配置文档之类的东西，然后对着搞一遍就行了，可是当自己真正有这个需求的时候，突然发现束手无策。我自己当时也属于这个情况，有一天在家里，突然发现自己需要一台电脑支持多个SSH key的时候才发现自己不知道怎么下手了，于是就下定决心自己动手研究一下。对于技术，还是要亲自动手实践，实践出来的东西才能形成自己的真理，才不那么容易忘记。 </p>
+<p>　　这篇文章是我基于Win10平台上的实践，由于知识有限，可能还是没有总结得很完整，也可能在其他平台上会遇到一些其他的问题，没有时间去研究了，如果读者有遇到什么问题，欢迎留言讨论，共同学习。</p>
 
       
     </div>
@@ -463,12 +392,6 @@ print(&apos;%.2f&apos; % 3.1415926)
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Python/" rel="tag"># Python</a>
-          
-        </div>
-      
 
       
       
@@ -478,8 +401,8 @@ print(&apos;%.2f&apos; % 3.1415926)
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/17/Linux进阶（二）/" rel="next" title="Linux进阶（二）">
-                <i class="fa fa-chevron-left"></i> Linux进阶（二）
+              <a href="/2019/01/09/linux基础/" rel="next" title="linux基础">
+                <i class="fa fa-chevron-left"></i> linux基础
               </a>
             
           </div>
@@ -488,8 +411,8 @@ print(&apos;%.2f&apos; % 3.1415926)
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/05/04/Hadoop/" rel="prev" title="Hadoop">
-                Hadoop <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/17/ubuntu问题/" rel="prev" title="ubuntu 问题">
+                ubuntu 问题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -629,7 +552,7 @@ print(&apos;%.2f&apos; % 3.1415926)
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#转义字符"><span class="nav-number">1.</span> <span class="nav-text">转义字符</span></a></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#Python的字符串"><span class="nav-number"></span> <span class="nav-text">Python的字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#list"><span class="nav-number"></span> <span class="nav-text">list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tuple"><span class="nav-number"></span> <span class="nav-text">tuple</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows下Git多账号配置，同一电脑多个ssh-key的管理"><span class="nav-number">1.</span> <span class="nav-text">Windows下Git多账号配置，同一电脑多个ssh-key的管理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成github-com对应的私钥公钥（本文中文件地址C-Users-popfisher目录）"><span class="nav-number">2.</span> <span class="nav-text">生成github.com对应的私钥公钥（本文中文件地址C:\Users\popfisher目录）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#同样的方式生产git-oschina-net的私钥公钥（邮箱地址可以相同可以不同，本文相同）"><span class="nav-number">3.</span> <span class="nav-text">同样的方式生产git.oschina.net的私钥公钥（邮箱地址可以相同可以不同，本文相同）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#把上面得到的文件拷贝到git默认访问的-ssh目录-win10在用户目录下，本文C-Users-popfisher-ssh"><span class="nav-number">4.</span> <span class="nav-text">把上面得到的文件拷贝到git默认访问的.ssh目录(win10在用户目录下，本文C:\Users\popfisher.ssh)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#把github对应的公钥和oschina对应的公钥上传到服务器"><span class="nav-number">5.</span> <span class="nav-text">把github对应的公钥和oschina对应的公钥上传到服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub添加SSH-key的方式如下图所示："><span class="nav-number">5.1.</span> <span class="nav-text">GitHub添加SSH key的方式如下图所示：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-oschina-net添加SSH-key的方式如下图所示："><span class="nav-number">5.2.</span> <span class="nav-text">git.oschina.net添加SSH key的方式如下图所示：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在-ssh目录创建config文本文件并完成相关配置-最核心的地方"><span class="nav-number">6.</span> <span class="nav-text">在.ssh目录创建config文本文件并完成相关配置(最核心的地方)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#config文件配置如下："><span class="nav-number">6.1.</span> <span class="nav-text">config文件配置如下：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#打开Git-Bash客户端（管理员身份运行）执行测试命令测试是否配置成功（会自动在-ssh目录生成known-hosts文件把私钥配置进去）"><span class="nav-number">7.</span> <span class="nav-text">打开Git Bash客户端（管理员身份运行）执行测试命令测试是否配置成功（会自动在.ssh目录生成known_hosts文件把私钥配置进去）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#测试成功之后就可以在电脑上同时使用git多多账号同时操作，互不影响了"><span class="nav-number">8.</span> <span class="nav-text">测试成功之后就可以在电脑上同时使用git多多账号同时操作，互不影响了</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#clone-github上的项目AndroidRotateAnim"><span class="nav-number">8.1.</span> <span class="nav-text">clone github上的项目AndroidRotateAnim</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行clone命令如下："><span class="nav-number">8.2.</span> <span class="nav-text">执行clone命令如下：**</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#clone-oschina-net上的项目AndroidDevTools"><span class="nav-number">8.3.</span> <span class="nav-text">clone oschina.net上的项目AndroidDevTools</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行clone命令如下：-1"><span class="nav-number">8.4.</span> <span class="nav-text">执行clone命令如下：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#学习心得"><span class="nav-number">9.</span> <span class="nav-text">学习心得</span></a></li></ol></div>
             
 
           </div>
