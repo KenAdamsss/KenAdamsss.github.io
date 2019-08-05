@@ -136,8 +136,6 @@
 
 
 
-<link rel="stylesheet" href="\assets\css\APlayer.min.css" class="aplayer-style-marker">
-<script src="\assets\js\APlayer.min.js" class="aplayer-script-marker"></script>
 </head>
 
 <body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
@@ -1450,383 +1448,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/Hadoop/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s2.ax1x.com/2019/08/05/e2H5gs.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zero's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/04/Hadoop/" itemprop="url">Hadoop</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-04T15:19:45+08:00">
-                2019-05-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、从Hadoop框架讨论大数据生态"><a href="#一、从Hadoop框架讨论大数据生态" class="headerlink" title="一、从Hadoop框架讨论大数据生态"></a>一、从Hadoop框架讨论大数据生态</h3><h4 id="1-1-Hadoop是什么"><a href="#1-1-Hadoop是什么" class="headerlink" title="1.1 Hadoop是什么"></a>1.1 Hadoop是什么</h4><ol>
-<li>Hadoop 是一个 Apache 基金会所开发的分布式系统基础架构</li>
-<li>主要解决，海量数据的存储（HDFS） 和 海量数据的分析计算 （MapReduce）问题</li>
-<li>广义上说，Hadoop 通常是指一个更广泛的概念 - Hadoop 生态圈</li>
-</ol>
-<h4 id="1-2-Hadoop-发展历史"><a href="#1-2-Hadoop-发展历史" class="headerlink" title="1.2 Hadoop 发展历史"></a>1.2 Hadoop 发展历史</h4><h4 id="1-3-Hadoop-三大发行版本"><a href="#1-3-Hadoop-三大发行版本" class="headerlink" title="1.3 Hadoop 三大发行版本"></a>1.3 Hadoop 三大发行版本</h4><p>Apache、Cloudera、Hortonworks</p>
-<h4 id="1-4-Hadoop-的优势"><a href="#1-4-Hadoop-的优势" class="headerlink" title="1.4 Hadoop 的优势"></a>1.4 Hadoop 的优势</h4><ol>
-<li><strong>高可靠性</strong><br>因为Hadoop假设计算元素和存储会出现故障，因为它维护多个工作数据副本，在出现故障时可以对失败的节点重新分布处理</li>
-<li><strong>高扩展性</strong><br>在集群分配任务数据，可方便的扩展数以千计的节点</li>
-<li><strong>高效性</strong><br>在 MapReduce 的思想下，Hadoop 是并行工作的，以加快任务处理速度</li>
-<li><strong>高容错性</strong><br>自动保存多份副本数据，并且能够自动将失败的任务重新分配</li>
-</ol>
-<h4 id="1-5-Hadoop-组成"><a href="#1-5-Hadoop-组成" class="headerlink" title="1.5 Hadoop 组成"></a>1.5 Hadoop 组成</h4><p><strong>概述</strong></p>
-<ol>
-<li><strong>Hadoop HDFS</strong> : 一个高可靠、高吞吐量的<strong>分布式文件系统</strong></li>
-<li><strong>Hadoop MapReduce</strong> : 一个分布式的<strong>离线并行计算</strong>框架</li>
-<li><strong>Hadoop YARN</strong> : 作业调度与集群资源管理的框架</li>
-<li><strong>Hadoop Common</strong> : 支持其他模块的工具模块</li>
-</ol>
-<h5 id="1-5-1-HDFS-架构概述"><a href="#1-5-1-HDFS-架构概述" class="headerlink" title="1.5.1  HDFS 架构概述"></a>1.5.1  HDFS 架构概述</h5><ol>
-<li><strong>NameNode (nn)</strong> : 存储文件的元数据，如文件名，文件目录结构，文件属性（生成时间、副本数、文件权限），以及每个文件的块列表和块所在的 DataNode 等</li>
-<li><strong>DataNode （dn）</strong>` : 在本地文件系统存储文件块数据，以及块数据的校验和</li>
-<li><code>SecondaryNameNode (2nn)</code> : 用来监控 HDFS 状态的辅助后台程序，每隔一段时间获取 HDFS 元数据的快照。</li>
-</ol>
-<h5 id="1-5-2-YARN-架构概述"><a href="#1-5-2-YARN-架构概述" class="headerlink" title="1.5.2 YARN 架构概述"></a>1.5.2 YARN 架构概述</h5><ol>
-<li><strong>ResourceManager (rm)</strong> :<br>处理客户端请求、启动/监控 ApplicationMaster、监控 NodeManager 、<strong>资源</strong>分配与调度</li>
-<li><strong>NodeManager (nm)</strong> :<br><em>单个节点上的资源管理</em>、处理来自 ResourceManager 的命令、处理来自 ApplicationMaster 的命令</li>
-<li><strong>ApplicationMaster</strong> :<br>数据切分、为应用程序申请资源，并分配给内部任务、任务监控与容错</li>
-<li><strong>Container :</strong><br>对任务运行环境的抽象，封装了 CPU 、内存等多位资源以及环境变量、启动命令等任务运行相关的信息</li>
-</ol>
-<h5 id="1-5-3-MapReduce-架构概述"><a href="#1-5-3-MapReduce-架构概述" class="headerlink" title="1.5.3 MapReduce 架构概述"></a>1.5.3 MapReduce 架构概述</h5><p>MapReduce 将计算过程分成两个阶段 ： Map 和 Reduce</p>
-<ol>
-<li>Map 阶段并行处理输入数据</li>
-<li>Reduce 阶段对 Map 结果进行汇总</li>
-</ol>
-<h4 id="1-6-大数据技术生态体系"><a href="#1-6-大数据技术生态体系" class="headerlink" title="1.6 大数据技术生态体系"></a>1.6 大数据技术生态体系</h4><h4 id="1-7-推荐系统框架图"><a href="#1-7-推荐系统框架图" class="headerlink" title="1.7 推荐系统框架图"></a>1.7 推荐系统框架图</h4><h3 id="二、Hadoop运行环境搭建"><a href="#二、Hadoop运行环境搭建" class="headerlink" title="二、Hadoop运行环境搭建"></a>二、Hadoop运行环境搭建</h3><h4 id="2-1-虚拟机网络模式设置为-NAT"><a href="#2-1-虚拟机网络模式设置为-NAT" class="headerlink" title="2.1 虚拟机网络模式设置为 NAT"></a>2.1 虚拟机网络模式设置为 NAT</h4><h4 id="2-1-克隆虚拟机"><a href="#2-1-克隆虚拟机" class="headerlink" title="2.1 克隆虚拟机"></a>2.1 克隆虚拟机</h4><h4 id="2-3-修改为静态-IP"><a href="#2-3-修改为静态-IP" class="headerlink" title="2.3 修改为静态 IP"></a>2.3 修改为静态 IP</h4><h4 id="2-4-修改主机名"><a href="#2-4-修改主机名" class="headerlink" title="2.4 修改主机名"></a>2.4 修改主机名</h4><h4 id="2-5-关闭防火墙"><a href="#2-5-关闭防火墙" class="headerlink" title="2.5 关闭防火墙"></a>2.5 关闭防火墙</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 修改 克隆来的机器的 eth0</span></span><br><span class="line">vi /etc/udev/rules.d/70-persistent-net.rules </span><br><span class="line">	删除eth0 升级eht1为eth0 </span><br><span class="line">	复制物理ip地址</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改 </span></span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0 </span><br><span class="line">	粘贴复制的物理ip地址</span><br><span class="line">	修改 IPADDR</span><br><span class="line">	</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看主机名</span></span><br><span class="line">hostname</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改主机名</span></span><br><span class="line">vi /etc/sysconfig/network</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置 hosts 文件</span></span><br><span class="line">vi /etc/hosts</span><br><span class="line">	192.168.188.100 hadoop100</span><br><span class="line">	192.168.188.101 hadoop101</span><br><span class="line">	192.168.188.102 hadoop102</span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">------------------------------------------</span><br><span class="line">sync </span><br><span class="line">reboot</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 关闭防火墙</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看防火墙</span></span><br><span class="line">chkconfig iptables --list</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-6-在-opt-目录下创建文件"><a href="#2-6-在-opt-目录下创建文件" class="headerlink" title="2.6 在 opt 目录下创建文件"></a>2.6 在 opt 目录下创建文件</h4><p>使用 <code>atguigu</code> 用户在 /opt 目录下创建 module  software 目录</p>
-<p>module ： 安装目录</p>
-<p>software  ：接收从window 传输过来的安装包</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 修改 atguigu 用户权限</span></span><br><span class="line">vi /etc/sudoers</span><br><span class="line"><span class="meta">#</span><span class="bash"> atguigu 使用 sudo 创建 目录</span></span><br><span class="line">sudo mkdir module</span><br><span class="line"></span><br><span class="line">sudo mkdir module</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改用户所有者 和 用户组</span></span><br><span class="line">sudo chown atguigu:atguigu module/ software/</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-7-安装-jdk"><a href="#2-7-安装-jdk" class="headerlink" title="2.7 安装 jdk"></a>2.7 安装 jdk</h4><ol>
-<li><p>卸载现有的 jdk</p>
-</li>
-<li><p>用 filezilla 工具将 jdk 、Hadoop-2.7.2.tar.gz 导入到 opt 目录下面的 software 文件夹下</p>
-</li>
-<li><p>在 linux 系统下的 opt 目录中查看软件包是否导入成功</p>
-</li>
-<li><p>解压 jdk 到 /opt/module 目录下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-7u79-linux-x64.gz -C /opt/module/</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="5">
-<li><p>配置 jdk 环境变量</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line">Shift + G</span><br><span class="line">o</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">JAVA_HOME</span></span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.7.0_79</span><br><span class="line">exprot PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="6">
-<li><p>测试 jdk 安装成功</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java</span><br><span class="line">或</span><br><span class="line">rpm -qa |grep java</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h4 id="2-8-安装-Hadoop"><a href="#2-8-安装-Hadoop" class="headerlink" title="2.8 安装 Hadoop"></a>2.8 安装 Hadoop</h4><ol>
-<li><p>进入到 Hadoop 安装包路径下：</p>
-</li>
-<li><p>解压安装文件到 /opt/moudle 下面</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf hadoop-2.7.2.tar.gz -C /opt/module</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="3">
-<li><p>查看解压是否成功</p>
-</li>
-<li><p>配置 hadoop 中的 hadoop-env.sh</p>
-<ol>
-<li><p>Linux 系统中获取 jdk 的安装路径</p>
-</li>
-<li><p>修改 hadoop-env.sh 文件中 JAVA_HOME 路径</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/module/hadoop-2.7.2/etc/hadoop</span><br><span class="line"></span><br><span class="line">sudo vi hadoop-env.sh</span><br><span class="line"></span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.7.0_79</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-</li>
-</ol>
-<ol start="5">
-<li><p>将Hadoop添加到环境变量</p>
-<ol>
-<li><p>获取 Hadoop 安装路径</p>
-</li>
-<li><p>打开 /etc/profile 文件</p>
-</li>
-<li><p>保存后退出</p>
-</li>
-<li><p>让修改后的文件生效</p>
-</li>
-<li><p>重启 （如果Hadoop命令不能用再重启）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#HADOOP_HOME</span></span></span><br><span class="line">export HADOOP_HOME=/opt/module/hadoop-2.7.2</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/bin</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/sbin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="三、Hadoop运行模式"><a href="#三、Hadoop运行模式" class="headerlink" title="三、Hadoop运行模式"></a>三、Hadoop运行模式</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><ol>
-<li>官方网址</li>
-<li>Hadoop 运行模式<ol>
-<li>本地模式（默认模式）：不需要启动单独进程，直接可以运行，测试和开发时使用</li>
-<li>伪分布式模式 ：等同于完全分布式，只有一个节点</li>
-<li>完全分布式模式： 多个节点一起运行</li>
-</ol>
-</li>
-</ol>
-<h4 id="3-1-本地文件运行-Hadoop-案例"><a href="#3-1-本地文件运行-Hadoop-案例" class="headerlink" title="3.1 本地文件运行 Hadoop 案例"></a>3.1 本地文件运行 Hadoop 案例</h4><h5 id="3-1-1-官方-grep-案例"><a href="#3-1-1-官方-grep-案例" class="headerlink" title="3.1.1 官方 grep 案例"></a>3.1.1 官方 grep 案例</h5><ol>
-<li><p>创建在 hadoop-2.7.2 文件下面 创建一个 input 文件夹</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir input</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将 hadoop 的 xml 配置文件复制到input</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp etc/hadoop/*.xml input/</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="3">
-<li><p>执行share目录下的mapreduce 程序</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar grep input output 'dfs[a-z]+'</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看数据结果</p>
-</li>
-</ol>
-<h5 id="3-1-2-官方-wordcount-案例"><a href="#3-1-2-官方-wordcount-案例" class="headerlink" title="3.1.2 官方 wordcount 案例"></a>3.1.2 官方 wordcount 案例</h5><ol>
-<li><p>创建在 hadoop-2.7.2 文件下面创建一个wcinput 文件夹</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir wcinput</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="2">
-<li><p>在 wcinput 文件下创建一个 wc.input 文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 随便一个文本</span></span><br><span class="line">touch wc.input</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="3">
-<li><p>编辑 wc.input 文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi wc.input</span><br><span class="line"><span class="meta">#</span><span class="bash"> 随便写点东西</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="4">
-<li><p>回到 hadoop 目录 /opt/module/hadoop-2.7.2</p>
-</li>
-<li><p>执行程序</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount wcinput wcoutput</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="6">
-<li>查看结果</li>
-</ol>
-<h4 id="3-2-伪分布式运行-Hadoop-案例"><a href="#3-2-伪分布式运行-Hadoop-案例" class="headerlink" title="3.2 伪分布式运行 Hadoop 案例"></a>3.2 伪分布式运行 Hadoop 案例</h4><h5 id="3-2-1-HDFS-上运行-MapReduce-程序"><a href="#3-2-1-HDFS-上运行-MapReduce-程序" class="headerlink" title="3.2.1 HDFS 上运行 MapReduce 程序"></a>3.2.1 HDFS 上运行 MapReduce 程序</h5><ol>
-<li><h6 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h6><ol>
-<li>准备一台客户机</li>
-<li>安装JDK</li>
-<li>配置环境变量</li>
-<li>安装Hadoop</li>
-<li>配置环境变量</li>
-<li>配置集群</li>
-<li>启动、测试集群增、删、查</li>
-<li>在 HDFS上 执行 wordcount 案例</li>
-</ol>
-</li>
-<li><h6 id="执行步骤"><a href="#执行步骤" class="headerlink" title="执行步骤"></a>执行步骤</h6><ol>
-<li><p>配置集群<br>a. 配置 ： hadoop-env.sh</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Linux 系统获取 jdk 的安装路径</span><br><span class="line">      </span><br><span class="line">修改 JAVA_HOME 路径</span><br></pre></td></tr></table></figure>
-
-<p>​    </p>
-<p>b. 配置 ： core-site.xml</p>
-</li>
-</ol>
-</li>
-</ol>
-<pre><code><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定 HDFS 中 NameNode 的地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://hadoop101:8020<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定Hadoop运行时产生文件的存储目录 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/module/hadoop-2.7.2/data/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-c. 配置 :     hdfs-site.xml
-
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定 HDFS 副本的数量 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure></code></pre><ol start="2">
-<li><p>启动集群</p>
-<p>a. 格式化 namenode (第一次启动时格式化，以后就不要总格式化)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs namenode -format</span><br></pre></td></tr></table></figure>
-
-<p>b. 启动 namenode</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop-daemon.sh start namenode</span><br></pre></td></tr></table></figure>
-
-<p>c. 启动 datanode</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hadoop-deamon.sh start datanode</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看java进程</span></span><br><span class="line">jps</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看集群<br>a. 查看是否启动成功</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jps</span><br></pre></td></tr></table></figure>
-
-<p>b. 查看产生的 log 日志</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> logs 文件夹下</span></span><br><span class="line">.log 文件</span><br></pre></td></tr></table></figure>
-
-<p>c. web端查看 HDFS 文件系统</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.188.101:50070</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="4">
-<li><p>操作集群<br>a. 在 hdfs 文件夹系统上创建一个 input 文件夹</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">`hadoop fs` (等价) `bin/hdfs dfs`</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 创建 input 目录</span></span><br><span class="line">hadoop fs -mkdir -p /user/atguigu/input</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 递归列出目录</span></span><br><span class="line">[atguigu@hadoop101 logs]$ hadoop fs -ls -R /</span><br><span class="line">drwxr-xr-x   - atguigu supergroup          0 2019-05-12 13:19 /user</span><br><span class="line">drwxr-xr-x   - atguigu supergroup          0 2019-05-12 13:19 /user/atguigu</span><br><span class="line">drwxr-xr-x   - atguigu supergroup          0 2019-05-12 13:19 /user/atguigu/input</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令同上,递归列出目录</span></span><br><span class="line">hadoop fs -lsr</span><br></pre></td></tr></table></figure>
-
-<p>b. 将测试文件内容上传到 文件系统上</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -put wcinput/wc.input /user/atguigu/input</span><br></pre></td></tr></table></figure>
-
-<p>c. 查看上传的文件是否正确</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -lsr</span><br></pre></td></tr></table></figure>
-
-<p>d. 在 hdfs 上运行 mapreduce  程序</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /user/atguigu/input/ /user/atguigu/output</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看</span></span><br><span class="line">hadoop fs -cat /user/atguigu/output/p*</span><br></pre></td></tr></table></figure>
-
-<p>e. 查看输出结果</p>
-<p>f. 将测试文件内容下载到本地</p>
-<p>g. 删除输出结果</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -rmr /user/atguigu/output</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h5 id="3-2-2-YARN-上运行-MapReduce-程序"><a href="#3-2-2-YARN-上运行-MapReduce-程序" class="headerlink" title="3.2.2 YARN 上运行 MapReduce 程序"></a>3.2.2 YARN 上运行 MapReduce 程序</h5><h5 id="3-2-3-修改本地临时文件存储目录"><a href="#3-2-3-修改本地临时文件存储目录" class="headerlink" title="3.2.3 修改本地临时文件存储目录"></a>3.2.3 修改本地临时文件存储目录</h5><h5 id="3-2-4-Hadoop配置文件说明"><a href="#3-2-4-Hadoop配置文件说明" class="headerlink" title="3.2.4 Hadoop配置文件说明"></a>3.2.4 Hadoop配置文件说明</h5><h4 id="3-3-完全分布式部署-Hadoop"><a href="#3-3-完全分布式部署-Hadoop" class="headerlink" title="3.3 完全分布式部署 Hadoop"></a>3.3 完全分布式部署 Hadoop</h4><h3 id="四、Hadoop编译源码"><a href="#四、Hadoop编译源码" class="headerlink" title="四、Hadoop编译源码"></a>四、Hadoop编译源码</h3>
-          
-        
-      
-    </div>
-    
-    
-    
-
-	<div>
-	  
-	</div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/廖雪峰python/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2065,6 +1686,517 @@ print(&apos;%.2f&apos; % 3.1415926)
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/Hadoop/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s2.ax1x.com/2019/08/05/e2H5gs.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zero's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/04/Hadoop/" itemprop="url">Hadoop</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-04T15:19:45+08:00">
+                2019-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、从Hadoop框架讨论大数据生态"><a href="#一、从Hadoop框架讨论大数据生态" class="headerlink" title="一、从Hadoop框架讨论大数据生态"></a>一、从Hadoop框架讨论大数据生态</h3><h4 id="1-1-Hadoop是什么"><a href="#1-1-Hadoop是什么" class="headerlink" title="1.1 Hadoop是什么"></a>1.1 Hadoop是什么</h4><ol>
+<li>Hadoop 是一个 Apache 基金会所开发的分布式系统基础架构</li>
+<li>主要解决，海量数据的存储（HDFS） 和 海量数据的分析计算 （MapReduce）问题</li>
+<li>广义上说，Hadoop 通常是指一个更广泛的概念 - Hadoop 生态圈</li>
+</ol>
+<h4 id="1-2-Hadoop-发展历史"><a href="#1-2-Hadoop-发展历史" class="headerlink" title="1.2 Hadoop 发展历史"></a>1.2 Hadoop 发展历史</h4><h4 id="1-3-Hadoop-三大发行版本"><a href="#1-3-Hadoop-三大发行版本" class="headerlink" title="1.3 Hadoop 三大发行版本"></a>1.3 Hadoop 三大发行版本</h4><p>Apache、Cloudera、Hortonworks</p>
+<h4 id="1-4-Hadoop-的优势"><a href="#1-4-Hadoop-的优势" class="headerlink" title="1.4 Hadoop 的优势"></a>1.4 Hadoop 的优势</h4><ol>
+<li><strong>高可靠性</strong><br>因为Hadoop假设计算元素和存储会出现故障，因为它维护多个工作数据副本，在出现故障时可以对失败的节点重新分布处理</li>
+<li><strong>高扩展性</strong><br>在集群分配任务数据，可方便的扩展数以千计的节点</li>
+<li><strong>高效性</strong><br>在 MapReduce 的思想下，Hadoop 是并行工作的，以加快任务处理速度</li>
+<li><strong>高容错性</strong><br>自动保存多份副本数据，并且能够自动将失败的任务重新分配</li>
+</ol>
+<h4 id="1-5-Hadoop-组成"><a href="#1-5-Hadoop-组成" class="headerlink" title="1.5 Hadoop 组成"></a>1.5 Hadoop 组成</h4><p><strong>概述</strong></p>
+<ol>
+<li><strong>Hadoop HDFS</strong> : 一个高可靠、高吞吐量的<strong>分布式文件系统</strong></li>
+<li><strong>Hadoop MapReduce</strong> : 一个分布式的<strong>离线并行计算</strong>框架</li>
+<li><strong>Hadoop YARN</strong> : 作业调度与集群资源管理的框架</li>
+<li><strong>Hadoop Common</strong> : 支持其他模块的工具模块</li>
+</ol>
+<h5 id="1-5-1-HDFS-架构概述"><a href="#1-5-1-HDFS-架构概述" class="headerlink" title="1.5.1  HDFS 架构概述"></a>1.5.1  HDFS 架构概述</h5><ol>
+<li><strong>NameNode (nn)</strong> : 存储文件的元数据，如文件名，文件目录结构，文件属性（生成时间、副本数、文件权限），以及每个文件的块列表和块所在的 DataNode 等</li>
+<li><strong>DataNode （dn）</strong>` : 在本地文件系统存储文件块数据，以及块数据的校验和</li>
+<li><code>SecondaryNameNode (2nn)</code> : 用来监控 HDFS 状态的辅助后台程序，每隔一段时间获取 HDFS 元数据的快照。</li>
+</ol>
+<h5 id="1-5-2-YARN-架构概述"><a href="#1-5-2-YARN-架构概述" class="headerlink" title="1.5.2 YARN 架构概述"></a>1.5.2 YARN 架构概述</h5><ol>
+<li><strong>ResourceManager (rm)</strong> :<br>处理客户端请求、启动/监控 ApplicationMaster、监控 NodeManager 、<strong>资源</strong>分配与调度</li>
+<li><strong>NodeManager (nm)</strong> :<br><em>单个节点上的资源管理</em>、处理来自 ResourceManager 的命令、处理来自 ApplicationMaster 的命令</li>
+<li><strong>ApplicationMaster</strong> :<br>数据切分、为应用程序申请资源，并分配给内部任务、任务监控与容错</li>
+<li><strong>Container :</strong><br>对任务运行环境的抽象，封装了 CPU 、内存等多位资源以及环境变量、启动命令等任务运行相关的信息</li>
+</ol>
+<h5 id="1-5-3-MapReduce-架构概述"><a href="#1-5-3-MapReduce-架构概述" class="headerlink" title="1.5.3 MapReduce 架构概述"></a>1.5.3 MapReduce 架构概述</h5><p>MapReduce 将计算过程分成两个阶段 ： Map 和 Reduce</p>
+<ol>
+<li>Map 阶段并行处理输入数据</li>
+<li>Reduce 阶段对 Map 结果进行汇总</li>
+</ol>
+<h4 id="1-6-大数据技术生态体系"><a href="#1-6-大数据技术生态体系" class="headerlink" title="1.6 大数据技术生态体系"></a>1.6 大数据技术生态体系</h4><h4 id="1-7-推荐系统框架图"><a href="#1-7-推荐系统框架图" class="headerlink" title="1.7 推荐系统框架图"></a>1.7 推荐系统框架图</h4><h3 id="二、Hadoop运行环境搭建"><a href="#二、Hadoop运行环境搭建" class="headerlink" title="二、Hadoop运行环境搭建"></a>二、Hadoop运行环境搭建</h3><h4 id="2-1-虚拟机网络模式设置为-NAT"><a href="#2-1-虚拟机网络模式设置为-NAT" class="headerlink" title="2.1 虚拟机网络模式设置为 NAT"></a>2.1 虚拟机网络模式设置为 NAT</h4><h4 id="2-1-克隆虚拟机"><a href="#2-1-克隆虚拟机" class="headerlink" title="2.1 克隆虚拟机"></a>2.1 克隆虚拟机</h4><h4 id="2-3-修改为静态-IP"><a href="#2-3-修改为静态-IP" class="headerlink" title="2.3 修改为静态 IP"></a>2.3 修改为静态 IP</h4><h4 id="2-4-修改主机名"><a href="#2-4-修改主机名" class="headerlink" title="2.4 修改主机名"></a>2.4 修改主机名</h4><h4 id="2-5-关闭防火墙"><a href="#2-5-关闭防火墙" class="headerlink" title="2.5 关闭防火墙"></a>2.5 关闭防火墙</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 修改 克隆来的机器的 eth0</span><br><span class="line">vi /etc/udev/rules.d/70-persistent-net.rules </span><br><span class="line">	删除eth0 升级eht1为eth0 </span><br><span class="line">	复制物理ip地址</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 修改 </span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0 </span><br><span class="line">	粘贴复制的物理ip地址</span><br><span class="line">	修改 IPADDR</span><br><span class="line">	</span><br><span class="line"><span class="meta">#</span> 查看主机名</span><br><span class="line">hostname</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 修改主机名</span><br><span class="line">vi /etc/sysconfig/network</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 配置 hosts 文件</span><br><span class="line">vi /etc/hosts</span><br><span class="line">	192.168.188.100 hadoop100</span><br><span class="line">	192.168.188.101 hadoop101</span><br><span class="line">	192.168.188.102 hadoop102</span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">------------------------------------------</span><br><span class="line">sync </span><br><span class="line">reboot</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 关闭防火墙</span><br><span class="line"><span class="meta">#</span> 查看防火墙</span><br><span class="line">chkconfig iptables --list</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-6-在-opt-目录下创建文件"><a href="#2-6-在-opt-目录下创建文件" class="headerlink" title="2.6 在 opt 目录下创建文件"></a>2.6 在 opt 目录下创建文件</h4><p>使用 <code>atguigu</code> 用户在 /opt 目录下创建 module  software 目录</p>
+<p>module ： 安装目录</p>
+<p>software  ：接收从window 传输过来的安装包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 修改 atguigu 用户权限</span><br><span class="line">vi /etc/sudoers</span><br><span class="line"><span class="meta">#</span> atguigu 使用 sudo 创建 目录</span><br><span class="line">sudo mkdir module</span><br><span class="line"></span><br><span class="line">sudo mkdir module</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 修改用户所有者 和 用户组</span><br><span class="line">sudo chown atguigu:atguigu module/ software/</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-7-安装-jdk"><a href="#2-7-安装-jdk" class="headerlink" title="2.7 安装 jdk"></a>2.7 安装 jdk</h4><ol>
+<li><p>卸载现有的 jdk</p>
+</li>
+<li><p>用 filezilla 工具将 jdk 、Hadoop-2.7.2.tar.gz 导入到 opt 目录下面的 software 文件夹下</p>
+</li>
+<li><p>在 linux 系统下的 opt 目录中查看软件包是否导入成功</p>
+</li>
+<li><p>解压 jdk 到 /opt/module 目录下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-7u79-linux-x64.gz -C /opt/module/</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="5">
+<li><p>配置 jdk 环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line">Shift + G</span><br><span class="line">o</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>JAVA_HOME</span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.7.0_79</span><br><span class="line">exprot PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="6">
+<li><p>测试 jdk 安装成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java</span><br><span class="line">或</span><br><span class="line">rpm -qa |grep java</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="2-8-安装-Hadoop"><a href="#2-8-安装-Hadoop" class="headerlink" title="2.8 安装 Hadoop"></a>2.8 安装 Hadoop</h4><ol>
+<li><p>进入到 Hadoop 安装包路径下：</p>
+</li>
+<li><p>解压安装文件到 /opt/moudle 下面</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf hadoop-2.7.2.tar.gz -C /opt/module</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>查看解压是否成功</p>
+</li>
+<li><p>配置 hadoop 中的 hadoop-env.sh</p>
+<ol>
+<li><p>Linux 系统中获取 jdk 的安装路径</p>
+</li>
+<li><p>修改 hadoop-env.sh 文件中 JAVA_HOME 路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/module/hadoop-2.7.2/etc/hadoop</span><br><span class="line"></span><br><span class="line">sudo vi hadoop-env.sh</span><br><span class="line"></span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.7.0_79</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+</li>
+</ol>
+<ol start="5">
+<li><p>将Hadoop添加到环境变量</p>
+<ol>
+<li><p>获取 Hadoop 安装路径</p>
+</li>
+<li><p>打开 /etc/profile 文件</p>
+</li>
+<li><p>保存后退出</p>
+</li>
+<li><p>让修改后的文件生效</p>
+</li>
+<li><p>重启 （如果Hadoop命令不能用再重启）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>#HADOOP_HOME</span><br><span class="line">export HADOOP_HOME=/opt/module/hadoop-2.7.2</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/bin</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/sbin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="三、Hadoop运行模式"><a href="#三、Hadoop运行模式" class="headerlink" title="三、Hadoop运行模式"></a>三、Hadoop运行模式</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><ol>
+<li>官方网址</li>
+<li>Hadoop 运行模式<ol>
+<li>本地模式（默认模式）：不需要启动单独进程，直接可以运行，测试和开发时使用</li>
+<li>伪分布式模式 ：等同于完全分布式，只有一个节点</li>
+<li>完全分布式模式： 多个节点一起运行</li>
+</ol>
+</li>
+</ol>
+<h4 id="3-1-本地文件运行-Hadoop-案例"><a href="#3-1-本地文件运行-Hadoop-案例" class="headerlink" title="3.1 本地文件运行 Hadoop 案例"></a>3.1 本地文件运行 Hadoop 案例</h4><h5 id="3-1-1-官方-grep-案例"><a href="#3-1-1-官方-grep-案例" class="headerlink" title="3.1.1 官方 grep 案例"></a>3.1.1 官方 grep 案例</h5><ol>
+<li><p>创建在 hadoop-2.7.2 文件下面 创建一个 input 文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir input</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将 hadoop 的 xml 配置文件复制到input</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp etc/hadoop/*.xml input/</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>执行share目录下的mapreduce 程序</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar grep input output 'dfs[a-z]+'</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看数据结果</p>
+</li>
+</ol>
+<h5 id="3-1-2-官方-wordcount-案例"><a href="#3-1-2-官方-wordcount-案例" class="headerlink" title="3.1.2 官方 wordcount 案例"></a>3.1.2 官方 wordcount 案例</h5><ol>
+<li><p>创建在 hadoop-2.7.2 文件下面创建一个wcinput 文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir wcinput</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>在 wcinput 文件下创建一个 wc.input 文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 随便一个文本</span><br><span class="line">touch wc.input</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>编辑 wc.input 文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi wc.input</span><br><span class="line"><span class="meta">#</span> 随便写点东西</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="4">
+<li><p>回到 hadoop 目录 /opt/module/hadoop-2.7.2</p>
+</li>
+<li><p>执行程序</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount wcinput wcoutput</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="6">
+<li>查看结果</li>
+</ol>
+<h4 id="3-2-伪分布式运行-Hadoop-案例"><a href="#3-2-伪分布式运行-Hadoop-案例" class="headerlink" title="3.2 伪分布式运行 Hadoop 案例"></a>3.2 伪分布式运行 Hadoop 案例</h4><h5 id="3-2-1-HDFS-上运行-MapReduce-程序"><a href="#3-2-1-HDFS-上运行-MapReduce-程序" class="headerlink" title="3.2.1 HDFS 上运行 MapReduce 程序"></a>3.2.1 HDFS 上运行 MapReduce 程序</h5><ol>
+<li><h6 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h6><ol>
+<li>准备一台客户机</li>
+<li>安装JDK</li>
+<li>配置环境变量</li>
+<li>安装Hadoop</li>
+<li>配置环境变量</li>
+<li>配置集群</li>
+<li>启动、测试集群增、删、查</li>
+<li>在 HDFS上 执行 wordcount 案例</li>
+</ol>
+</li>
+<li><h6 id="执行步骤"><a href="#执行步骤" class="headerlink" title="执行步骤"></a>执行步骤</h6><ol>
+<li><p>配置集群<br>a. 配置 ： hadoop-env.sh</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Linux 系统获取 jdk 的安装路径</span><br><span class="line">      </span><br><span class="line">修改 JAVA_HOME 路径</span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+<p>b. 配置 ： core-site.xml</p>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定 HDFS 中 NameNode 的地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://hadoop101:8020<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定Hadoop运行时产生文件的存储目录 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/module/hadoop-2.7.2/data/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+c. 配置 :     hdfs-site.xml
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定 HDFS 副本的数量 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure></code></pre><ol start="2">
+<li><p>启动集群</p>
+<p>a. 格式化 namenode (第一次启动时格式化，以后就不要总格式化)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs namenode -format</span><br></pre></td></tr></table></figure>
+
+<p>b. 启动 namenode</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop-daemon.sh start namenode</span><br></pre></td></tr></table></figure>
+
+<p>c. 启动 datanode</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hadoop-deamon.sh start datanode</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看java进程</span></span><br><span class="line">jps</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看集群<br>a. 查看是否启动成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jps</span><br></pre></td></tr></table></figure>
+
+<p>b. 查看产生的 log 日志</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> logs 文件夹下</span></span><br><span class="line">.log 文件</span><br></pre></td></tr></table></figure>
+
+<p>c. web端查看 HDFS 文件系统</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.188.101:50070</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="4">
+<li><p>操作集群<br>a. 在 hdfs 文件夹系统上创建一个 input 文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">`hadoop fs` (等价) `bin/hdfs dfs`</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 创建 input 目录</span></span><br><span class="line">hadoop fs -mkdir -p /user/atguigu/input</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 递归列出目录</span></span><br><span class="line">[atguigu@hadoop101 logs]$ hadoop fs -ls -R /</span><br><span class="line">drwxr-xr-x   - atguigu supergroup          0 2019-05-12 13:19 /user</span><br><span class="line">drwxr-xr-x   - atguigu supergroup          0 2019-05-12 13:19 /user/atguigu</span><br><span class="line">drwxr-xr-x   - atguigu supergroup          0 2019-05-12 13:19 /user/atguigu/input</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令同上,递归列出目录</span></span><br><span class="line">hadoop fs -lsr</span><br></pre></td></tr></table></figure>
+
+<p>b. 将测试文件内容上传到 文件系统上</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -put wcinput/wc.input /user/atguigu/input</span><br></pre></td></tr></table></figure>
+
+<p>c. 查看上传的文件是否正确</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -lsr</span><br></pre></td></tr></table></figure>
+
+<p>d. 在 hdfs 上运行 mapreduce  程序</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /user/atguigu/input/ /user/atguigu/output</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看</span></span><br><span class="line">hadoop fs -cat /user/atguigu/output/p*</span><br></pre></td></tr></table></figure>
+
+<p>e. 查看输出结果</p>
+<p>f. 将测试文件内容下载到本地</p>
+<p>g. 删除输出结果</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -rmr /user/atguigu/output</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h5 id="3-2-2-YARN-上运行-MapReduce-程序"><a href="#3-2-2-YARN-上运行-MapReduce-程序" class="headerlink" title="3.2.2 YARN 上运行 MapReduce 程序"></a>3.2.2 YARN 上运行 MapReduce 程序</h5><h5 id="3-2-3-修改本地临时文件存储目录"><a href="#3-2-3-修改本地临时文件存储目录" class="headerlink" title="3.2.3 修改本地临时文件存储目录"></a>3.2.3 修改本地临时文件存储目录</h5><h5 id="3-2-4-Hadoop配置文件说明"><a href="#3-2-4-Hadoop配置文件说明" class="headerlink" title="3.2.4 Hadoop配置文件说明"></a>3.2.4 Hadoop配置文件说明</h5><h4 id="3-3-完全分布式部署-Hadoop"><a href="#3-3-完全分布式部署-Hadoop" class="headerlink" title="3.3 完全分布式部署 Hadoop"></a>3.3 完全分布式部署 Hadoop</h4><h3 id="四、Hadoop编译源码"><a href="#四、Hadoop编译源码" class="headerlink" title="四、Hadoop编译源码"></a>四、Hadoop编译源码</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+	<div>
+	  
+	</div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/17/ubuntu问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s2.ax1x.com/2019/08/05/e2H5gs.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zero's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/17/ubuntu问题/" itemprop="url">ubuntu 问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-17T21:59:07+08:00">
+                2019-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="ubuntu-依赖问题"><a href="#ubuntu-依赖问题" class="headerlink" title="ubuntu 依赖问题"></a>ubuntu 依赖问题</h5><pre><code>sudo apt-get update # 更新
+sudo apt-get -f install # 解决依赖问题
+sudo dpkg -i xxx.deb # 重新安装</code></pre><h5 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h5><pre><code>先找到软件的名称：whereis,which,find,grep 都可以
+可以直接使用 dpkg 命令进行卸载，这叫做谁污染谁治理；
+dpkg -l |grep xxx
+# xxx 就是安装的软件名
+
+找到之后，使用下面的方法进行卸载
+sudo dpkg --purge xxxx
+rm -rf ~/.local/share/xxxx
+
+这样的话就彻底卸载了</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+	<div>
+	  
+	</div>
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/17/Linux进阶（二）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2136,31 +2268,7 @@ print(&apos;%.2f&apos; % 3.1415926)
       
         
           
-            
-        <div id="aplayer-wYgowfui" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
-            <pre class="aplayer-lrc-content"></pre>
-        </div>
-        <script>
-          var ap = new APlayer({
-            element: document.getElementById("aplayer-wYgowfui"),
-            narrow: false,
-            autoplay: true,
-            showlrc: false,
-            music: {
-              title: "Staring At You",
-              author: "Diane Birch",
-              url: "https://m10.music.126.net/20190123220550/1a1b7f985c56a480d71462dc75abaa81/ymusic/bb41/2a86/d5cf/41ec0c033de62d81158b5319966bb57d.mp3",
-              pic: "http://p2.music.126.net/iiH7lL1eL37cvIPfEyRzwg==/5732853627334127.jpg?param=130y130",
-              lrc: ""
-            }
-          });
-          window.aplayers || (window.aplayers = []);
-          window.aplayers.push(ap);
-        </script>
-
-
-
-<h4 id="7-7-磁盘分区类"><a href="#7-7-磁盘分区类" class="headerlink" title="7.7 磁盘分区类"></a>7.7 磁盘分区类</h4><h5 id="7-7-1-fdisk查看分区"><a href="#7-7-1-fdisk查看分区" class="headerlink" title="7.7.1 fdisk查看分区"></a>7.7.1 <code>fdisk</code>查看分区</h5><p>​    基本语法：<code>fdisk -l</code></p>
+            <h4 id="7-7-磁盘分区类"><a href="#7-7-磁盘分区类" class="headerlink" title="7.7 磁盘分区类"></a>7.7 磁盘分区类</h4><h5 id="7-7-1-fdisk查看分区"><a href="#7-7-1-fdisk查看分区" class="headerlink" title="7.7.1 fdisk查看分区"></a>7.7.1 <code>fdisk</code>查看分区</h5><p>​    基本语法：<code>fdisk -l</code></p>
 <h5 id="7-7-2-查看硬盘"><a href="#7-7-2-查看硬盘" class="headerlink" title="7.7.2 查看硬盘"></a>7.7.2 查看硬盘</h5><p>​    <code>df -h</code></p>
 <h5 id="7-7-3-mount-umount-挂载-卸载"><a href="#7-7-3-mount-umount-挂载-卸载" class="headerlink" title="7.7.3 mount / umount 挂载 /卸载"></a>7.7.3 <code>mount / umount</code> 挂载 /卸载</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">挂载：mount -t  iso9660 -o rw /dev/cdrom /mnt/cdrom/</span><br><span class="line">卸载：umnout /mnt/cdrom</span><br></pre></td></tr></table></figure>
 
@@ -2177,13 +2285,13 @@ print(&apos;%.2f&apos; % 3.1415926)
 
 <p>​    </p>
 <p>​    (3) 按文件大小，在 /home 目录下查找大于200m 的文件 (+n 大于 ，-n 小于， n 等于)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查找小于10 m 的文件</span><br><span class="line">find tlbu/ -size -10</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查找小于10 m 的文件</span></span><br><span class="line">find tlbu/ -size -10</span><br></pre></td></tr></table></figure>
 
-<h5 id="7-8-2-grep-在文件内搜索字符串匹配的行并输出"><a href="#7-8-2-grep-在文件内搜索字符串匹配的行并输出" class="headerlink" title="7.8.2 grep 在文件内搜索字符串匹配的行并输出"></a>7.8.2 grep 在文件内搜索字符串匹配的行并输出</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查找 ll.txt</span><br><span class="line">ls -l |grep ll.txt</span><br></pre></td></tr></table></figure>
+<h5 id="7-8-2-grep-在文件内搜索字符串匹配的行并输出"><a href="#7-8-2-grep-在文件内搜索字符串匹配的行并输出" class="headerlink" title="7.8.2 grep 在文件内搜索字符串匹配的行并输出"></a>7.8.2 grep 在文件内搜索字符串匹配的行并输出</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查找 ll.txt</span></span><br><span class="line">ls -l |grep ll.txt</span><br></pre></td></tr></table></figure>
 
-<h5 id="7-8-3-which-文件搜索命令"><a href="#7-8-3-which-文件搜索命令" class="headerlink" title="7.8.3 which 文件搜索命令"></a>7.8.3 <code>which</code> 文件搜索命令</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查找 ls 可执行文件存放在哪里</span><br><span class="line">which ls</span><br></pre></td></tr></table></figure>
+<h5 id="7-8-3-which-文件搜索命令"><a href="#7-8-3-which-文件搜索命令" class="headerlink" title="7.8.3 which 文件搜索命令"></a>7.8.3 <code>which</code> 文件搜索命令</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查找 ls 可执行文件存放在哪里</span></span><br><span class="line">which ls</span><br></pre></td></tr></table></figure>
 
-<h4 id="7-9-进程线程类"><a href="#7-9-进程线程类" class="headerlink" title="7.9 进程线程类"></a>7.9 进程线程类</h4><h5 id="7-9-1-ps查看系统中所有进程"><a href="#7-9-1-ps查看系统中所有进程" class="headerlink" title="7.9.1 ps查看系统中所有进程"></a>7.9.1 <code>ps</code>查看系统中所有进程</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查看所有进程</span><br><span class="line">ps -aux</span><br><span class="line">grep -aux |grep 3121</span><br></pre></td></tr></table></figure>
+<h4 id="7-9-进程线程类"><a href="#7-9-进程线程类" class="headerlink" title="7.9 进程线程类"></a>7.9 进程线程类</h4><h5 id="7-9-1-ps查看系统中所有进程"><a href="#7-9-1-ps查看系统中所有进程" class="headerlink" title="7.9.1 ps查看系统中所有进程"></a>7.9.1 <code>ps</code>查看系统中所有进程</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看所有进程</span></span><br><span class="line">ps -aux</span><br><span class="line">grep -aux |grep 3121</span><br></pre></td></tr></table></figure>
 
 <h5 id="7-9-2-top查看系统健康状态"><a href="#7-9-2-top查看系统健康状态" class="headerlink" title="7.9.2 top查看系统健康状态"></a>7.9.2 <code>top</code>查看系统健康状态</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">top</span><br><span class="line">top -d 1 # 1秒刷新一次</span><br><span class="line">top -l 使top 不显示未激活的进程</span><br><span class="line">按 P 使用CPU 排序</span><br><span class="line">按 M 内存使用排序</span><br><span class="line">N pid排序</span><br></pre></td></tr></table></figure>
 
@@ -2196,7 +2304,7 @@ print(&apos;%.2f&apos; % 3.1415926)
 
 <h4 id="7-10-压缩和解压缩"><a href="#7-10-压缩和解压缩" class="headerlink" title="7.10 压缩和解压缩"></a>7.10 压缩和解压缩</h4><h5 id="7-10-1-gzip-gunzip压缩"><a href="#7-10-1-gzip-gunzip压缩" class="headerlink" title="7.10.1 gzip/gunzip压缩"></a>7.10.1 <code>gzip/gunzip</code>压缩</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gzip + 文件</span><br><span class="line">	功能描述：压缩文件，只能将文件压缩为 `*.gz` 文件</span><br><span class="line">	1. 只能压缩文件不能压缩目录，只能单个压缩</span><br><span class="line">	2. 不保留原来的文件</span><br><span class="line">gunzip + 文件 </span><br><span class="line">	功能：解压缩</span><br></pre></td></tr></table></figure>
 
-<h5 id="7-10-2-zip-unzip压缩"><a href="#7-10-2-zip-unzip压缩" class="headerlink" title="7.10.2 zip/unzip压缩"></a>7.10.2 <code>zip/unzip</code>压缩</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 使用 `zip` 同时压缩多个文件</span><br><span class="line">zip yijinjing ll.txt ss.txt</span><br><span class="line"><span class="meta">#</span> 使用 `unzip` 解压缩</span><br><span class="line">unzip yijinjing.zip</span><br></pre></td></tr></table></figure>
+<h5 id="7-10-2-zip-unzip压缩"><a href="#7-10-2-zip-unzip压缩" class="headerlink" title="7.10.2 zip/unzip压缩"></a>7.10.2 <code>zip/unzip</code>压缩</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 使用 `zip` 同时压缩多个文件</span></span><br><span class="line">zip yijinjing ll.txt ss.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用 `unzip` 解压缩</span></span><br><span class="line">unzip yijinjing.zip</span><br></pre></td></tr></table></figure>
 
 <h5 id="7-10-3-tar打包"><a href="#7-10-3-tar打包" class="headerlink" title="7.10.3 tar打包"></a>7.10.3 <code>tar</code>打包</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">tar 参数 + XXX.tar.gz + 将要打包的内容</span><br><span class="line">	参数：</span><br><span class="line">		-c 产生 .tar 打包文件</span><br><span class="line">		-v 显示详细信息</span><br><span class="line">		-f 指定压缩后的文件名</span><br><span class="line">		-z 打包同时压缩</span><br><span class="line">		-x 解包 .tar 文件</span><br><span class="line"></span><br><span class="line">压缩：tar -zcvf XXX.tar.gz n1.txt n2.txt</span><br><span class="line">解压：tar -zxvf XXX.tar.gz </span><br><span class="line">    # 通过 `-C` 指定解压目录</span><br><span class="line">    tar -zxvf khbd.tar.gz -C ./wlmiji/</span><br></pre></td></tr></table></figure>
 
@@ -2601,140 +2709,6 @@ print(&apos;%.2f&apos; % 3.1415926)
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/17/ubuntu问题/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="https://s2.ax1x.com/2019/08/05/e2H5gs.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zero's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/17/ubuntu问题/" itemprop="url">ubuntu 问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-17T21:59:07+08:00">
-                2019-01-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="ubuntu-依赖问题"><a href="#ubuntu-依赖问题" class="headerlink" title="ubuntu 依赖问题"></a>ubuntu 依赖问题</h5><pre><code>sudo apt-get update # 更新
-sudo apt-get -f install # 解决依赖问题
-sudo dpkg -i xxx.deb # 重新安装</code></pre><h5 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h5><pre><code>先找到软件的名称：whereis,which,find,grep 都可以
-可以直接使用 dpkg 命令进行卸载，这叫做谁污染谁治理；
-dpkg -l |grep xxx
-# xxx 就是安装的软件名
-
-找到之后，使用下面的方法进行卸载
-sudo dpkg --purge xxxx
-rm -rf ~/.local/share/xxxx
-
-这样的话就彻底卸载了</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-	<div>
-	  
-	</div>
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/09/linux基础/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -2992,9 +2966,6 @@ chown root jiumozhi.txt</code></pre><h5 id="chgrp-改变所属组"><a href="#chg
 同时改变拥有者 和 拥有者 的组：
 
 chown atguigu:atguigu yijinjing.txt</code></pre><h3 id="磁盘分区类"><a href="#磁盘分区类" class="headerlink" title="磁盘分区类"></a>磁盘分区类</h3><h5 id="fdisk-查看分区"><a href="#fdisk-查看分区" class="headerlink" title="fdisk 查看分区"></a>fdisk 查看分区</h5><pre><code>fdisk -l   功能：查看磁盘分区详情(只有root用户)</code></pre><h5 id="df-查看硬盘"><a href="#df-查看硬盘" class="headerlink" title="df 查看硬盘"></a>df 查看硬盘</h5><pre><code>df -h</code></pre><h5 id="mon"><a href="#mon" class="headerlink" title="mon"></a>mon</h5><hr>
-{% aplayer "绝对是个梦" "汤宝如" "https://m10.music.126.net/20190117220544/24570c8d9a84cd0c3a470518fdc03b5b/ymusic/d52e/a4ad/4c07/8214ad8b055099de80a876fd07c82acc.mp3" "http://p1.music.126.net/ZltFcvUm0B7CYjAYUUSVHw==/61572651167679.jpg?param=130y130" "autoplay" %}
-
-<hr>
 <h5 id="磁盘分区"><a href="#磁盘分区" class="headerlink" title="磁盘分区"></a>磁盘分区</h5><pre><code>fdisk 查看分区
     fdisk -l 查看磁盘分区详情
     注意：root用户
