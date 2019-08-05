@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="zero&#39;s blog">
 <meta property="og:description" content="Servlet Servlet 3.0 好处： 支持注解配置，可以不需要 web.xml   步骤： 创建 JavaEE 项目，选择 Servlet 的版本 3.0 以上，可以不创建 web.xml 定义一个类，实现Servlet 接口 复写方法 在类上使用 @WebServlet注解，进行配置 @WebServlet(&amp;quot;资源路径&amp;quot;)        IDEA 和 Tomcat">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-01T10:14:22.083Z">
+<meta property="og:updated_time" content="2019-06-02T11:03:59.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Servlet">
 <meta name="twitter:description" content="Servlet Servlet 3.0 好处： 支持注解配置，可以不需要 web.xml   步骤： 创建 JavaEE 项目，选择 Servlet 的版本 3.0 以上，可以不创建 web.xml 定义一个类，实现Servlet 接口 复写方法 在类上使用 @WebServlet注解，进行配置 @WebServlet(&amp;quot;资源路径&amp;quot;)        IDEA 和 Tomcat">
@@ -403,7 +403,7 @@
 </ol>
 <h5 id="service-方法"><a href="#service-方法" class="headerlink" title="service() 方法"></a>service() 方法</h5><ol start="0">
 <li><p>判断请求方式 （get/post）</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String method = request.getMethod();</span><br><span class="line"><span class="keyword">if</span> (<span class="string">"GET"</span>.equals(method)) &#123;</span><br><span class="line">    ....</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"POST"</span>.equals(method)) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String method = req.getMethod();</span><br><span class="line"><span class="keyword">if</span> (<span class="string">"GET"</span>.equals(method)) &#123;</span><br><span class="line">    ....</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"POST"</span>.equals(method)) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -411,8 +411,16 @@
 </ol>
 <ol>
 <li><p>获取数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graph BT</span><br><span class="line"> B[GenericServlet `抽象类`] --&gt;|实现| A[Servlet `接口`]</span><br><span class="line"> C[HttpServlet `抽象类`] --&gt;|继承| B</span><br></pre></td></tr></table></figure>
+<pre class="mermaid">      graph BT
+    B[GenericServlet `抽象类`] -->|实现| A[Servlet `接口`]
+    C[HttpServlet `抽象类`] -->|继承| B</pre>
 
+
+
+
+</li>
+</ol>
+<p>   ​    </p>
 <ul>
 <li><p>GenericServlet<br>实现了 <code>Servlet</code> 接口，将 <code>Servelt</code>接口中的其它方法做了默认空实现，只将 <code>service()</code>方法作为抽象</p>
 <ul>
@@ -431,19 +439,127 @@
 <li><p><strong>推荐使用继承HttpServlet</strong></p>
 </li>
 </ul>
+<h5 id="Servlet-的相关配置"><a href="#Servlet-的相关配置" class="headerlink" title="Servlet 的相关配置"></a>Servlet 的相关配置</h5><pre><code>1. **urlpartten** : Servlet 访问路径
+* 一个 `servlet`可以定义多个访问路径 `@WebServlet({&quot;dd&quot;,&quot;dd4&quot;})`
+* 路径定义规则
+  * `/xxx`
+  * `/xxx/xxx` ， 目录结构
+    * `@WebServlet(&quot;/user/demo&quot;)`
+    * `@WebServlet(&quot;/user/*&quot;)` ： `*`代表通配符
+  * `*.do`
+    * `@WebServlet(&quot;*.do&quot;)` ,`*`代表通配符,`do`是随便定义的一个后缀名，随便都可以</code></pre><h4 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h4><ul>
+<li><p>概念 ： Hyper Text Transfer Protocol 超文本传输协议</p>
+<ul>
+<li><p>传输协议 ： 定义了，客户端和服务器端传输 ，文件形式</p>
+<pre class="mermaid">    graph LR
+    A((客户端)) -->|"请求-请求消息"| B[服务器端]
+    B -->|"响应-响应消息"| A</pre>
+
+
+
 </li>
-</ol>
-<h5 id="Servlet-的相关配置"><a href="#Servlet-的相关配置" class="headerlink" title="Servlet 的相关配置"></a>Servlet 的相关配置</h5><ol>
-<li><strong>urlpartten</strong> : Servlet 访问路径<ul>
-<li>一个 <code>servlet</code>可以定义多个访问路径 <code>@WebServlet({&quot;dd&quot;,&quot;dd4&quot;})</code></li>
-<li>路径定义规则</li>
-<li>/xxx</li>
-<li>/xxx/xxx</li>
-<li>*.do</li>
 </ul>
 </li>
-<li></li>
+</ul>
+<ul>
+<li><p>HTTP协议的特点：</p>
+<ol>
+<li><p>基于 TCP/IP 的高级协议</p>
+</li>
+<li><p>默认端口号是：80</p>
+<p><a href="http://www.baidu.com:80" target="_blank" rel="noopener">http://www.baidu.com:80</a></p>
+</li>
+<li><p>基于请求/响应模型的：一次请求对应一次响应</p>
+</li>
+<li><p>无状态的：每次请求之间相互独立，不能交互数据</p>
+</li>
 </ol>
+</li>
+<li><p>历史版本：</p>
+<ul>
+<li>1.0 ：每一次请求响应都会建立新的连接</li>
+<li>1.1 ：复用连接</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>请求消息数据格式</p>
+<ol>
+<li><p>请求行<br>请求方式 请求url 请求协议/版本</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/login.html</span> HTTP/1.1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>请求方式 ：<ul>
+<li>HTTP协议有7种请求方式，常用的有2种<ul>
+<li>GET : <ol>
+<li>请求参数在<strong>请求行</strong>中，在url后</li>
+<li>请求的 url 是由限制的</li>
+<li>不太安全</li>
+</ol>
+</li>
+<li>POST : <ol>
+<li>请求参数在<strong>请求体</strong>中</li>
+<li>请求的url长度是没有限制的</li>
+<li>相对安全</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>请求头</p>
+<blockquote>
+<p>请求头名称：请求头值</p>
+</blockquote>
+<ul>
+<li>常见的请求头 ：<ol>
+<li><strong>User-Agent</strong> ：浏览器告诉服务器，我访问你使用的浏览器的版本信息<ul>
+<li>可以在服务器端获取该头的浏览器信息，解决浏览器的兼容问题</li>
+</ul>
+</li>
+<li><strong>Referer</strong>: <a href="http://localhost:8080/ddd/login.html" target="_blank" rel="noopener">http://localhost:8080/ddd/login.html</a><ul>
+<li>告诉服务器，我（当前请求）从哪里来？<ul>
+<li>作用：<ol>
+<li>防盗链</li>
+<li>统计工作 </li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>请求空行</p>
+<blockquote>
+<p>空行 # 做分隔作用</p>
+<p>就是用于分隔post请求的请求头和请求体的</p>
+</blockquote>
+</li>
+<li><p>请求体 （正文）</p>
+<blockquote>
+<p>封装post请求消息的请求体的</p>
+<p>请求内容，表单提交的参数</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li><p>字符串格式</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">GET /login.html HTTP/1.1  # 请求行</span><br><span class="line"><span class="attribute">Host</span>: localhost:8080	# 请求头</span><br><span class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0</span><br><span class="line"><span class="attribute">Accept</span>: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line"><span class="attribute">Accept-Language</span>: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line"><span class="attribute">Accept-Encoding</span>: gzip, deflate</span><br><span class="line"><span class="attribute">Referer</span>: http://localhost:8080/ddd/login.html</span><br><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"><span class="attribute">Upgrade-Insecure-Requests</span>: 1</span><br><span class="line"><span class="attribute">If-Modified-Since</span>: Wed, 22 May 2019 01:32:12 GMT</span><br><span class="line"><span class="attribute">If-None-Match</span>: W/"265-1558488732253"</span><br><span class="line">		# 请求空行，就是空行</span><br><span class="line">username=zhangsan</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>响应消息数据格式</li>
+</ul>
 <p>1. </p>
 
       
@@ -477,8 +593,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/04/Hadoop/" rel="next" title="Hadoop">
-                <i class="fa fa-chevron-left"></i> Hadoop
+              <a href="/2019/05/04/廖雪峰python/" rel="next" title="廖雪峰 python">
+                <i class="fa fa-chevron-left"></i> 廖雪峰 python
               </a>
             
           </div>
@@ -486,6 +602,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/02/Request和Respons/" rel="prev" title="Request和Respons">
+                Request和Respons <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -562,7 +682,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -584,7 +704,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -624,7 +744,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Servlet"><span class="nav-number">1.</span> <span class="nav-text">Servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IDEA-和-Tomcat-的相关配置"><span class="nav-number">1.0.1.</span> <span class="nav-text">IDEA 和 Tomcat 的相关配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#service-方法"><span class="nav-number">1.0.2.</span> <span class="nav-text">service() 方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Servlet-的相关配置"><span class="nav-number">1.0.3.</span> <span class="nav-text">Servlet 的相关配置</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Servlet"><span class="nav-number">1.</span> <span class="nav-text">Servlet</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#IDEA-和-Tomcat-的相关配置"><span class="nav-number">1.0.1.</span> <span class="nav-text">IDEA 和 Tomcat 的相关配置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#service-方法"><span class="nav-number">1.0.2.</span> <span class="nav-text">service() 方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Servlet-的相关配置"><span class="nav-number">1.0.3.</span> <span class="nav-text">Servlet 的相关配置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#HTTP"><span class="nav-number">1.1.</span> <span class="nav-text">HTTP</span></a></li></ol></div>
             
 
           </div>
@@ -666,6 +786,13 @@
 
 
 
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
         
 

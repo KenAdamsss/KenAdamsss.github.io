@@ -268,6 +268,780 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/02/Response笔记/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zero's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/02/Response笔记/" itemprop="url">Response笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-02T19:08:03+08:00">
+                2019-06-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/Request/" itemprop="url" rel="index">
+                    <span itemprop="name">Request</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/Request/Respons/" itemprop="url" rel="index">
+                    <span itemprop="name">Respons</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>HTTP协议：响应消息</li>
+<li>Response对象</li>
+<li>ServletContext对象</li>
+</ol>
+<h2 id="HTTP协议："><a href="#HTTP协议：" class="headerlink" title="HTTP协议："></a>HTTP协议：</h2><ol>
+<li>请求消息：客户端发送给服务器端的数据</li>
+</ol>
+<ul>
+<li>数据格式：<ol>
+<li>请求行</li>
+<li>请求头</li>
+<li>请求空行</li>
+<li>请求体</li>
+<li>响应消息：服务器端发送给客户端的数据</li>
+</ol>
+</li>
+<li>数据格式：</li>
+</ul>
+<ol>
+<li>响应行<ol>
+<li>组成：协议/版本 响应状态码 状态码描述</li>
+<li>响应状态码：服务器告诉客户端浏览器本次请求和响应的一个状态。<ol>
+<li>状态码都是3位数字 </li>
+<li>分类：<ol>
+<li>1xx：服务器就收客户端消息，但没有接受完成，等待一段时间后，发送1xx多状态码</li>
+<li>2xx：成功。代表：200</li>
+<li>3xx：重定向。代表：302(重定向)，304(访问缓存)</li>
+<li>4xx：客户端错误。<ul>
+<li>代表：</li>
+<li>404（请求路径没有对应的资源） </li>
+<li>405：请求方式没有对应的doXxx方法</li>
+</ul>
+</li>
+<li>5xx：服务器端错误。代表：500(服务器内部出现异常)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="2">
+<li>响应头：<br>​    1. 格式：头名称： 值<br>​    2. 常见的响应头：<br>​        1. Content-Type：服务器告诉客户端本次响应体数据格式以及编码格式<br>​        2. Content-disposition：服务器告诉客户端以什么格式打开响应体数据<br>​        * 值：<br>​            * <em>in-line</em>:默认值,在当前页面内打开<br>​            * <em>attachment;filename=xxx</em>：以附件形式打开响应体。文件下载</li>
+<li>响应空行</li>
+<li>响应体:传输的数据</li>
+</ol>
+<ul>
+<li><p>响应字符串格式</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">HTTP/1.1 200 OK</span><br><span class="line">Content-Type: text/html;charset=UTF-8</span><br><span class="line">Content-Length: 101</span><br><span class="line">Date: Wed, 06 Jun 2018 07:08:42 GMT</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>$Title$<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  hello , response</span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="Response对象"><a href="#Response对象" class="headerlink" title="Response对象"></a>Response对象</h2><pre><code>* 功能：设置响应消息
+    1. 设置响应行
+        1. 格式：HTTP/1.1 200 ok
+        2. 设置状态码：setStatus(int sc) 
+    2. 设置响应头：setHeader(String name, String value) 
+
+    3. 设置响应体：
+        * 使用步骤：
+            1. 获取输出流
+                * 字符输出流：PrintWriter getWriter()
+
+                * 字节输出流：ServletOutputStream getOutputStream()
+
+            2. 使用输出流，将数据输出到客户端浏览器
+
+
+* 案例：
+    1. 完成重定向
+        * 重定向：资源跳转的方式
+        * 代码实现：
+            //1. 设置状态码为302
+            response.setStatus(302);
+            //2.设置响应头location
+            response.setHeader(&quot;location&quot;,&quot;/day15/responseDemo2&quot;);
+
+
+            //简单的重定向方法
+            response.sendRedirect(&quot;/day15/responseDemo2&quot;);
+
+        * 重定向的特点:redirect
+            1. 地址栏发生变化
+            2. 重定向可以访问其他站点(服务器)的资源
+            3. 重定向是两次请求。不能使用request对象来共享数据
+        * 转发的特点：forward
+            1. 转发地址栏路径不变
+            2. 转发只能访问当前服务器下的资源
+            3. 转发是一次请求，可以使用request对象来共享数据
+
+        * forward 和  redirect 区别
+
+        * 路径写法：
+            1. 路径分类
+                1. 相对路径：通过相对路径不可以确定唯一资源
+                    * 如：./index.html
+                    * 不以/开头，以.开头路径
+
+                    * 规则：找到当前资源和目标资源之间的相对位置关系
+                        * ./：当前目录
+                        * ../:后退一级目录
+                2. 绝对路径：通过绝对路径可以确定唯一资源
+                    * 如：http://localhost/day15/responseDemo2        /day15/responseDemo2
+                    * 以/开头的路径
+
+                    * 规则：判断定义的路径是给谁用的？判断请求将来从哪儿发出
+                        * 给客户端浏览器使用：需要加虚拟目录(项目的访问路径)
+                            * 建议虚拟目录动态获取：request.getContextPath()
+                            * &lt;a&gt; , &lt;form&gt; 重定向...
+                        * 给服务器使用：不需要加虚拟目录
+                            * 转发路径</code></pre><p>​                        
+​                        </p>
+<pre><code>2. 服务器输出字符数据到浏览器
+    * 步骤：
+        1. 获取字符输出流
+        2. 输出数据
+
+    * 注意：
+        * 乱码问题：
+            1. PrintWriter pw = response.getWriter();获取的流的默认编码是ISO-8859-1
+            2. 设置该流的默认编码
+            3. 告诉浏览器响应体使用的编码
+
+            //简单的形式，设置编码，是在获取流之前设置
+            response.setContentType(&quot;text/html;charset=utf-8&quot;);
+3. 服务器输出字节数据到浏览器
+    * 步骤：
+        1. 获取字节输出流
+        2. 输出数据
+
+4. 验证码
+    1. 本质：图片
+    2. 目的：防止恶意表单注册</code></pre><h2 id="ServletContext对象："><a href="#ServletContext对象：" class="headerlink" title="ServletContext对象："></a>ServletContext对象：</h2><pre><code>1. 概念：代表整个web应用，可以和程序的容器(服务器)来通信
+2. 获取：
+    1. 通过request对象获取
+        request.getServletContext();
+    2. 通过HttpServlet获取
+        this.getServletContext();
+3. 功能：
+    1. 获取MIME类型：
+        * MIME类型:在互联网通信过程中定义的一种文件数据类型
+            * 格式： 大类型/小类型   text/html        image/jpeg
+
+        * 获取：String getMimeType(String file)  
+    2. 域对象：共享数据
+        1. setAttribute(String name,Object value)
+        2. getAttribute(String name)
+        3. removeAttribute(String name)
+
+        * ServletContext对象范围：所有用户所有请求的数据
+    3. 获取文件的真实(服务器)路径
+        1. 方法：String getRealPath(String path)  
+             String b = context.getRealPath(&quot;/b.txt&quot;);//web目录下资源访问
+             System.out.println(b);
+
+            String c = context.getRealPath(&quot;/WEB-INF/c.txt&quot;);//WEB-INF目录下的资源访问
+            System.out.println(c);
+
+            String a = context.getRealPath(&quot;/WEB-INF/classes/a.txt&quot;);//src目录下的资源访问
+            System.out.println(a);</code></pre><h2 id="案例："><a href="#案例：" class="headerlink" title="案例："></a>案例：</h2><pre><code>* 文件下载需求：
+    1. 页面显示超链接
+    2. 点击超链接后弹出下载提示框
+    3. 完成图片文件下载
+
+
+* 分析：
+    1. 超链接指向的资源如果能够被浏览器解析，则在浏览器中展示，如果不能解析，则弹出下载提示框。不满足需求
+    2. 任何资源都必须弹出下载提示框
+    3. 使用响应头设置资源的打开方式：
+        * content-disposition:attachment;filename=xxx
+
+
+* 步骤：
+    1. 定义页面，编辑超链接href属性，指向Servlet，传递资源名称filename
+    2. 定义Servlet
+        1. 获取文件名称
+        2. 使用字节输入流加载文件进内存
+        3. 指定response的响应头： content-disposition:attachment;filename=xxx
+        4. 将数据写出到response输出流
+
+
+* 问题：
+    * 中文文件问题
+        * 解决思路：
+            1. 获取客户端使用的浏览器版本信息
+            2. 根据不同的版本信息，设置filename的编码方式不同</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/02/Request和Respons/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zero's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/02/Request和Respons/" itemprop="url">Request和Respons</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-02T19:08:03+08:00">
+                2019-06-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/Request/" itemprop="url" rel="index">
+                    <span itemprop="name">Request</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/Request/Respons/" itemprop="url" rel="index">
+                    <span itemprop="name">Respons</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Request"><a href="#Request" class="headerlink" title="Request"></a>Request</h2><h4 id="request对象-和-response-对象的原理"><a href="#request对象-和-response-对象的原理" class="headerlink" title="request对象 和 response 对象的原理"></a>request对象 和 response 对象的原理</h4><ol>
+<li>request 和 response 对象是由服务器创建的。我们只是来使用它们</li>
+<li>request 是来 获取请求消息 ， response 对象是来设置响应消息</li>
+</ol>
+<h5 id="浏览器访问服务器过程"><a href="#浏览器访问服务器过程" class="headerlink" title="浏览器访问服务器过程"></a>浏览器访问服务器过程</h5><ol>
+<li>tomcat 服务器会根据请求 url 中资源路径，创建对应的 ServletDemo1 的 对象。</li>
+<li>tomcat 服务器，会创建 request 和 response 对象，request 对象中封装请求消息数据。</li>
+<li>tomcat 将 request 和 response 两个对象传递给 service() 方法，并且调用 service 方法。</li>
+<li>我们可以通过 request 对象获取请求消息数据，通过 response 对象设置响应消息数据。</li>
+<li>服务器在给浏览器做出响应之前，会从 response 对象中拿程序员设置的响应消息数据。</li>
+</ol>
+<h4 id="request-对象继承体系结构-："><a href="#request-对象继承体系结构-：" class="headerlink" title="request 对象继承体系结构 ："></a>request 对象继承体系结构 ：</h4><pre class="mermaid">graph BT
+    B[HttpServletRequest `接口`] -->|继承| A[ServletRequest `接口`]
+    C[org.apache.catalina.connector.RequestFacade `类` *tomact编写* ] -->|实现| B</pre>
+
+
+
+<h4 id="request-功能"><a href="#request-功能" class="headerlink" title="request 功能"></a>request 功能</h4><ol>
+<li><p>获取请求消息数据</p>
+<ol>
+<li><p>获取请求行数据</p>
+<ul>
+<li><p>GET /day14/demo1?name=zhangsan HTTP/1.1</p>
+</li>
+<li><p>方法 ：</p>
+<ol>
+<li><p>获取请求方式 ：GET</p>
+<ul>
+<li>String getMethod()</li>
+</ul>
+</li>
+<li><p>(<em>)*</em>获取虚拟目录** ：/day14</p>
+<ul>
+<li>String getContextPath()</li>
+</ul>
+</li>
+<li><p>获取Servlet路径 ：/demo1</p>
+<ul>
+<li>String getServletPath()</li>
+</ul>
+</li>
+<li><p>获取get方式的请求参数 ：name=zhangsan</p>
+<ul>
+<li>String getQueryString()</li>
+</ul>
+</li>
+<li><p>(<em>)*</em>获取请求的URI** : /day14/demo1</p>
+<ul>
+<li><p>String getRequestURI() : /day14/demo1</p>
+</li>
+<li><p>StringBuffer getRequestURL() : <a href="http://localhost/day4/demo1" target="_blank" rel="noopener">http://localhost/day4/demo1</a></p>
+</li>
+<li><hr>
+</li>
+<li><p>URL : 统一资源定位符 ：<code>http://localhost/day4/demo1</code></p>
+</li>
+<li><p>URI :  统一资源标识符 ：<code>/day14/demo1</code>   表示的范围更大</p>
+</li>
+</ul>
+</li>
+<li><p>获取协议及版本 ： HTTP/1.1</p>
+<ul>
+<li>String getProtocol() </li>
+</ul>
+</li>
+<li><p>获取客户机的 IP 地址 ：</p>
+<ul>
+<li>String getRemoteAddr()</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>获取请求头数据</p>
+<ul>
+<li>方法<ul>
+<li>(<em>) *</em>String getHeader(String name)** : 通过请求头的名称获取请求头的值</li>
+<li>Enumeration<string>  getHeaderNames() : 获取所有的请求头的名称</string></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>获取请求体数据</p>
+<ul>
+<li>请求体 ：只有 POST请求方式，才有请求体，在请求体中封装了post请求的请求参数</li>
+<li>步骤：<ol>
+<li>获取流对象<ul>
+<li>BufferedReader getReader() : 获取字节输入流，只能操作字符数据</li>
+<li>ServletInputStream getInputStream() : 获取字节输入流，可以操作所有类型数据<ul>
+<li>在文件上传知识点后</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>再从流对象中拿数据 </li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>其他功能 :</p>
+<ol>
+<li><p>获取请求参数 通用方式</p>
+<ol>
+<li>String getParameter(String name) : 根据参数名称获取参数值    username=zs&amp;password=123</li>
+<li>String[] getParameterValues(String name) : 根据参数名称获取参数值    habby=xx&amp;habby=game</li>
+<li>Enumeration<string> getParameterNames() : 获取所有请求参数的名称</string></li>
+<li>Map&lt;String,String[]&gt; getParameterMap() : 获取所有参数的map集合</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code>* 中文乱码问题：
+  * get方式 ： Tomcat 8 以后已经解决
+  * post 方式 ：在获取请求参数前，设置编码方式 ：`req.setCharacterEncoding(&quot;utf-8&quot;);`</code></pre><ol start="2">
+<li><p>请求转发 ：一种在服务器内部的资源跳转方式</p>
+<ol>
+<li>步骤 ：<ol>
+<li>通过 request 对象获取请求转发器对象 ： RequestDispatcher getRequestDispatcher(String path)</li>
+<li>使用 RequestDispatcher 对象来进行转发 ：foward(ServletRequest request, ServletResponse response)</li>
+</ol>
+</li>
+<li>特点 ：<ol>
+<li>浏览器地址栏路径不会发生变化</li>
+<li>只能转发到当前服务器内部资源中</li>
+<li>转发只是<strong>一次</strong>请求</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>共享数据：</p>
+<ul>
+<li><strong>域对象</strong> ：一个有作用范围的对象，可以在范围内共享数据</li>
+<li>request域 ：代表<strong>一次请求</strong>的范围，一般用于请求转发的多个资源中共享数据</li>
+<li>方法 ：<ol>
+<li>void setAttribute(String name, Object obj) ：存储数据</li>
+<li>Object getAttribute(String name) : 通过建获取值</li>
+<li>void removeAttribute(String name) : 通过键移除键值对</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>获取 ServletContext</p>
+<ul>
+<li>ServletContext getServletContext()</li>
+</ul>
+</li>
+</ol>
+<h3 id="案例-：用户登录"><a href="#案例-：用户登录" class="headerlink" title="案例 ：用户登录"></a>案例 ：用户登录</h3><ul>
+<li><p>用户登录案例需求 ：</p>
+<ol>
+<li>编写 login.html 登录页面<br>username &amp; password 两个输入框</li>
+<li>使用 Druid 数据库连接池技术，操作 mysql ，day14 数据库中的 user 表</li>
+<li>使用 jdbcTemplate技术封装 JDBC</li>
+<li>登录成功跳转 SuccessServlet展示：登录成功！用户名，欢迎您</li>
+<li>登录失败跳转 FailServlet 展示 ：登录失败，用户名或密码错误！</li>
+</ol>
+</li>
+<li><p>分析</p>
+</li>
+<li><p>开发步骤</p>
+<ol>
+<li><p>创建项目，导入HTML，配置文件，jar包</p>
+</li>
+<li><p>创建数据库环境</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; create database day14;</span><br><span class="line">mysql&gt; use day14;</span><br><span class="line">mysql&gt; create table user(</span><br><span class="line">    -&gt; id int primary key auto_increment,</span><br><span class="line">    -&gt; username varchar(32) unique not null,</span><br><span class="line">    -&gt; password varchar(32) not null);</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+</li>
+</ul>
+<ol start="3">
+<li><p>创建包 <code>cn.itcast.domain</code>，创建类<code>User</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.domain;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 用户的实体类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> id;</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getId</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setId</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.username = username;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPassword</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPassword</span><span class="params">(String password)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.password = password;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"User&#123;"</span> +</span><br><span class="line">                <span class="string">"id="</span> + id +</span><br><span class="line">                <span class="string">", username='"</span> + username + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", password='"</span> + password + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="4">
+<li><p>创建包 <code>cn.itcast.util</code>，创建类<code>JDBCUtil</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.pool.DruidDataSourceFactory;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.sql.DataSource;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * JDBC 工具类 使用 Durid 连接池</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JDBCUtil</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> DataSource ds;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 1. 加载配置文件</span></span><br><span class="line">            Properties pro = <span class="keyword">new</span> Properties();</span><br><span class="line">            <span class="comment">// 使用 ClassLoader 加载配置文件，获取字节输入流</span></span><br><span class="line">            InputStream is = JDBCUtil.class.getClassLoader().getResourceAsStream(<span class="string">"druid.properties"</span>);</span><br><span class="line">            pro.load(is);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 2. 初始化连接池对象</span></span><br><span class="line">            ds = DruidDataSourceFactory.createDataSource(pro);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取连接池对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> DataSource <span class="title">getDataSource</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ds;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 获取连接 Connection 对象</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Connection <span class="title">getConnection</span><span class="params">()</span> <span class="keyword">throws</span> SQLException </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> ds.getConnection();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="5">
+<li><p>创建包 <code>cn.itcast.dao</code>，创建类<code>UserDao</code>，提供 <code>login()</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.Dao;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.itcast.domain.User;</span><br><span class="line"><span class="keyword">import</span> cn.itcast.util.JDBCUtil;</span><br><span class="line"><span class="keyword">import</span> org.springframework.dao.DataAccessException;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.BeanPropertyRowMapper;</span><br><span class="line"><span class="keyword">import</span> org.springframework.jdbc.core.JdbcTemplate;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 操作数据库中User表的类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDao</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 声明JDBCTemplate 对象共用</span></span><br><span class="line">    <span class="keyword">private</span> JdbcTemplate template = <span class="keyword">new</span> JdbcTemplate(JDBCUtil.getDataSource());</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 登录方法</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> loginUser 只有用户名和密码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> user 包含用户全部数据,没有查询到，返回 Null</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> User <span class="title">login</span><span class="params">(User loginUser)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 1.编写sql</span></span><br><span class="line">            String sql = <span class="string">"select * from user where username = ? and password = ?"</span>;</span><br><span class="line">            <span class="comment">// 2.编写query方法</span></span><br><span class="line">            User user = template.queryForObject(sql,</span><br><span class="line">                    <span class="keyword">new</span> BeanPropertyRowMapper&lt;User&gt;(User.class),</span><br><span class="line">                    loginUser.getUsername(),</span><br><span class="line">                    loginUser.getPassword());</span><br><span class="line">            <span class="keyword">return</span> user;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (DataAccessException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="6">
+<li><p>编写 cn.itcast.web.servlet.LoginServlet类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.web.servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.itcast.Dao.UserDao;</span><br><span class="line"><span class="keyword">import</span> cn.itcast.domain.User;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/loginServlet"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 1.设置编码</span></span><br><span class="line">        request.setCharacterEncoding(<span class="string">"utf-8"</span>);</span><br><span class="line">        <span class="comment">// 2.获取请求参数 ： 用户名密码</span></span><br><span class="line">        String username = request.getParameter(<span class="string">"username"</span>);</span><br><span class="line">        String password = request.getParameter(<span class="string">"password"</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 3. 封装 User 对象 ：将用户名密码封装</span></span><br><span class="line">        User loginUser = <span class="keyword">new</span> User();</span><br><span class="line">        loginUser.setUsername(username);</span><br><span class="line">        loginUser.setPassword(password);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 4.调用UserDao的 login 方法</span></span><br><span class="line">        UserDao dao = <span class="keyword">new</span> UserDao();</span><br><span class="line">        User user = dao.login(loginUser);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (user == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="comment">// 登录失败，转发到 FailServlet</span></span><br><span class="line">            request.getRequestDispatcher(<span class="string">"/failServlet"</span>).forward(request,response);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 登录成功</span></span><br><span class="line">            <span class="comment">// 存储</span></span><br><span class="line">            request.setAttribute(<span class="string">"user"</span>,user);</span><br><span class="line">            <span class="comment">// 转发到 SuccessServlet</span></span><br><span class="line">            request.getRequestDispatcher(<span class="string">"/successServlet"</span>).forward(request,response);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doPost(request,response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="7">
+<li><p>login.html 中 from 表单的action路径的写法 ：</p>
+<ul>
+<li>虚拟目录 + Servlet的资源路径</li>
+</ul>
+</li>
+<li><p>编写 cn.itcast.web.servlet.FailServlet类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.web.servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/failServlet"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FailServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 在页面上打印内容</span></span><br><span class="line">        <span class="comment">// 设置编码</span></span><br><span class="line">        response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">        <span class="comment">// 输出</span></span><br><span class="line">        response.getWriter().write(<span class="string">"登录失败，用户名或密码错误"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doPost(request,response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="9">
+<li><p>编写 cn.itcast.web.servlet.SuccessServlet类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.web.servlet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.itcast.domain.User;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/successServlet"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SuccessServlet</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="comment">// 获取request域中共享的user对象存储内容</span></span><br><span class="line">        User user = (User) request.getAttribute(<span class="string">"user"</span>);</span><br><span class="line">        <span class="keyword">if</span> (user != <span class="keyword">null</span>) &#123;</span><br><span class="line">            response.setContentType(<span class="string">"text/html;charset=utf-8"</span>);</span><br><span class="line">            response.getWriter().write(<span class="string">"登录成功，"</span> + user.getUsername() + <span class="string">"，欢迎您！"</span>);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.doPost(request,response);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="10">
+<li><p><strong>BeanUtils</strong>工具类，简化数据封装</p>
+<ul>
+<li><p>用于封装 JavaBean的</p>
+<ol>
+<li><p>JavaBean : 标准的Java类</p>
+<ol>
+<li>要求 ：<ol>
+<li>类必须被public修饰</li>
+<li>必须提供 空参 的构造器</li>
+<li>成员变量必须使用 private 修饰</li>
+<li>提供公共 setter 和 getter 方法</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>概念 ：</p>
+<p><strong>成员变量</strong> ：</p>
+<p><strong>属性</strong> ：setter 和 getter 方法截取后的产物</p>
+<p>​    例如 ： getUsername() –&gt; Username – &gt; username</p>
+</li>
+<li><p>方法 ：</p>
+<ol>
+<li><em>setProperty()</em> : 设置<strong>属性</strong>值</li>
+<li><em>getProperty() :</em></li>
+<li><em>populate(Object obj,Map map)</em> : 将 map 集合中的健值对信息，封装到对应的 JavaBean 对象中</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/01/Servlet/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -408,7 +1182,7 @@
 </ol>
 <h5 id="service-方法"><a href="#service-方法" class="headerlink" title="service() 方法"></a>service() 方法</h5><ol start="0">
 <li><p>判断请求方式 （get/post）</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String method = request.getMethod();</span><br><span class="line"><span class="keyword">if</span> (<span class="string">"GET"</span>.equals(method)) &#123;</span><br><span class="line">    ....</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"POST"</span>.equals(method)) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">String method = req.getMethod();</span><br><span class="line"><span class="keyword">if</span> (<span class="string">"GET"</span>.equals(method)) &#123;</span><br><span class="line">    ....</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">"POST"</span>.equals(method)) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
@@ -416,8 +1190,16 @@
 </ol>
 <ol>
 <li><p>获取数据</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">graph BT</span><br><span class="line"> B[GenericServlet `抽象类`] --&gt;|实现| A[Servlet `接口`]</span><br><span class="line"> C[HttpServlet `抽象类`] --&gt;|继承| B</span><br></pre></td></tr></table></figure>
+<pre class="mermaid">      graph BT
+    B[GenericServlet `抽象类`] -->|实现| A[Servlet `接口`]
+    C[HttpServlet `抽象类`] -->|继承| B</pre>
 
+
+
+
+</li>
+</ol>
+<p>   ​    </p>
 <ul>
 <li><p>GenericServlet<br>实现了 <code>Servlet</code> 接口，将 <code>Servelt</code>接口中的其它方法做了默认空实现，只将 <code>service()</code>方法作为抽象</p>
 <ul>
@@ -436,394 +1218,129 @@
 <li><p><strong>推荐使用继承HttpServlet</strong></p>
 </li>
 </ul>
+<h5 id="Servlet-的相关配置"><a href="#Servlet-的相关配置" class="headerlink" title="Servlet 的相关配置"></a>Servlet 的相关配置</h5><pre><code>1. **urlpartten** : Servlet 访问路径
+* 一个 `servlet`可以定义多个访问路径 `@WebServlet({&quot;dd&quot;,&quot;dd4&quot;})`
+* 路径定义规则
+  * `/xxx`
+  * `/xxx/xxx` ， 目录结构
+    * `@WebServlet(&quot;/user/demo&quot;)`
+    * `@WebServlet(&quot;/user/*&quot;)` ： `*`代表通配符
+  * `*.do`
+    * `@WebServlet(&quot;*.do&quot;)` ,`*`代表通配符,`do`是随便定义的一个后缀名，随便都可以</code></pre><h4 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h4><ul>
+<li><p>概念 ： Hyper Text Transfer Protocol 超文本传输协议</p>
+<ul>
+<li><p>传输协议 ： 定义了，客户端和服务器端传输 ，文件形式</p>
+<pre class="mermaid">    graph LR
+    A((客户端)) -->|"请求-请求消息"| B[服务器端]
+    B -->|"响应-响应消息"| A</pre>
+
+
+
 </li>
-</ol>
-<h5 id="Servlet-的相关配置"><a href="#Servlet-的相关配置" class="headerlink" title="Servlet 的相关配置"></a>Servlet 的相关配置</h5><ol>
-<li><strong>urlpartten</strong> : Servlet 访问路径<ul>
-<li>一个 <code>servlet</code>可以定义多个访问路径 <code>@WebServlet({&quot;dd&quot;,&quot;dd4&quot;})</code></li>
-<li>路径定义规则</li>
-<li>/xxx</li>
-<li>/xxx/xxx</li>
-<li>*.do</li>
 </ul>
 </li>
-<li></li>
+</ul>
+<ul>
+<li><p>HTTP协议的特点：</p>
+<ol>
+<li><p>基于 TCP/IP 的高级协议</p>
+</li>
+<li><p>默认端口号是：80</p>
+<p><a href="http://www.baidu.com:80" target="_blank" rel="noopener">http://www.baidu.com:80</a></p>
+</li>
+<li><p>基于请求/响应模型的：一次请求对应一次响应</p>
+</li>
+<li><p>无状态的：每次请求之间相互独立，不能交互数据</p>
+</li>
 </ol>
+</li>
+<li><p>历史版本：</p>
+<ul>
+<li>1.0 ：每一次请求响应都会建立新的连接</li>
+<li>1.1 ：复用连接</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>请求消息数据格式</p>
+<ol>
+<li><p>请求行<br>请求方式 请求url 请求协议/版本</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/login.html</span> HTTP/1.1</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>请求方式 ：<ul>
+<li>HTTP协议有7种请求方式，常用的有2种<ul>
+<li>GET : <ol>
+<li>请求参数在<strong>请求行</strong>中，在url后</li>
+<li>请求的 url 是由限制的</li>
+<li>不太安全</li>
+</ol>
+</li>
+<li>POST : <ol>
+<li>请求参数在<strong>请求体</strong>中</li>
+<li>请求的url长度是没有限制的</li>
+<li>相对安全</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>请求头</p>
+<blockquote>
+<p>请求头名称：请求头值</p>
+</blockquote>
+<ul>
+<li>常见的请求头 ：<ol>
+<li><strong>User-Agent</strong> ：浏览器告诉服务器，我访问你使用的浏览器的版本信息<ul>
+<li>可以在服务器端获取该头的浏览器信息，解决浏览器的兼容问题</li>
+</ul>
+</li>
+<li><strong>Referer</strong>: <a href="http://localhost:8080/ddd/login.html" target="_blank" rel="noopener">http://localhost:8080/ddd/login.html</a><ul>
+<li>告诉服务器，我（当前请求）从哪里来？<ul>
+<li>作用：<ol>
+<li>防盗链</li>
+<li>统计工作 </li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>请求空行</p>
+<blockquote>
+<p>空行 # 做分隔作用</p>
+<p>就是用于分隔post请求的请求头和请求体的</p>
+</blockquote>
+</li>
+<li><p>请求体 （正文）</p>
+<blockquote>
+<p>封装post请求消息的请求体的</p>
+<p>请求内容，表单提交的参数</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li><p>字符串格式</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">GET /login.html HTTP/1.1  # 请求行</span><br><span class="line"><span class="attribute">Host</span>: localhost:8080	# 请求头</span><br><span class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0</span><br><span class="line"><span class="attribute">Accept</span>: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line"><span class="attribute">Accept-Language</span>: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line"><span class="attribute">Accept-Encoding</span>: gzip, deflate</span><br><span class="line"><span class="attribute">Referer</span>: http://localhost:8080/ddd/login.html</span><br><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"><span class="attribute">Upgrade-Insecure-Requests</span>: 1</span><br><span class="line"><span class="attribute">If-Modified-Since</span>: Wed, 22 May 2019 01:32:12 GMT</span><br><span class="line"><span class="attribute">If-None-Match</span>: W/"265-1558488732253"</span><br><span class="line">		# 请求空行，就是空行</span><br><span class="line">username=zhangsan</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>响应消息数据格式</li>
+</ul>
 <p>1. </p>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/Hadoop/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zero's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/04/Hadoop/" itemprop="url">Hadoop</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-04T15:19:45+08:00">
-                2019-05-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、从Hadoop框架讨论大数据生态"><a href="#一、从Hadoop框架讨论大数据生态" class="headerlink" title="一、从Hadoop框架讨论大数据生态"></a>一、从Hadoop框架讨论大数据生态</h3><h4 id="1-1-Hadoop是什么"><a href="#1-1-Hadoop是什么" class="headerlink" title="1.1 Hadoop是什么"></a>1.1 Hadoop是什么</h4><ol>
-<li>Hadoop 是一个 Apache 基金会所开发的分布式系统基础架构</li>
-<li>主要解决，海量数据的存储（HDFS） 和 海量数据的分析计算 （MapReduce）问题</li>
-<li>广义上说，Hadoop 通常是指一个更广泛的概念 - Hadoop 生态圈</li>
-</ol>
-<h4 id="1-2-Hadoop-发展历史"><a href="#1-2-Hadoop-发展历史" class="headerlink" title="1.2 Hadoop 发展历史"></a>1.2 Hadoop 发展历史</h4><h4 id="1-3-Hadoop-三大发行版本"><a href="#1-3-Hadoop-三大发行版本" class="headerlink" title="1.3 Hadoop 三大发行版本"></a>1.3 Hadoop 三大发行版本</h4><p>Apache、Cloudera、Hortonworks</p>
-<h4 id="1-4-Hadoop-的优势"><a href="#1-4-Hadoop-的优势" class="headerlink" title="1.4 Hadoop 的优势"></a>1.4 Hadoop 的优势</h4><ol>
-<li><strong>高可靠性</strong><br>因为Hadoop假设计算元素和存储会出现故障，因为它维护多个工作数据副本，在出现故障时可以对失败的节点重新分布处理</li>
-<li><strong>高扩展性</strong><br>在集群分配任务数据，可方便的扩展数以千计的节点</li>
-<li><strong>高效性</strong><br>在 MapReduce 的思想下，Hadoop 是并行工作的，以加快任务处理速度</li>
-<li><strong>高容错性</strong><br>自动保存多份副本数据，并且能够自动将失败的任务重新分配</li>
-</ol>
-<h4 id="1-5-Hadoop-组成"><a href="#1-5-Hadoop-组成" class="headerlink" title="1.5 Hadoop 组成"></a>1.5 Hadoop 组成</h4><p><strong>概述</strong></p>
-<ol>
-<li><strong>Hadoop HDFS</strong> : 一个高可靠、高吞吐量的<strong>分布式文件系统</strong></li>
-<li><strong>Hadoop MapReduce</strong> : 一个分布式的<strong>离线并行计算</strong>框架</li>
-<li><strong>Hadoop YARN</strong> : 作业调度与集群资源管理的框架</li>
-<li><strong>Hadoop Common</strong> : 支持其他模块的工具模块</li>
-</ol>
-<h5 id="1-5-1-HDFS-架构概述"><a href="#1-5-1-HDFS-架构概述" class="headerlink" title="1.5.1  HDFS 架构概述"></a>1.5.1  HDFS 架构概述</h5><ol>
-<li><strong>NameNode (nn)</strong> : 存储文件的元数据，如文件名，文件目录结构，文件属性（生成时间、副本数、文件权限），以及每个文件的块列表和块所在的 DataNode 等</li>
-<li><strong>DataNode （dn）</strong>` : 在本地文件系统存储文件块数据，以及块数据的校验和</li>
-<li><code>SecondaryNameNode (2nn)</code> : 用来监控 HDFS 状态的辅助后台程序，每隔一段时间获取 HDFS 元数据的快照。</li>
-</ol>
-<h5 id="1-5-2-YARN-架构概述"><a href="#1-5-2-YARN-架构概述" class="headerlink" title="1.5.2 YARN 架构概述"></a>1.5.2 YARN 架构概述</h5><ol>
-<li><strong>ResourceManager (rm)</strong> :<br>处理客户端请求、启动/监控 ApplicationMaster、监控 NodeManager 、<strong>资源</strong>分配与调度</li>
-<li><strong>NodeManager (nm)</strong> :<br><em>单个节点上的资源管理</em>、处理来自 ResourceManager 的命令、处理来自 ApplicationMaster 的命令</li>
-<li><strong>ApplicationMaster</strong> :<br>数据切分、为应用程序申请资源，并分配给内部任务、任务监控与容错</li>
-<li><strong>Container :</strong><br>对任务运行环境的抽象，封装了 CPU 、内存等多位资源以及环境变量、启动命令等任务运行相关的信息</li>
-</ol>
-<h5 id="1-5-3-MapReduce-架构概述"><a href="#1-5-3-MapReduce-架构概述" class="headerlink" title="1.5.3 MapReduce 架构概述"></a>1.5.3 MapReduce 架构概述</h5><p>MapReduce 将计算过程分成两个阶段 ： Map 和 Reduce</p>
-<ol>
-<li>Map 阶段并行处理输入数据</li>
-<li>Reduce 阶段对 Map 结果进行汇总</li>
-</ol>
-<h4 id="1-6-大数据技术生态体系"><a href="#1-6-大数据技术生态体系" class="headerlink" title="1.6 大数据技术生态体系"></a>1.6 大数据技术生态体系</h4><h4 id="1-7-推荐系统框架图"><a href="#1-7-推荐系统框架图" class="headerlink" title="1.7 推荐系统框架图"></a>1.7 推荐系统框架图</h4><h3 id="二、Hadoop运行环境搭建"><a href="#二、Hadoop运行环境搭建" class="headerlink" title="二、Hadoop运行环境搭建"></a>二、Hadoop运行环境搭建</h3><h4 id="2-1-虚拟机网络模式设置为-NAT"><a href="#2-1-虚拟机网络模式设置为-NAT" class="headerlink" title="2.1 虚拟机网络模式设置为 NAT"></a>2.1 虚拟机网络模式设置为 NAT</h4><h4 id="2-1-克隆虚拟机"><a href="#2-1-克隆虚拟机" class="headerlink" title="2.1 克隆虚拟机"></a>2.1 克隆虚拟机</h4><h4 id="2-3-修改为静态-IP"><a href="#2-3-修改为静态-IP" class="headerlink" title="2.3 修改为静态 IP"></a>2.3 修改为静态 IP</h4><h4 id="2-4-修改主机名"><a href="#2-4-修改主机名" class="headerlink" title="2.4 修改主机名"></a>2.4 修改主机名</h4><h4 id="2-5-关闭防火墙"><a href="#2-5-关闭防火墙" class="headerlink" title="2.5 关闭防火墙"></a>2.5 关闭防火墙</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 修改 克隆来的机器的 eth0</span><br><span class="line">vi /etc/udev/rules.d/70-persistent-net.rules </span><br><span class="line">	删除eth0 升级eht1为eth0 </span><br><span class="line">	复制物理ip地址</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 修改 </span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0 </span><br><span class="line">	粘贴复制的物理ip地址</span><br><span class="line">	修改 IPADDR</span><br><span class="line">	</span><br><span class="line"><span class="meta">#</span> 查看主机名</span><br><span class="line">hostname</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 修改主机名</span><br><span class="line">vi /etc/sysconfig/network</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 配置 hosts 文件</span><br><span class="line">vi /etc/hosts</span><br><span class="line">	192.168.188.100 hadoop100</span><br><span class="line">	192.168.188.101 hadoop101</span><br><span class="line">	192.168.188.102 hadoop102</span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">------------------------------------------</span><br><span class="line">sync </span><br><span class="line">reboot</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 关闭防火墙</span><br><span class="line"><span class="meta">#</span> 查看防火墙</span><br><span class="line">chkconfig iptables --list</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-6-在-opt-目录下创建文件"><a href="#2-6-在-opt-目录下创建文件" class="headerlink" title="2.6 在 opt 目录下创建文件"></a>2.6 在 opt 目录下创建文件</h4><p>使用 <code>atguigu</code> 用户在 /opt 目录下创建 module  software 目录</p>
-<p>module ： 安装目录</p>
-<p>software  ：接收从window 传输过来的安装包</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 修改 atguigu 用户权限</span><br><span class="line">vi /etc/sudoers</span><br><span class="line"><span class="meta">#</span> atguigu 使用 sudo 创建 目录</span><br><span class="line">sudo mkdir module</span><br><span class="line"></span><br><span class="line">sudo mkdir module</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 修改用户所有者 和 用户组</span><br><span class="line">sudo chown atguigu:atguigu module/ software/</span><br></pre></td></tr></table></figure>
-
-<h4 id="2-7-安装-jdk"><a href="#2-7-安装-jdk" class="headerlink" title="2.7 安装 jdk"></a>2.7 安装 jdk</h4><ol>
-<li><p>卸载现有的 jdk</p>
-</li>
-<li><p>用 filezilla 工具将 jdk 、Hadoop-2.7.2.tar.gz 导入到 opt 目录下面的 software 文件夹下</p>
-</li>
-<li><p>在 linux 系统下的 opt 目录中查看软件包是否导入成功</p>
-</li>
-<li><p>解压 jdk 到 /opt/module 目录下</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-7u79-linux-x64.gz -C /opt/module/</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="5">
-<li><p>配置 jdk 环境变量</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line">Shift + G</span><br><span class="line">o</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>JAVA_HOME</span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.7.0_79</span><br><span class="line">exprot PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="6">
-<li><p>测试 jdk 安装成功</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java</span><br><span class="line">或</span><br><span class="line">rpm -qa |grep java</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h4 id="2-8-安装-Hadoop"><a href="#2-8-安装-Hadoop" class="headerlink" title="2.8 安装 Hadoop"></a>2.8 安装 Hadoop</h4><ol>
-<li><p>进入到 Hadoop 安装包路径下：</p>
-</li>
-<li><p>解压安装文件到 /opt/moudle 下面</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf hadoop-2.7.2.tar.gz -C /opt/module</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="3">
-<li><p>查看解压是否成功</p>
-</li>
-<li><p>配置 hadoop 中的 hadoop-env.sh</p>
-<ol>
-<li><p>Linux 系统中获取 jdk 的安装路径</p>
-</li>
-<li><p>修改 hadoop-env.sh 文件中 JAVA_HOME 路径</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/module/hadoop-2.7.2/etc/hadoop</span><br><span class="line"></span><br><span class="line">sudo vi hadoop-env.sh</span><br><span class="line"></span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.7.0_79</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-</li>
-</ol>
-<ol start="5">
-<li><p>将Hadoop添加到环境变量</p>
-<ol>
-<li><p>获取 Hadoop 安装路径</p>
-</li>
-<li><p>打开 /etc/profile 文件</p>
-</li>
-<li><p>保存后退出</p>
-</li>
-<li><p>让修改后的文件生效</p>
-</li>
-<li><p>重启 （如果Hadoop命令不能用再重启）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>#HADOOP_HOME</span><br><span class="line">export HADOOP_HOME=/opt/module/hadoop-2.7.2</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/bin</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/sbin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-</li>
-</ol>
-<h3 id="三、Hadoop运行模式"><a href="#三、Hadoop运行模式" class="headerlink" title="三、Hadoop运行模式"></a>三、Hadoop运行模式</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><ol>
-<li>官方网址</li>
-<li>Hadoop 运行模式<ol>
-<li>本地模式（默认模式）：不需要启动单独进程，直接可以运行，测试和开发时使用</li>
-<li>伪分布式模式 ：等同于完全分布式，只有一个节点</li>
-<li>完全分布式模式： 多个节点一起运行</li>
-</ol>
-</li>
-</ol>
-<h4 id="3-1-本地文件运行-Hadoop-案例"><a href="#3-1-本地文件运行-Hadoop-案例" class="headerlink" title="3.1 本地文件运行 Hadoop 案例"></a>3.1 本地文件运行 Hadoop 案例</h4><h5 id="3-1-1-官方-grep-案例"><a href="#3-1-1-官方-grep-案例" class="headerlink" title="3.1.1 官方 grep 案例"></a>3.1.1 官方 grep 案例</h5><ol>
-<li><p>创建在 hadoop-2.7.2 文件下面 创建一个 input 文件夹</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir input</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将 hadoop 的 xml 配置文件复制到input</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp etc/hadoop/*.xml input/</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="3">
-<li><p>执行share目录下的mapreduce 程序</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar grep input output 'dfs[a-z]+'</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看数据结果</p>
-</li>
-</ol>
-<h5 id="3-1-2-官方-wordcount-案例"><a href="#3-1-2-官方-wordcount-案例" class="headerlink" title="3.1.2 官方 wordcount 案例"></a>3.1.2 官方 wordcount 案例</h5><ol>
-<li><p>创建在 hadoop-2.7.2 文件下面创建一个wcinput 文件夹</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir wcinput</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="2">
-<li><p>在 wcinput 文件下创建一个 wc.input 文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 随便一个文本</span><br><span class="line">touch wc.input</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="3">
-<li><p>编辑 wc.input 文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi wc.input</span><br><span class="line"><span class="meta">#</span> 随便写点东西</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="4">
-<li><p>回到 hadoop 目录 /opt/module/hadoop-2.7.2</p>
-</li>
-<li><p>执行程序</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount wcinput wcoutput</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="6">
-<li>查看结果</li>
-</ol>
-<h4 id="3-2-伪分布式运行-Hadoop-案例"><a href="#3-2-伪分布式运行-Hadoop-案例" class="headerlink" title="3.2 伪分布式运行 Hadoop 案例"></a>3.2 伪分布式运行 Hadoop 案例</h4><h5 id="3-2-1-HDFS-上运行-MapReduce-程序"><a href="#3-2-1-HDFS-上运行-MapReduce-程序" class="headerlink" title="3.2.1 HDFS 上运行 MapReduce 程序"></a>3.2.1 HDFS 上运行 MapReduce 程序</h5><ol>
-<li><h6 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h6><ol>
-<li>准备一台客户机</li>
-<li>安装JDK</li>
-<li>配置环境变量</li>
-<li>安装Hadoop</li>
-<li>配置环境变量</li>
-<li>配置集群</li>
-<li>启动、测试集群增、删、查</li>
-<li>在 HDFS上 执行 wordcount 案例</li>
-</ol>
-</li>
-<li><h6 id="执行步骤"><a href="#执行步骤" class="headerlink" title="执行步骤"></a>执行步骤</h6><ol>
-<li><p>配置集群<br>a. 配置 ： hadoop-env.sh</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Linux 系统获取 jdk 的安装路径</span><br><span class="line">      </span><br><span class="line">修改 JAVA_HOME 路径</span><br></pre></td></tr></table></figure>
-
-<p>​    </p>
-<p>b. 配置 ： core-site.xml</p>
-</li>
-</ol>
-</li>
-</ol>
-<pre><code><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定 HDFS 中 NameNode 的地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://hadoop101:8020<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定Hadoop运行时产生文件的存储目录 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/module/hadoop-2.7.2/data/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-c. 配置 :     hdfs-site.xml
-
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定 HDFS 副本的数量 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure></code></pre><ol start="2">
-<li><p>启动集群</p>
-<p>a. 格式化 namenode (第一次启动时格式化，以后就不要总格式化)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs namenode -format</span><br></pre></td></tr></table></figure>
-
-<p>b. 启动 namenode</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop-daemon.sh start namenode</span><br></pre></td></tr></table></figure>
-
-<p>c. 启动 datanode</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hadoop-deamon.sh start datanode</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看java进程</span></span><br><span class="line">jps</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看集群<br>a. 查看是否启动成功</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jps</span><br></pre></td></tr></table></figure>
-
-<p>b. 查看产生的 log 日志</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> logs 文件夹下</span></span><br><span class="line">.log 文件</span><br></pre></td></tr></table></figure>
-
-<p>c. web端查看 HDFS 文件系统</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.188.101:50070</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<ol start="4">
-<li><p>操作集群<br>a. 在 hdfs 文件夹系统上创建一个 input 文件夹</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">`hadoop fs` (等价) `bin/hdfs dfs`</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 创建 input 目录</span></span><br><span class="line">hadoop fs -mkdir -p /user/atguigu/input</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 递归列出目录</span></span><br><span class="line">[atguigu@hadoop101 logs]$ hadoop fs -ls -R /</span><br><span class="line">drwxr-xr-x   - atguigu supergroup          0 2019-05-12 13:19 /user</span><br><span class="line">drwxr-xr-x   - atguigu supergroup          0 2019-05-12 13:19 /user/atguigu</span><br><span class="line">drwxr-xr-x   - atguigu supergroup          0 2019-05-12 13:19 /user/atguigu/input</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令同上,递归列出目录</span></span><br><span class="line">hadoop fs -lsr</span><br></pre></td></tr></table></figure>
-
-<p>b. 将测试文件内容上传到 文件系统上</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -put wcinput/wc.input /user/atguigu/input</span><br></pre></td></tr></table></figure>
-
-<p>c. 查看上传的文件是否正确</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -lsr</span><br></pre></td></tr></table></figure>
-
-<p>d. 在 hdfs 上运行 mapreduce  程序</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /user/atguigu/input/ /user/atguigu/output</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看</span></span><br><span class="line">hadoop fs -cat /user/atguigu/output/p*</span><br></pre></td></tr></table></figure>
-
-<p>e. 查看输出结果</p>
-<p>f. 将测试文件内容下载到本地</p>
-<p>g. 删除输出结果</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -rmr /user/atguigu/output</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ol>
-<h5 id="3-2-2-YARN-上运行-MapReduce-程序"><a href="#3-2-2-YARN-上运行-MapReduce-程序" class="headerlink" title="3.2.2 YARN 上运行 MapReduce 程序"></a>3.2.2 YARN 上运行 MapReduce 程序</h5><h5 id="3-2-3-修改本地临时文件存储目录"><a href="#3-2-3-修改本地临时文件存储目录" class="headerlink" title="3.2.3 修改本地临时文件存储目录"></a>3.2.3 修改本地临时文件存储目录</h5><h5 id="3-2-4-Hadoop配置文件说明"><a href="#3-2-4-Hadoop配置文件说明" class="headerlink" title="3.2.4 Hadoop配置文件说明"></a>3.2.4 Hadoop配置文件说明</h5><h4 id="3-3-完全分布式部署-Hadoop"><a href="#3-3-完全分布式部署-Hadoop" class="headerlink" title="3.3 完全分布式部署 Hadoop"></a>3.3 完全分布式部署 Hadoop</h4><h3 id="四、Hadoop编译源码"><a href="#四、Hadoop编译源码" class="headerlink" title="四、Hadoop编译源码"></a>四、Hadoop编译源码</h3>
           
         
       
@@ -1104,6 +1621,509 @@ print(&apos;%.2f&apos; % 3.1415926)
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/04/Hadoop/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zero's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/05/04/Hadoop/" itemprop="url">Hadoop</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-04T15:19:45+08:00">
+                2019-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、从Hadoop框架讨论大数据生态"><a href="#一、从Hadoop框架讨论大数据生态" class="headerlink" title="一、从Hadoop框架讨论大数据生态"></a>一、从Hadoop框架讨论大数据生态</h3><h4 id="1-1-Hadoop是什么"><a href="#1-1-Hadoop是什么" class="headerlink" title="1.1 Hadoop是什么"></a>1.1 Hadoop是什么</h4><ol>
+<li>Hadoop 是一个 Apache 基金会所开发的分布式系统基础架构</li>
+<li>主要解决，海量数据的存储（HDFS） 和 海量数据的分析计算 （MapReduce）问题</li>
+<li>广义上说，Hadoop 通常是指一个更广泛的概念 - Hadoop 生态圈</li>
+</ol>
+<h4 id="1-2-Hadoop-发展历史"><a href="#1-2-Hadoop-发展历史" class="headerlink" title="1.2 Hadoop 发展历史"></a>1.2 Hadoop 发展历史</h4><h4 id="1-3-Hadoop-三大发行版本"><a href="#1-3-Hadoop-三大发行版本" class="headerlink" title="1.3 Hadoop 三大发行版本"></a>1.3 Hadoop 三大发行版本</h4><p>Apache、Cloudera、Hortonworks</p>
+<h4 id="1-4-Hadoop-的优势"><a href="#1-4-Hadoop-的优势" class="headerlink" title="1.4 Hadoop 的优势"></a>1.4 Hadoop 的优势</h4><ol>
+<li><strong>高可靠性</strong><br>因为Hadoop假设计算元素和存储会出现故障，因为它维护多个工作数据副本，在出现故障时可以对失败的节点重新分布处理</li>
+<li><strong>高扩展性</strong><br>在集群分配任务数据，可方便的扩展数以千计的节点</li>
+<li><strong>高效性</strong><br>在 MapReduce 的思想下，Hadoop 是并行工作的，以加快任务处理速度</li>
+<li><strong>高容错性</strong><br>自动保存多份副本数据，并且能够自动将失败的任务重新分配</li>
+</ol>
+<h4 id="1-5-Hadoop-组成"><a href="#1-5-Hadoop-组成" class="headerlink" title="1.5 Hadoop 组成"></a>1.5 Hadoop 组成</h4><p><strong>概述</strong></p>
+<ol>
+<li><strong>Hadoop HDFS</strong> : 一个高可靠、高吞吐量的<strong>分布式文件系统</strong></li>
+<li><strong>Hadoop MapReduce</strong> : 一个分布式的<strong>离线并行计算</strong>框架</li>
+<li><strong>Hadoop YARN</strong> : 作业调度与集群资源管理的框架</li>
+<li><strong>Hadoop Common</strong> : 支持其他模块的工具模块</li>
+</ol>
+<h5 id="1-5-1-HDFS-架构概述"><a href="#1-5-1-HDFS-架构概述" class="headerlink" title="1.5.1  HDFS 架构概述"></a>1.5.1  HDFS 架构概述</h5><ol>
+<li><strong>NameNode (nn)</strong> : 存储文件的元数据，如文件名，文件目录结构，文件属性（生成时间、副本数、文件权限），以及每个文件的块列表和块所在的 DataNode 等</li>
+<li><strong>DataNode （dn）</strong>` : 在本地文件系统存储文件块数据，以及块数据的校验和</li>
+<li><code>SecondaryNameNode (2nn)</code> : 用来监控 HDFS 状态的辅助后台程序，每隔一段时间获取 HDFS 元数据的快照。</li>
+</ol>
+<h5 id="1-5-2-YARN-架构概述"><a href="#1-5-2-YARN-架构概述" class="headerlink" title="1.5.2 YARN 架构概述"></a>1.5.2 YARN 架构概述</h5><ol>
+<li><strong>ResourceManager (rm)</strong> :<br>处理客户端请求、启动/监控 ApplicationMaster、监控 NodeManager 、<strong>资源</strong>分配与调度</li>
+<li><strong>NodeManager (nm)</strong> :<br><em>单个节点上的资源管理</em>、处理来自 ResourceManager 的命令、处理来自 ApplicationMaster 的命令</li>
+<li><strong>ApplicationMaster</strong> :<br>数据切分、为应用程序申请资源，并分配给内部任务、任务监控与容错</li>
+<li><strong>Container :</strong><br>对任务运行环境的抽象，封装了 CPU 、内存等多位资源以及环境变量、启动命令等任务运行相关的信息</li>
+</ol>
+<h5 id="1-5-3-MapReduce-架构概述"><a href="#1-5-3-MapReduce-架构概述" class="headerlink" title="1.5.3 MapReduce 架构概述"></a>1.5.3 MapReduce 架构概述</h5><p>MapReduce 将计算过程分成两个阶段 ： Map 和 Reduce</p>
+<ol>
+<li>Map 阶段并行处理输入数据</li>
+<li>Reduce 阶段对 Map 结果进行汇总</li>
+</ol>
+<h4 id="1-6-大数据技术生态体系"><a href="#1-6-大数据技术生态体系" class="headerlink" title="1.6 大数据技术生态体系"></a>1.6 大数据技术生态体系</h4><h4 id="1-7-推荐系统框架图"><a href="#1-7-推荐系统框架图" class="headerlink" title="1.7 推荐系统框架图"></a>1.7 推荐系统框架图</h4><h3 id="二、Hadoop运行环境搭建"><a href="#二、Hadoop运行环境搭建" class="headerlink" title="二、Hadoop运行环境搭建"></a>二、Hadoop运行环境搭建</h3><h4 id="2-1-虚拟机网络模式设置为-NAT"><a href="#2-1-虚拟机网络模式设置为-NAT" class="headerlink" title="2.1 虚拟机网络模式设置为 NAT"></a>2.1 虚拟机网络模式设置为 NAT</h4><h4 id="2-1-克隆虚拟机"><a href="#2-1-克隆虚拟机" class="headerlink" title="2.1 克隆虚拟机"></a>2.1 克隆虚拟机</h4><h4 id="2-3-修改为静态-IP"><a href="#2-3-修改为静态-IP" class="headerlink" title="2.3 修改为静态 IP"></a>2.3 修改为静态 IP</h4><h4 id="2-4-修改主机名"><a href="#2-4-修改主机名" class="headerlink" title="2.4 修改主机名"></a>2.4 修改主机名</h4><h4 id="2-5-关闭防火墙"><a href="#2-5-关闭防火墙" class="headerlink" title="2.5 关闭防火墙"></a>2.5 关闭防火墙</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 修改 克隆来的机器的 eth0</span></span><br><span class="line">vi /etc/udev/rules.d/70-persistent-net.rules </span><br><span class="line">	删除eth0 升级eht1为eth0 </span><br><span class="line">	复制物理ip地址</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改 </span></span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0 </span><br><span class="line">	粘贴复制的物理ip地址</span><br><span class="line">	修改 IPADDR</span><br><span class="line">	</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看主机名</span></span><br><span class="line">hostname</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改主机名</span></span><br><span class="line">vi /etc/sysconfig/network</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置 hosts 文件</span></span><br><span class="line">vi /etc/hosts</span><br><span class="line">	192.168.188.100 hadoop100</span><br><span class="line">	192.168.188.101 hadoop101</span><br><span class="line">	192.168.188.102 hadoop102</span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">------------------------------------------</span><br><span class="line">sync </span><br><span class="line">reboot</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 关闭防火墙</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看防火墙</span></span><br><span class="line">chkconfig iptables --list</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-6-在-opt-目录下创建文件"><a href="#2-6-在-opt-目录下创建文件" class="headerlink" title="2.6 在 opt 目录下创建文件"></a>2.6 在 opt 目录下创建文件</h4><p>使用 <code>atguigu</code> 用户在 /opt 目录下创建 module  software 目录</p>
+<p>module ： 安装目录</p>
+<p>software  ：接收从window 传输过来的安装包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 修改 atguigu 用户权限</span></span><br><span class="line">vi /etc/sudoers</span><br><span class="line"><span class="meta">#</span><span class="bash"> atguigu 使用 sudo 创建 目录</span></span><br><span class="line">sudo mkdir module</span><br><span class="line"></span><br><span class="line">sudo mkdir module</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改用户所有者 和 用户组</span></span><br><span class="line">sudo chown atguigu:atguigu module/ software/</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-7-安装-jdk"><a href="#2-7-安装-jdk" class="headerlink" title="2.7 安装 jdk"></a>2.7 安装 jdk</h4><ol>
+<li><p>卸载现有的 jdk</p>
+</li>
+<li><p>用 filezilla 工具将 jdk 、Hadoop-2.7.2.tar.gz 导入到 opt 目录下面的 software 文件夹下</p>
+</li>
+<li><p>在 linux 系统下的 opt 目录中查看软件包是否导入成功</p>
+</li>
+<li><p>解压 jdk 到 /opt/module 目录下</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf jdk-7u79-linux-x64.gz -C /opt/module/</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="5">
+<li><p>配置 jdk 环境变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line">Shift + G</span><br><span class="line">o</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">JAVA_HOME</span></span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.7.0_79</span><br><span class="line">exprot PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="6">
+<li><p>测试 jdk 安装成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java</span><br><span class="line">或</span><br><span class="line">rpm -qa |grep java</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h4 id="2-8-安装-Hadoop"><a href="#2-8-安装-Hadoop" class="headerlink" title="2.8 安装 Hadoop"></a>2.8 安装 Hadoop</h4><ol>
+<li><p>进入到 Hadoop 安装包路径下：</p>
+</li>
+<li><p>解压安装文件到 /opt/moudle 下面</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf hadoop-2.7.2.tar.gz -C /opt/module</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>查看解压是否成功</p>
+</li>
+<li><p>配置 hadoop 中的 hadoop-env.sh</p>
+<ol>
+<li><p>Linux 系统中获取 jdk 的安装路径</p>
+</li>
+<li><p>修改 hadoop-env.sh 文件中 JAVA_HOME 路径</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd /opt/module/hadoop-2.7.2/etc/hadoop</span><br><span class="line"></span><br><span class="line">sudo vi hadoop-env.sh</span><br><span class="line"></span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.7.0_79</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+</li>
+</ol>
+<ol start="5">
+<li><p>将Hadoop添加到环境变量</p>
+<ol>
+<li><p>获取 Hadoop 安装路径</p>
+</li>
+<li><p>打开 /etc/profile 文件</p>
+</li>
+<li><p>保存后退出</p>
+</li>
+<li><p>让修改后的文件生效</p>
+</li>
+<li><p>重启 （如果Hadoop命令不能用再重启）</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#HADOOP_HOME</span></span></span><br><span class="line">export HADOOP_HOME=/opt/module/hadoop-2.7.2</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/bin</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/sbin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="三、Hadoop运行模式"><a href="#三、Hadoop运行模式" class="headerlink" title="三、Hadoop运行模式"></a>三、Hadoop运行模式</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><ol>
+<li>官方网址</li>
+<li>Hadoop 运行模式<ol>
+<li>本地模式（默认模式）：不需要启动单独进程，直接可以运行，测试和开发时使用</li>
+<li>伪分布式模式 ：等同于完全分布式，只有一个节点</li>
+<li>完全分布式模式： 多个节点一起运行</li>
+</ol>
+</li>
+</ol>
+<h4 id="3-1-本地文件运行-Hadoop-案例"><a href="#3-1-本地文件运行-Hadoop-案例" class="headerlink" title="3.1 本地文件运行 Hadoop 案例"></a>3.1 本地文件运行 Hadoop 案例</h4><h5 id="3-1-1-官方-grep-案例"><a href="#3-1-1-官方-grep-案例" class="headerlink" title="3.1.1 官方 grep 案例"></a>3.1.1 官方 grep 案例</h5><ol>
+<li><p>创建在 hadoop-2.7.2 文件下面 创建一个 input 文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir input</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将 hadoop 的 xml 配置文件复制到input</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp etc/hadoop/*.xml input/</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>执行share目录下的mapreduce 程序</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar grep input output 'dfs[a-z]+'</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看数据结果</p>
+</li>
+</ol>
+<h5 id="3-1-2-官方-wordcount-案例"><a href="#3-1-2-官方-wordcount-案例" class="headerlink" title="3.1.2 官方 wordcount 案例"></a>3.1.2 官方 wordcount 案例</h5><ol>
+<li><p>创建在 hadoop-2.7.2 文件下面创建一个wcinput 文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir wcinput</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="2">
+<li><p>在 wcinput 文件下创建一个 wc.input 文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 随便一个文本</span></span><br><span class="line">touch wc.input</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="3">
+<li><p>编辑 wc.input 文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi wc.input</span><br><span class="line"><span class="meta">#</span><span class="bash"> 随便写点东西</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="4">
+<li><p>回到 hadoop 目录 /opt/module/hadoop-2.7.2</p>
+</li>
+<li><p>执行程序</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount wcinput wcoutput</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="6">
+<li>查看结果</li>
+</ol>
+<h4 id="3-2-伪分布式运行-Hadoop-案例"><a href="#3-2-伪分布式运行-Hadoop-案例" class="headerlink" title="3.2 伪分布式运行 Hadoop 案例"></a>3.2 伪分布式运行 Hadoop 案例</h4><h5 id="3-2-1-HDFS-上运行-MapReduce-程序"><a href="#3-2-1-HDFS-上运行-MapReduce-程序" class="headerlink" title="3.2.1 HDFS 上运行 MapReduce 程序"></a>3.2.1 HDFS 上运行 MapReduce 程序</h5><ol>
+<li><h6 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h6><ol>
+<li>准备一台客户机</li>
+<li>安装JDK</li>
+<li>配置环境变量</li>
+<li>安装Hadoop</li>
+<li>配置环境变量</li>
+<li>配置集群</li>
+<li>启动、测试集群增、删、查</li>
+<li>在 HDFS上 执行 wordcount 案例</li>
+</ol>
+</li>
+<li><h6 id="执行步骤"><a href="#执行步骤" class="headerlink" title="执行步骤"></a>执行步骤</h6><ol>
+<li><p>配置集群<br>a. 配置 ： hadoop-env.sh</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Linux 系统获取 jdk 的安装路径</span><br><span class="line">      </span><br><span class="line">修改 JAVA_HOME 路径</span><br></pre></td></tr></table></figure>
+
+<p>​    </p>
+<p>b. 配置 ： core-site.xml</p>
+</li>
+</ol>
+</li>
+</ol>
+<pre><code><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定 HDFS 中 NameNode 的地址 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>fs.defaultFS<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">value</span>&gt;</span>hdfs://hadoop101:8020<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 指定Hadoop运行时产生文件的存储目录 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>hadoop.tmp.dir<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>/opt/module/hadoop-2.7.2/data/tmp<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+c. 配置 :     hdfs-site.xml
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 指定 HDFS 副本的数量 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">name</span>&gt;</span>dfs.replication<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">value</span>&gt;</span>1<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure></code></pre><ol start="2">
+<li><p>启动集群</p>
+<p>a. 格式化 namenode (第一次启动时格式化，以后就不要总格式化)</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs namenode -format</span><br></pre></td></tr></table></figure>
+
+<p>b. 启动 namenode</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop-daemon.sh start namenode</span><br></pre></td></tr></table></figure>
+
+<p>c. 启动 datanode</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hadoop-deamon.sh start datanode</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看java进程</span></span><br><span class="line">jps</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看集群<br>a. 查看是否启动成功</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jps</span><br></pre></td></tr></table></figure>
+
+<p>b. 查看产生的 log 日志</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> logs 文件夹下</span></span><br><span class="line">.log 文件</span><br></pre></td></tr></table></figure>
+
+<p>c. web端查看 HDFS 文件系统</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">192.168.188.101:50070</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<ol start="4">
+<li><p>操作集群<br>a. 在 hdfs 文件夹系统上创建一个 input 文件夹</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">`hadoop fs` (等价) `bin/hdfs dfs`</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 创建 input 目录</span></span><br><span class="line">hadoop fs -mkdir -p /user/atguigu/input</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 递归列出目录</span></span><br><span class="line">[atguigu@hadoop101 logs]$ hadoop fs -ls -R /</span><br><span class="line">drwxr-xr-x   - atguigu supergroup          0 2019-05-12 13:19 /user</span><br><span class="line">drwxr-xr-x   - atguigu supergroup          0 2019-05-12 13:19 /user/atguigu</span><br><span class="line">drwxr-xr-x   - atguigu supergroup          0 2019-05-12 13:19 /user/atguigu/input</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 命令同上,递归列出目录</span></span><br><span class="line">hadoop fs -lsr</span><br></pre></td></tr></table></figure>
+
+<p>b. 将测试文件内容上传到 文件系统上</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -put wcinput/wc.input /user/atguigu/input</span><br></pre></td></tr></table></figure>
+
+<p>c. 查看上传的文件是否正确</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -lsr</span><br></pre></td></tr></table></figure>
+
+<p>d. 在 hdfs 上运行 mapreduce  程序</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hadoop jar share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.2.jar wordcount /user/atguigu/input/ /user/atguigu/output</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看</span></span><br><span class="line">hadoop fs -cat /user/atguigu/output/p*</span><br></pre></td></tr></table></figure>
+
+<p>e. 查看输出结果</p>
+<p>f. 将测试文件内容下载到本地</p>
+<p>g. 删除输出结果</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -rmr /user/atguigu/output</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<h5 id="3-2-2-YARN-上运行-MapReduce-程序"><a href="#3-2-2-YARN-上运行-MapReduce-程序" class="headerlink" title="3.2.2 YARN 上运行 MapReduce 程序"></a>3.2.2 YARN 上运行 MapReduce 程序</h5><h5 id="3-2-3-修改本地临时文件存储目录"><a href="#3-2-3-修改本地临时文件存储目录" class="headerlink" title="3.2.3 修改本地临时文件存储目录"></a>3.2.3 修改本地临时文件存储目录</h5><h5 id="3-2-4-Hadoop配置文件说明"><a href="#3-2-4-Hadoop配置文件说明" class="headerlink" title="3.2.4 Hadoop配置文件说明"></a>3.2.4 Hadoop配置文件说明</h5><h4 id="3-3-完全分布式部署-Hadoop"><a href="#3-3-完全分布式部署-Hadoop" class="headerlink" title="3.3 完全分布式部署 Hadoop"></a>3.3 完全分布式部署 Hadoop</h4><h3 id="四、Hadoop编译源码"><a href="#四、Hadoop编译源码" class="headerlink" title="四、Hadoop编译源码"></a>四、Hadoop编译源码</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/17/ubuntu问题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zero">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zero's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/17/ubuntu问题/" itemprop="url">ubuntu 问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-17T21:59:07+08:00">
+                2019-01-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="ubuntu-依赖问题"><a href="#ubuntu-依赖问题" class="headerlink" title="ubuntu 依赖问题"></a>ubuntu 依赖问题</h5><pre><code>sudo apt-get update # 更新
+sudo apt-get -f install # 解决依赖问题
+sudo dpkg -i xxx.deb # 重新安装</code></pre><h5 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h5><pre><code>先找到软件的名称：whereis,which,find,grep 都可以
+可以直接使用 dpkg 命令进行卸载，这叫做谁污染谁治理；
+dpkg -l |grep xxx
+# xxx 就是安装的软件名
+
+找到之后，使用下面的方法进行卸载
+sudo dpkg --purge xxxx
+rm -rf ~/.local/share/xxxx
+
+这样的话就彻底卸载了</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/17/Linux进阶（二）/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1176,12 +2196,12 @@ print(&apos;%.2f&apos; % 3.1415926)
         
           
             
-        <div id="aplayer-eLIWCOJd" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
+        <div id="aplayer-TZIqKniZ" class="aplayer aplayer-tag-marker" style="margin-bottom: 20px;">
             <pre class="aplayer-lrc-content"></pre>
         </div>
         <script>
           var ap = new APlayer({
-            element: document.getElementById("aplayer-eLIWCOJd"),
+            element: document.getElementById("aplayer-TZIqKniZ"),
             narrow: false,
             autoplay: true,
             showlrc: false,
@@ -1216,13 +2236,13 @@ print(&apos;%.2f&apos; % 3.1415926)
 
 <p>​    </p>
 <p>​    (3) 按文件大小，在 /home 目录下查找大于200m 的文件 (+n 大于 ，-n 小于， n 等于)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查找小于10 m 的文件</span></span><br><span class="line">find tlbu/ -size -10</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查找小于10 m 的文件</span><br><span class="line">find tlbu/ -size -10</span><br></pre></td></tr></table></figure>
 
-<h5 id="7-8-2-grep-在文件内搜索字符串匹配的行并输出"><a href="#7-8-2-grep-在文件内搜索字符串匹配的行并输出" class="headerlink" title="7.8.2 grep 在文件内搜索字符串匹配的行并输出"></a>7.8.2 grep 在文件内搜索字符串匹配的行并输出</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查找 ll.txt</span></span><br><span class="line">ls -l |grep ll.txt</span><br></pre></td></tr></table></figure>
+<h5 id="7-8-2-grep-在文件内搜索字符串匹配的行并输出"><a href="#7-8-2-grep-在文件内搜索字符串匹配的行并输出" class="headerlink" title="7.8.2 grep 在文件内搜索字符串匹配的行并输出"></a>7.8.2 grep 在文件内搜索字符串匹配的行并输出</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查找 ll.txt</span><br><span class="line">ls -l |grep ll.txt</span><br></pre></td></tr></table></figure>
 
-<h5 id="7-8-3-which-文件搜索命令"><a href="#7-8-3-which-文件搜索命令" class="headerlink" title="7.8.3 which 文件搜索命令"></a>7.8.3 <code>which</code> 文件搜索命令</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查找 ls 可执行文件存放在哪里</span></span><br><span class="line">which ls</span><br></pre></td></tr></table></figure>
+<h5 id="7-8-3-which-文件搜索命令"><a href="#7-8-3-which-文件搜索命令" class="headerlink" title="7.8.3 which 文件搜索命令"></a>7.8.3 <code>which</code> 文件搜索命令</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查找 ls 可执行文件存放在哪里</span><br><span class="line">which ls</span><br></pre></td></tr></table></figure>
 
-<h4 id="7-9-进程线程类"><a href="#7-9-进程线程类" class="headerlink" title="7.9 进程线程类"></a>7.9 进程线程类</h4><h5 id="7-9-1-ps查看系统中所有进程"><a href="#7-9-1-ps查看系统中所有进程" class="headerlink" title="7.9.1 ps查看系统中所有进程"></a>7.9.1 <code>ps</code>查看系统中所有进程</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看所有进程</span></span><br><span class="line">ps -aux</span><br><span class="line">grep -aux |grep 3121</span><br></pre></td></tr></table></figure>
+<h4 id="7-9-进程线程类"><a href="#7-9-进程线程类" class="headerlink" title="7.9 进程线程类"></a>7.9 进程线程类</h4><h5 id="7-9-1-ps查看系统中所有进程"><a href="#7-9-1-ps查看系统中所有进程" class="headerlink" title="7.9.1 ps查看系统中所有进程"></a>7.9.1 <code>ps</code>查看系统中所有进程</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 查看所有进程</span><br><span class="line">ps -aux</span><br><span class="line">grep -aux |grep 3121</span><br></pre></td></tr></table></figure>
 
 <h5 id="7-9-2-top查看系统健康状态"><a href="#7-9-2-top查看系统健康状态" class="headerlink" title="7.9.2 top查看系统健康状态"></a>7.9.2 <code>top</code>查看系统健康状态</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">top</span><br><span class="line">top -d 1 # 1秒刷新一次</span><br><span class="line">top -l 使top 不显示未激活的进程</span><br><span class="line">按 P 使用CPU 排序</span><br><span class="line">按 M 内存使用排序</span><br><span class="line">N pid排序</span><br></pre></td></tr></table></figure>
 
@@ -1235,7 +2255,7 @@ print(&apos;%.2f&apos; % 3.1415926)
 
 <h4 id="7-10-压缩和解压缩"><a href="#7-10-压缩和解压缩" class="headerlink" title="7.10 压缩和解压缩"></a>7.10 压缩和解压缩</h4><h5 id="7-10-1-gzip-gunzip压缩"><a href="#7-10-1-gzip-gunzip压缩" class="headerlink" title="7.10.1 gzip/gunzip压缩"></a>7.10.1 <code>gzip/gunzip</code>压缩</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gzip + 文件</span><br><span class="line">	功能描述：压缩文件，只能将文件压缩为 `*.gz` 文件</span><br><span class="line">	1. 只能压缩文件不能压缩目录，只能单个压缩</span><br><span class="line">	2. 不保留原来的文件</span><br><span class="line">gunzip + 文件 </span><br><span class="line">	功能：解压缩</span><br></pre></td></tr></table></figure>
 
-<h5 id="7-10-2-zip-unzip压缩"><a href="#7-10-2-zip-unzip压缩" class="headerlink" title="7.10.2 zip/unzip压缩"></a>7.10.2 <code>zip/unzip</code>压缩</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 使用 `zip` 同时压缩多个文件</span></span><br><span class="line">zip yijinjing ll.txt ss.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用 `unzip` 解压缩</span></span><br><span class="line">unzip yijinjing.zip</span><br></pre></td></tr></table></figure>
+<h5 id="7-10-2-zip-unzip压缩"><a href="#7-10-2-zip-unzip压缩" class="headerlink" title="7.10.2 zip/unzip压缩"></a>7.10.2 <code>zip/unzip</code>压缩</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 使用 `zip` 同时压缩多个文件</span><br><span class="line">zip yijinjing ll.txt ss.txt</span><br><span class="line"><span class="meta">#</span> 使用 `unzip` 解压缩</span><br><span class="line">unzip yijinjing.zip</span><br></pre></td></tr></table></figure>
 
 <h5 id="7-10-3-tar打包"><a href="#7-10-3-tar打包" class="headerlink" title="7.10.3 tar打包"></a>7.10.3 <code>tar</code>打包</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">tar 参数 + XXX.tar.gz + 将要打包的内容</span><br><span class="line">	参数：</span><br><span class="line">		-c 产生 .tar 打包文件</span><br><span class="line">		-v 显示详细信息</span><br><span class="line">		-f 指定压缩后的文件名</span><br><span class="line">		-z 打包同时压缩</span><br><span class="line">		-x 解包 .tar 文件</span><br><span class="line"></span><br><span class="line">压缩：tar -zcvf XXX.tar.gz n1.txt n2.txt</span><br><span class="line">解压：tar -zxvf XXX.tar.gz </span><br><span class="line">    # 通过 `-C` 指定解压目录</span><br><span class="line">    tar -zxvf khbd.tar.gz -C ./wlmiji/</span><br></pre></td></tr></table></figure>
 
@@ -1589,136 +2609,6 @@ print(&apos;%.2f&apos; % 3.1415926)
 
 <p><strong>制作本地yum源</strong></p>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/17/ubuntu问题/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zero">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="zero's blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/17/ubuntu问题/" itemprop="url">ubuntu 问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-01-17T21:59:07+08:00">
-                2019-01-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="ubuntu-依赖问题"><a href="#ubuntu-依赖问题" class="headerlink" title="ubuntu 依赖问题"></a>ubuntu 依赖问题</h5><pre><code>sudo apt-get update # 更新
-sudo apt-get -f install # 解决依赖问题
-sudo dpkg -i xxx.deb # 重新安装</code></pre><h5 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h5><pre><code>先找到软件的名称：whereis,which,find,grep 都可以
-可以直接使用 dpkg 命令进行卸载，这叫做谁污染谁治理；
-dpkg -l |grep xxx
-# xxx 就是安装的软件名
-
-找到之后，使用下面的方法进行卸载
-sudo dpkg --purge xxxx
-rm -rf ~/.local/share/xxxx
-
-这样的话就彻底卸载了</code></pre>
           
         
       
@@ -2264,7 +3154,7 @@ mount/umount 挂载/卸载</code></pre>
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -2286,7 +3176,7 @@ mount/umount 挂载/卸载</code></pre>
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -2352,6 +3242,13 @@ mount/umount 挂载/卸载</code></pre>
 
 
 
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
         
 

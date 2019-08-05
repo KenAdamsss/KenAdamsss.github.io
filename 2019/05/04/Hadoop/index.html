@@ -371,12 +371,12 @@
 <li>Map 阶段并行处理输入数据</li>
 <li>Reduce 阶段对 Map 结果进行汇总</li>
 </ol>
-<h4 id="1-6-大数据技术生态体系"><a href="#1-6-大数据技术生态体系" class="headerlink" title="1.6 大数据技术生态体系"></a>1.6 大数据技术生态体系</h4><h4 id="1-7-推荐系统框架图"><a href="#1-7-推荐系统框架图" class="headerlink" title="1.7 推荐系统框架图"></a>1.7 推荐系统框架图</h4><h3 id="二、Hadoop运行环境搭建"><a href="#二、Hadoop运行环境搭建" class="headerlink" title="二、Hadoop运行环境搭建"></a>二、Hadoop运行环境搭建</h3><h4 id="2-1-虚拟机网络模式设置为-NAT"><a href="#2-1-虚拟机网络模式设置为-NAT" class="headerlink" title="2.1 虚拟机网络模式设置为 NAT"></a>2.1 虚拟机网络模式设置为 NAT</h4><h4 id="2-1-克隆虚拟机"><a href="#2-1-克隆虚拟机" class="headerlink" title="2.1 克隆虚拟机"></a>2.1 克隆虚拟机</h4><h4 id="2-3-修改为静态-IP"><a href="#2-3-修改为静态-IP" class="headerlink" title="2.3 修改为静态 IP"></a>2.3 修改为静态 IP</h4><h4 id="2-4-修改主机名"><a href="#2-4-修改主机名" class="headerlink" title="2.4 修改主机名"></a>2.4 修改主机名</h4><h4 id="2-5-关闭防火墙"><a href="#2-5-关闭防火墙" class="headerlink" title="2.5 关闭防火墙"></a>2.5 关闭防火墙</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 修改 克隆来的机器的 eth0</span><br><span class="line">vi /etc/udev/rules.d/70-persistent-net.rules </span><br><span class="line">	删除eth0 升级eht1为eth0 </span><br><span class="line">	复制物理ip地址</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 修改 </span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0 </span><br><span class="line">	粘贴复制的物理ip地址</span><br><span class="line">	修改 IPADDR</span><br><span class="line">	</span><br><span class="line"><span class="meta">#</span> 查看主机名</span><br><span class="line">hostname</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 修改主机名</span><br><span class="line">vi /etc/sysconfig/network</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 配置 hosts 文件</span><br><span class="line">vi /etc/hosts</span><br><span class="line">	192.168.188.100 hadoop100</span><br><span class="line">	192.168.188.101 hadoop101</span><br><span class="line">	192.168.188.102 hadoop102</span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">------------------------------------------</span><br><span class="line">sync </span><br><span class="line">reboot</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 关闭防火墙</span><br><span class="line"><span class="meta">#</span> 查看防火墙</span><br><span class="line">chkconfig iptables --list</span><br></pre></td></tr></table></figure>
+<h4 id="1-6-大数据技术生态体系"><a href="#1-6-大数据技术生态体系" class="headerlink" title="1.6 大数据技术生态体系"></a>1.6 大数据技术生态体系</h4><h4 id="1-7-推荐系统框架图"><a href="#1-7-推荐系统框架图" class="headerlink" title="1.7 推荐系统框架图"></a>1.7 推荐系统框架图</h4><h3 id="二、Hadoop运行环境搭建"><a href="#二、Hadoop运行环境搭建" class="headerlink" title="二、Hadoop运行环境搭建"></a>二、Hadoop运行环境搭建</h3><h4 id="2-1-虚拟机网络模式设置为-NAT"><a href="#2-1-虚拟机网络模式设置为-NAT" class="headerlink" title="2.1 虚拟机网络模式设置为 NAT"></a>2.1 虚拟机网络模式设置为 NAT</h4><h4 id="2-1-克隆虚拟机"><a href="#2-1-克隆虚拟机" class="headerlink" title="2.1 克隆虚拟机"></a>2.1 克隆虚拟机</h4><h4 id="2-3-修改为静态-IP"><a href="#2-3-修改为静态-IP" class="headerlink" title="2.3 修改为静态 IP"></a>2.3 修改为静态 IP</h4><h4 id="2-4-修改主机名"><a href="#2-4-修改主机名" class="headerlink" title="2.4 修改主机名"></a>2.4 修改主机名</h4><h4 id="2-5-关闭防火墙"><a href="#2-5-关闭防火墙" class="headerlink" title="2.5 关闭防火墙"></a>2.5 关闭防火墙</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 修改 克隆来的机器的 eth0</span></span><br><span class="line">vi /etc/udev/rules.d/70-persistent-net.rules </span><br><span class="line">	删除eth0 升级eht1为eth0 </span><br><span class="line">	复制物理ip地址</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改 </span></span><br><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0 </span><br><span class="line">	粘贴复制的物理ip地址</span><br><span class="line">	修改 IPADDR</span><br><span class="line">	</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看主机名</span></span><br><span class="line">hostname</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改主机名</span></span><br><span class="line">vi /etc/sysconfig/network</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置 hosts 文件</span></span><br><span class="line">vi /etc/hosts</span><br><span class="line">	192.168.188.100 hadoop100</span><br><span class="line">	192.168.188.101 hadoop101</span><br><span class="line">	192.168.188.102 hadoop102</span><br><span class="line">	...</span><br><span class="line"></span><br><span class="line">------------------------------------------</span><br><span class="line">sync </span><br><span class="line">reboot</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 关闭防火墙</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看防火墙</span></span><br><span class="line">chkconfig iptables --list</span><br></pre></td></tr></table></figure>
 
 <h4 id="2-6-在-opt-目录下创建文件"><a href="#2-6-在-opt-目录下创建文件" class="headerlink" title="2.6 在 opt 目录下创建文件"></a>2.6 在 opt 目录下创建文件</h4><p>使用 <code>atguigu</code> 用户在 /opt 目录下创建 module  software 目录</p>
 <p>module ： 安装目录</p>
 <p>software  ：接收从window 传输过来的安装包</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 修改 atguigu 用户权限</span><br><span class="line">vi /etc/sudoers</span><br><span class="line"><span class="meta">#</span> atguigu 使用 sudo 创建 目录</span><br><span class="line">sudo mkdir module</span><br><span class="line"></span><br><span class="line">sudo mkdir module</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span> 修改用户所有者 和 用户组</span><br><span class="line">sudo chown atguigu:atguigu module/ software/</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 修改 atguigu 用户权限</span></span><br><span class="line">vi /etc/sudoers</span><br><span class="line"><span class="meta">#</span><span class="bash"> atguigu 使用 sudo 创建 目录</span></span><br><span class="line">sudo mkdir module</span><br><span class="line"></span><br><span class="line">sudo mkdir module</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 修改用户所有者 和 用户组</span></span><br><span class="line">sudo chown atguigu:atguigu module/ software/</span><br></pre></td></tr></table></figure>
 
 <h4 id="2-7-安装-jdk"><a href="#2-7-安装-jdk" class="headerlink" title="2.7 安装 jdk"></a>2.7 安装 jdk</h4><ol>
 <li><p>卸载现有的 jdk</p>
@@ -394,7 +394,7 @@
 </ol>
 <ol start="5">
 <li><p>配置 jdk 环境变量</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line">Shift + G</span><br><span class="line">o</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>JAVA_HOME</span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.7.0_79</span><br><span class="line">exprot PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line">Shift + G</span><br><span class="line">o</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash">JAVA_HOME</span></span><br><span class="line">export JAVA_HOME=/opt/module/jdk1.7.0_79</span><br><span class="line">exprot PATH=$PATH:$JAVA_HOME/bin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
 
 
 
@@ -446,7 +446,7 @@
 <li><p>让修改后的文件生效</p>
 </li>
 <li><p>重启 （如果Hadoop命令不能用再重启）</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span>#HADOOP_HOME</span><br><span class="line">export HADOOP_HOME=/opt/module/hadoop-2.7.2</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/bin</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/sbin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/profile</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#HADOOP_HOME</span></span></span><br><span class="line">export HADOOP_HOME=/opt/module/hadoop-2.7.2</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/bin</span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/sbin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
 
 
 
@@ -491,7 +491,7 @@
 </ol>
 <ol start="2">
 <li><p>在 wcinput 文件下创建一个 wc.input 文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 随便一个文本</span><br><span class="line">touch wc.input</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 随便一个文本</span></span><br><span class="line">touch wc.input</span><br></pre></td></tr></table></figure>
 
 
 
@@ -499,7 +499,7 @@
 </ol>
 <ol start="3">
 <li><p>编辑 wc.input 文件</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi wc.input</span><br><span class="line"><span class="meta">#</span> 随便写点东西</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vi wc.input</span><br><span class="line"><span class="meta">#</span><span class="bash"> 随便写点东西</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -620,8 +620,8 @@ c. 配置 :     hdfs-site.xml
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/05/04/廖雪峰python/" rel="next" title="廖雪峰 python">
-                <i class="fa fa-chevron-left"></i> 廖雪峰 python
+              <a href="/2019/01/17/ubuntu问题/" rel="next" title="ubuntu 问题">
+                <i class="fa fa-chevron-left"></i> ubuntu 问题
               </a>
             
           </div>
@@ -630,8 +630,8 @@ c. 配置 :     hdfs-site.xml
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/06/01/Servlet/" rel="prev" title="Servlet">
-                Servlet <i class="fa fa-chevron-right"></i>
+              <a href="/2019/05/04/廖雪峰python/" rel="prev" title="廖雪峰 python">
+                廖雪峰 python <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -709,7 +709,7 @@ c. 配置 :     hdfs-site.xml
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -731,7 +731,7 @@ c. 配置 :     hdfs-site.xml
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -813,6 +813,13 @@ c. 配置 :     hdfs-site.xml
 
 
 
+
+  <script src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"></script>
+  <script>
+    if (window.mermaid) {
+      mermaid.initialize({theme: 'forest'});
+    }
+  </script>
 
         
 
