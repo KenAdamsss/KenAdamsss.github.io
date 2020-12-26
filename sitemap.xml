@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2019/08/17/%E5%8F%8D%E5%B0%84/</loc>
+    
+    <lastmod>2019-08-18T15:32:22.551Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2019/08/17/Junit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</loc>
+    
+    <lastmod>2019-08-17T02:59:18.429Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/08/11/maven%E5%9F%BA%E7%A1%80/</loc>
     
-    <lastmod>2019-08-11T04:45:09.830Z</lastmod>
+    <lastmod>2019-08-11T04:47:21.242Z</lastmod>
     
   </url>
   
