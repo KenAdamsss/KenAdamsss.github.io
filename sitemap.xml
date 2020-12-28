@@ -137,14 +137,14 @@
 
   
   <url>
-    <loc>http://yoursite.com/tags/Junit/</loc>
+    <loc>http://yoursite.com/tags/Hadoop/</loc>
     <lastmod>2020-12-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://yoursite.com/tags/Hadoop/</loc>
+    <loc>http://yoursite.com/tags/Junit/</loc>
     <lastmod>2020-12-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

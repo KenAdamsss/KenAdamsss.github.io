@@ -1,56 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Junit单元测试</title>
-    <url>/2019/08/17/Junit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="Junit单元测试"><a href="#Junit单元测试" class="headerlink" title="Junit单元测试"></a>Junit单元测试</h3><h5 id="测试分类："><a href="#测试分类：" class="headerlink" title="测试分类："></a>测试分类：</h5><ol>
-<li><strong>黑盒测试</strong> ： 不需要写代码。给输入值，看程序是否能够输出期望的值。</li>
-<li><strong>白盒测试</strong> ： 需要写代码；关注程序具体的执行流程。</li>
-</ol>
-<a id="more"></a>
-
-<h4 id="Junit使用-：白盒测试"><a href="#Junit使用-：白盒测试" class="headerlink" title="Junit使用 ：白盒测试"></a>Junit使用 ：白盒测试</h4><h6 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h6><ol>
-<li><strong>定义一个测试类（测试用例）</strong><ul>
-<li>建议：<ul>
-<li><strong>测试类名</strong>：被测试的类名Test </li>
-<li><strong>包名</strong>：xxx.xxx.xx.test</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>定义测试方法：可以独立运行</strong><ul>
-<li>建议：<ul>
-<li>方法名：test测试的方法名</li>
-<li>返回值：<code>void</code></li>
-<li>参数列表：空参</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><strong>给方法加<code>@Test</code></strong></li>
-<li><strong>导入<code>Junit</code>依赖环境</strong></li>
-</ol>
-<h6 id="判定结果"><a href="#判定结果" class="headerlink" title="判定结果"></a>判定结果</h6><ul>
-<li>红色：失败</li>
-<li>黑色：成功</li>
-<li>一般我们会用断言来操作处理结果<ul>
-<li><code>Assert.assertEquals(期望结果,运算结果)</code></li>
-</ul>
-</li>
-</ul>
-<h5 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h5><ul>
-<li><p><code>@Before</code><br>修饰的方法会在<strong>测试方法之前</strong>被自动执行，一般用于加载资源</p>
-</li>
-<li><p><code>@After</code></p>
-<p>修饰的方法会在<strong>测试方法执行之后</strong>自动被执行，一般用于关闭资源</p>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Junit</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hadoop</title>
     <url>/2019/05/04/Hadoop/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="一、从Hadoop框架讨论大数据生态"><a href="#一、从Hadoop框架讨论大数据生态" class="headerlink" title="一、从Hadoop框架讨论大数据生态"></a>一、从Hadoop框架讨论大数据生态</h3><h4 id="1-1-Hadoop是什么"><a href="#1-1-Hadoop是什么" class="headerlink" title="1.1 Hadoop是什么"></a>1.1 Hadoop是什么</h4><ol>
@@ -293,6 +243,56 @@
       </categories>
       <tags>
         <tag>Hadoop</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Junit单元测试</title>
+    <url>/2019/08/17/Junit%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="Junit单元测试"><a href="#Junit单元测试" class="headerlink" title="Junit单元测试"></a>Junit单元测试</h3><h5 id="测试分类："><a href="#测试分类：" class="headerlink" title="测试分类："></a>测试分类：</h5><ol>
+<li><strong>黑盒测试</strong> ： 不需要写代码。给输入值，看程序是否能够输出期望的值。</li>
+<li><strong>白盒测试</strong> ： 需要写代码；关注程序具体的执行流程。</li>
+</ol>
+<a id="more"></a>
+
+<h4 id="Junit使用-：白盒测试"><a href="#Junit使用-：白盒测试" class="headerlink" title="Junit使用 ：白盒测试"></a>Junit使用 ：白盒测试</h4><h6 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h6><ol>
+<li><strong>定义一个测试类（测试用例）</strong><ul>
+<li>建议：<ul>
+<li><strong>测试类名</strong>：被测试的类名Test </li>
+<li><strong>包名</strong>：xxx.xxx.xx.test</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>定义测试方法：可以独立运行</strong><ul>
+<li>建议：<ul>
+<li>方法名：test测试的方法名</li>
+<li>返回值：<code>void</code></li>
+<li>参数列表：空参</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>给方法加<code>@Test</code></strong></li>
+<li><strong>导入<code>Junit</code>依赖环境</strong></li>
+</ol>
+<h6 id="判定结果"><a href="#判定结果" class="headerlink" title="判定结果"></a>判定结果</h6><ul>
+<li>红色：失败</li>
+<li>黑色：成功</li>
+<li>一般我们会用断言来操作处理结果<ul>
+<li><code>Assert.assertEquals(期望结果,运算结果)</code></li>
+</ul>
+</li>
+</ul>
+<h5 id="补充："><a href="#补充：" class="headerlink" title="补充："></a>补充：</h5><ul>
+<li><p><code>@Before</code><br>修饰的方法会在<strong>测试方法之前</strong>被自动执行，一般用于加载资源</p>
+</li>
+<li><p><code>@After</code></p>
+<p>修饰的方法会在<strong>测试方法执行之后</strong>自动被执行，一般用于关闭资源</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Junit</tag>
       </tags>
   </entry>
   <entry>
