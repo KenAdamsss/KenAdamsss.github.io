@@ -1159,209 +1159,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Servlet</title>
-    <url>/2019/06/01/Servlet/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h3><ul>
-<li>Servlet 3.0<ul>
-<li>好处：<ul>
-<li>支持注解配置，可以不需要 web.xml</li>
-</ul>
-</li>
-<li>步骤：<ol>
-<li>创建 JavaEE 项目，选择 Servlet 的版本 3.0 以上，可以不创建 web.xml</li>
-<li>定义一个类，实现Servlet 接口</li>
-<li>复写方法</li>
-<li>在类上使用 <code>@WebServlet</code>注解，进行配置<ul>
-<li><code>@WebServlet(&quot;资源路径&quot;)</code></li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<h5 id="IDEA-和-Tomcat-的相关配置"><a href="#IDEA-和-Tomcat-的相关配置" class="headerlink" title="IDEA 和 Tomcat 的相关配置"></a>IDEA 和 Tomcat 的相关配置</h5><ol>
-<li><p>IDEA 会为 每一个 tomcat 部署的项目单独建立一份配置文件</p>
-<ul>
-<li><p>查看控制台的log : Using CATALINA_BASE :</p>
-<p>“C:\User\Administracor.IntelliJidea2018.3\system\tomcat_demo1”</p>
-</li>
-</ul>
-</li>
-<li><p>工作空间目录 和 Tomcat 部署的web项目<br>2.1. Tomcat 真正访问的是 “Tomcat部署的web项目”，“Tomcat部署的web项目”对应着 “工作空间项目” “web 目录下的资源”</p>
-<p>2.2. src 代码变异后放到web项目下的 class 目录下</p>
-<p>2.3 WEB-INF 目录下的资源不能被浏览器直接访问</p>
-</li>
-<li><p>断点调试 ：使用 Debug 启动</p>
-</li>
-</ol>
-<h5 id="service-方法"><a href="#service-方法" class="headerlink" title="service() 方法"></a>service() 方法</h5><ol start="0">
-<li><p>判断请求方式 （get/post）</p>
-  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String method = req.getMethod();</span><br><span class="line"><span class="keyword">if</span> (<span class="string">&quot;GET&quot;</span>.equals(method)) &#123;</span><br><span class="line">    ....</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">&quot;POST&quot;</span>.equals(method)) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol>
-<li><p>获取数据</p>
-<pre class="mermaid">      graph BT
-    B[GenericServlet `抽象类`] -->|实现| A[Servlet `接口`]
-    C[HttpServlet `抽象类`] -->|继承| B</pre>
-
-
-
-
-</li>
-</ol>
-<p>   ​    </p>
-<ul>
-<li><p>GenericServlet<br>实现了 <code>Servlet</code> 接口，将 <code>Servelt</code>接口中的其它方法做了默认空实现，只将 <code>service()</code>方法作为抽象</p>
-<ul>
-<li>将来定义 Servlet 类是，可以继承 GerericServlet ，实现 service() 即可</li>
-</ul>
-</li>
-<li><p>HttpServlet</p>
-<ul>
-<li>对 HTTP 协议的一种封装，简化操作</li>
-</ul>
-<ol>
-<li>定义类继承 HttpServlet</li>
-<li>复写 <code>doGet()</code> 、<code>doPost()</code> 方法</li>
-</ol>
-</li>
-<li><p><strong>推荐使用继承HttpServlet</strong></p>
-</li>
-</ul>
-<h5 id="Servlet-的相关配置"><a href="#Servlet-的相关配置" class="headerlink" title="Servlet 的相关配置"></a>Servlet 的相关配置</h5><pre><code>  1. **urlpartten** : Servlet 访问路径
-  * 一个 `servlet`可以定义多个访问路径 `@WebServlet(&#123;&quot;dd&quot;,&quot;dd4&quot;&#125;)`
-  * 路径定义规则
-    * `/xxx`
-    * `/xxx/xxx` ， 目录结构
-      * `@WebServlet(&quot;/user/demo&quot;)`
-      * `@WebServlet(&quot;/user/*&quot;)` ： `*`代表通配符
-    * `*.do`
-      * `@WebServlet(&quot;*.do&quot;)` ,`*`代表通配符,`do`是随便定义的一个后缀名，随便都可以</code></pre>
-<h4 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h4><ul>
-<li><p>概念 ： Hyper Text Transfer Protocol 超文本传输协议</p>
-<ul>
-<li><p>传输协议 ： 定义了，客户端和服务器端传输 ，文件形式</p>
-<pre class="mermaid">    graph LR
-    A((客户端)) -->|"请求-请求消息"| B[服务器端]
-    B -->|"响应-响应消息"| A</pre>
-
-
-
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>HTTP协议的特点：</p>
-<ol>
-<li><p>基于 TCP/IP 的高级协议</p>
-</li>
-<li><p>默认端口号是：80</p>
-<p><a href="http://www.baidu.com/">http://www.baidu.com:80</a></p>
-</li>
-<li><p>基于请求/响应模型的：一次请求对应一次响应</p>
-</li>
-<li><p>无状态的：每次请求之间相互独立，不能交互数据</p>
-</li>
-</ol>
-</li>
-<li><p>历史版本：</p>
-<ul>
-<li>1.0 ：每一次请求响应都会建立新的连接</li>
-<li>1.1 ：复用连接</li>
-</ul>
-</li>
-<li><p>请求消息数据格式</p>
-<ol>
-<li><p>请求行<br>请求方式 请求url 请求协议/版本</p>
-<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/login.html</span> <span class="meta">HTTP/1.1</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>请求方式 ：<ul>
-<li>HTTP协议有7种请求方式，常用的有2种<ul>
-<li>GET : <ol>
-<li>请求参数在<strong>请求行</strong>中，在url后</li>
-<li>请求的 url 是由限制的</li>
-<li>不太安全</li>
-</ol>
-</li>
-<li>POST : <ol>
-<li>请求参数在<strong>请求体</strong>中</li>
-<li>请求的url长度是没有限制的</li>
-<li>相对安全</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>请求头</p>
-<blockquote>
-<p>请求头名称：请求头值</p>
-</blockquote>
-<ul>
-<li>常见的请求头 ：<ol>
-<li><strong>User-Agent</strong> ：浏览器告诉服务器，我访问你使用的浏览器的版本信息<ul>
-<li>可以在服务器端获取该头的浏览器信息，解决浏览器的兼容问题</li>
-</ul>
-</li>
-<li><strong>Referer</strong>: <a href="http://localhost:8080/ddd/login.html">http://localhost:8080/ddd/login.html</a><ul>
-<li>告诉服务器，我（当前请求）从哪里来？<ul>
-<li>作用：<ol>
-<li>防盗链</li>
-<li>统计工作 </li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-</li>
-</ul>
-</li>
-<li><p>请求空行</p>
-<blockquote>
-<p>空行 # 做分隔作用</p>
-<p>就是用于分隔post请求的请求头和请求体的</p>
-</blockquote>
-</li>
-<li><p>请求体 （正文）</p>
-<blockquote>
-<p>封装post请求消息的请求体的</p>
-<p>请求内容，表单提交的参数</p>
-</blockquote>
-</li>
-</ol>
-<ul>
-<li><p>字符串格式</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">GET /login.html HTTP/1.1  # 请求行</span><br><span class="line">Host: localhost:8080	# 请求头</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Referer: http://localhost:8080/ddd/login.html</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">If-Modified-Since: Wed, 22 May 2019 01:32:12 GMT</span><br><span class="line">If-None-Match: W/&quot;265-1558488732253&quot;</span><br><span class="line">		# 请求空行，就是空行</span><br><span class="line">username=zhangsan</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>响应消息数据格式</li>
-</ul>
-<p>1. </p>
-]]></content>
-      <categories>
-        <category>Java</category>
-        <category>Servlet</category>
-      </categories>
-      <tags>
-        <tag>Java</tag>
-        <tag>Servlet</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>linux基础</title>
     <url>/2019/01/09/linux%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul>
@@ -1592,6 +1389,230 @@ chown atguigu:atguigu yijinjing.txt</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>Servlet</title>
+    <url>/2019/06/01/Servlet/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="Servlet"><a href="#Servlet" class="headerlink" title="Servlet"></a>Servlet</h3><ul>
+<li>Servlet 3.0<ul>
+<li>好处：<ul>
+<li>支持注解配置，可以不需要 web.xml</li>
+</ul>
+</li>
+<li>步骤：<ol>
+<li>创建 JavaEE 项目，选择 Servlet 的版本 3.0 以上，可以不创建 web.xml</li>
+<li>定义一个类，实现Servlet 接口</li>
+<li>复写方法</li>
+<li>在类上使用 <code>@WebServlet</code>注解，进行配置<ul>
+<li><code>@WebServlet(&quot;资源路径&quot;)</code></li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="IDEA-和-Tomcat-的相关配置"><a href="#IDEA-和-Tomcat-的相关配置" class="headerlink" title="IDEA 和 Tomcat 的相关配置"></a>IDEA 和 Tomcat 的相关配置</h5><ol>
+<li><p>IDEA 会为 每一个 tomcat 部署的项目单独建立一份配置文件</p>
+<ul>
+<li><p>查看控制台的log : Using CATALINA_BASE :</p>
+<p>“C:\User\Administracor.IntelliJidea2018.3\system\tomcat_demo1”</p>
+</li>
+</ul>
+</li>
+<li><p>工作空间目录 和 Tomcat 部署的web项目<br>2.1. Tomcat 真正访问的是 “Tomcat部署的web项目”，“Tomcat部署的web项目”对应着 “工作空间项目” “web 目录下的资源”</p>
+<p>2.2. src 代码变异后放到web项目下的 class 目录下</p>
+<p>2.3 WEB-INF 目录下的资源不能被浏览器直接访问</p>
+</li>
+<li><p>断点调试 ：使用 Debug 启动</p>
+</li>
+</ol>
+<h5 id="service-方法"><a href="#service-方法" class="headerlink" title="service() 方法"></a>service() 方法</h5><ol start="0">
+<li><p>判断请求方式 （get/post）</p>
+  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String method = req.getMethod();</span><br><span class="line"><span class="keyword">if</span> (<span class="string">&quot;GET&quot;</span>.equals(method)) &#123;</span><br><span class="line">    ....</span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">&quot;POST&quot;</span>.equals(method)) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol>
+<li><p>获取数据</p>
+<pre class="mermaid">      graph BT
+    B[GenericServlet `抽象类`] -->|实现| A[Servlet `接口`]
+    C[HttpServlet `抽象类`] -->|继承| B</pre>
+
+
+
+
+</li>
+</ol>
+<p>   ​    </p>
+<ul>
+<li><p>GenericServlet<br>实现了 <code>Servlet</code> 接口，将 <code>Servelt</code>接口中的其它方法做了默认空实现，只将 <code>service()</code>方法作为抽象</p>
+<ul>
+<li>将来定义 Servlet 类是，可以继承 GerericServlet ，实现 service() 即可</li>
+</ul>
+</li>
+<li><p>HttpServlet</p>
+<ul>
+<li>对 HTTP 协议的一种封装，简化操作</li>
+</ul>
+<ol>
+<li>定义类继承 HttpServlet</li>
+<li>复写 <code>doGet()</code> 、<code>doPost()</code> 方法</li>
+</ol>
+</li>
+<li><p><strong>推荐使用继承HttpServlet</strong></p>
+</li>
+</ul>
+<h5 id="Servlet-的相关配置"><a href="#Servlet-的相关配置" class="headerlink" title="Servlet 的相关配置"></a>Servlet 的相关配置</h5><pre><code>  1. **urlpartten** : Servlet 访问路径
+  * 一个 `servlet`可以定义多个访问路径 `@WebServlet(&#123;&quot;dd&quot;,&quot;dd4&quot;&#125;)`
+  * 路径定义规则
+    * `/xxx`
+    * `/xxx/xxx` ， 目录结构
+      * `@WebServlet(&quot;/user/demo&quot;)`
+      * `@WebServlet(&quot;/user/*&quot;)` ： `*`代表通配符
+    * `*.do`
+      * `@WebServlet(&quot;*.do&quot;)` ,`*`代表通配符,`do`是随便定义的一个后缀名，随便都可以</code></pre>
+<h4 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h4><ul>
+<li><p>概念 ： Hyper Text Transfer Protocol 超文本传输协议</p>
+<ul>
+<li><p>传输协议 ： 定义了，客户端和服务器端传输 ，文件形式</p>
+<pre class="mermaid">    graph LR
+    A((客户端)) -->|"请求-请求消息"| B[服务器端]
+    B -->|"响应-响应消息"| A</pre>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>HTTP协议的特点：</p>
+<ol>
+<li><p>基于 TCP/IP 的高级协议</p>
+</li>
+<li><p>默认端口号是：80</p>
+<p><a href="http://www.baidu.com/">http://www.baidu.com:80</a></p>
+</li>
+<li><p>基于请求/响应模型的：一次请求对应一次响应</p>
+</li>
+<li><p>无状态的：每次请求之间相互独立，不能交互数据</p>
+</li>
+</ol>
+</li>
+<li><p>历史版本：</p>
+<ul>
+<li>1.0 ：每一次请求响应都会建立新的连接</li>
+<li>1.1 ：复用连接</li>
+</ul>
+</li>
+<li><p>请求消息数据格式</p>
+<ol>
+<li><p>请求行<br>请求方式 请求url 请求协议/版本</p>
+<figure class="highlight http"><table><tr><td class="code"><pre><span class="line"><span class="keyword">GET</span> <span class="string">/login.html</span> <span class="meta">HTTP/1.1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>请求方式 ：<ul>
+<li>HTTP协议有7种请求方式，常用的有2种<ul>
+<li>GET : <ol>
+<li>请求参数在<strong>请求行</strong>中，在url后</li>
+<li>请求的 url 是由限制的</li>
+<li>不太安全</li>
+</ol>
+</li>
+<li>POST : <ol>
+<li>请求参数在<strong>请求体</strong>中</li>
+<li>请求的url长度是没有限制的</li>
+<li>相对安全</li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>请求头</p>
+<blockquote>
+<p>请求头名称：请求头值</p>
+</blockquote>
+<ul>
+<li>常见的请求头 ：<ol>
+<li><strong>User-Agent</strong> ：浏览器告诉服务器，我访问你使用的浏览器的版本信息<ul>
+<li>可以在服务器端获取该头的浏览器信息，解决浏览器的兼容问题</li>
+</ul>
+</li>
+<li><strong>Referer</strong>: <a href="http://localhost:8080/ddd/login.html">http://localhost:8080/ddd/login.html</a><ul>
+<li>告诉服务器，我（当前请求）从哪里来？<ul>
+<li>作用：<ol>
+<li>防盗链</li>
+<li>统计工作 </li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>请求空行</p>
+<blockquote>
+<p>空行 # 做分隔作用</p>
+<p>就是用于分隔post请求的请求头和请求体的</p>
+</blockquote>
+</li>
+<li><p>请求体 （正文）</p>
+<blockquote>
+<p>封装post请求消息的请求体的</p>
+<p>请求内容，表单提交的参数</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li><p>字符串格式</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">GET /login.html HTTP/1.1  # 请求行</span><br><span class="line">Host: localhost:8080	# 请求头</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Referer: http://localhost:8080/ddd/login.html</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">If-Modified-Since: Wed, 22 May 2019 01:32:12 GMT</span><br><span class="line">If-None-Match: W/&quot;265-1558488732253&quot;</span><br><span class="line">		# 请求空行，就是空行</span><br><span class="line">username=zhangsan</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>响应消息数据格式</li>
+</ul>
+<p>1. </p>
+]]></content>
+      <categories>
+        <category>Java</category>
+        <category>Servlet</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Servlet</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu 问题</title>
+    <url>/2019/01/17/ubuntu%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h5 id="ubuntu-依赖问题"><a href="#ubuntu-依赖问题" class="headerlink" title="ubuntu 依赖问题"></a>ubuntu 依赖问题</h5><pre><code>    sudo apt-get update # 更新
+    sudo apt-get -f install # 解决依赖问题
+    sudo dpkg -i xxx.deb # 重新安装</code></pre>
+<h5 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h5><pre><code>    先找到软件的名称：whereis,which,find,grep 都可以
+    可以直接使用 dpkg 命令进行卸载，这叫做谁污染谁治理；
+    dpkg -l |grep xxx
+    # xxx 就是安装的软件名
+
+    找到之后，使用下面的方法进行卸载
+    sudo dpkg --purge xxxx
+    rm -rf ~/.local/share/xxxx
+
+    这样的话就彻底卸载了</code></pre>
+]]></content>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>maven基础</title>
     <url>/2019/08/11/maven%E5%9F%BA%E7%A1%80/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>一个项目一般可以分为：</p>
@@ -1645,27 +1666,6 @@ chown atguigu:atguigu yijinjing.txt</code></pre>
 ]]></content>
       <tags>
         <tag>Maven</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ubuntu 问题</title>
-    <url>/2019/01/17/ubuntu%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h5 id="ubuntu-依赖问题"><a href="#ubuntu-依赖问题" class="headerlink" title="ubuntu 依赖问题"></a>ubuntu 依赖问题</h5><pre><code>    sudo apt-get update # 更新
-    sudo apt-get -f install # 解决依赖问题
-    sudo dpkg -i xxx.deb # 重新安装</code></pre>
-<h5 id="卸载"><a href="#卸载" class="headerlink" title="卸载"></a>卸载</h5><pre><code>    先找到软件的名称：whereis,which,find,grep 都可以
-    可以直接使用 dpkg 命令进行卸载，这叫做谁污染谁治理；
-    dpkg -l |grep xxx
-    # xxx 就是安装的软件名
-
-    找到之后，使用下面的方法进行卸载
-    sudo dpkg --purge xxxx
-    rm -rf ~/.local/share/xxxx
-
-    这样的话就彻底卸载了</code></pre>
-]]></content>
-      <tags>
-        <tag>Linux</tag>
       </tags>
   </entry>
   <entry>
@@ -1808,7 +1808,17 @@ print(&#39;%.2f&#39; % 3.1415926)
   <entry>
     <title>关于</title>
     <url>/about/index.html</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img data-src="index/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20200921222923.png"></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img data-src="index/%E6%90%9C%E7%8B%97%E6%88%AA%E5%9B%BE20200921222923.png" alt="老友记-瑞秋"></p>
+<p><img data-src="index/p2021994737.webp" alt="梁咏琪"></p>
+<p><img data-src="index/p1931021849.webp" alt="《逃学威龙三》"></p>
+<p><img data-src="index/p2573917030.webp" alt="《逃学威龙》"></p>
+<p><img data-src="index/p2573917029.webp" alt="《逃学威龙》"></p>
+<p><img data-src="index/p2549919514.webp" alt="《新精武门》"></p>
+<p><img data-src="index/p2100890063.webp" alt="《与龙共舞》"></p>
+<p><img data-src="index/p2622284989.webp" alt="《绝代双骄》"></p>
+<p><img data-src="index/p2494532278.webp" alt="《与龙共舞》"></p>
+<p><img data-src="index/p2317446206.webp" alt="《逃学威龙》"></p>
+<p><img data-src="index/p2317446207.webp" alt="《逃学威龙》"></p>
 ]]></content>
   </entry>
   <entry>
